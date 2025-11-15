@@ -231,37 +231,49 @@
         }
         
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 2px solid #3b2b20;
             font-family: 'Courier New', monospace;
         }
         
-        /* TABELKA CEN */
-        .pricing-table {
+        /* TABELKA WYCENY */
+        .quote-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 20px 0;
             background: white;
             border: 3px solid #3b2b20;
         }
         
-        .pricing-table th,
-        .pricing-table td {
+        .quote-table th,
+        .quote-table td {
             padding: 15px;
             text-align: left;
             border-bottom: 2px solid #3b2b20;
         }
         
-        .pricing-table th {
+        .quote-table th {
             background: #3b2b20;
             color: white;
             font-weight: bold;
         }
         
-        .pricing-table tr:last-child td {
+        .quote-table tr:last-child td {
             border-bottom: none;
+        }
+        
+        .service-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .service-option input {
+            width: auto;
         }
         
         /* FOOTER */
@@ -293,7 +305,7 @@
                 justify-content: center;
             }
             
-            .pricing-table {
+            .quote-table {
                 font-size: 14px;
             }
         }
@@ -328,7 +340,7 @@
             <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
             <div class="hero-buttons">
                 <a href="#cennik" class="btn btn-dark">ZOBACZ CENNIK</a>
-                <a href="#kontakt" class="btn btn-green">KONTAKT</a>
+                <a href="#kontakt" class="btn btn-green">WYCENA PROJEKTU</a>
             </div>
         </div>
     </section>
@@ -399,7 +411,7 @@
         <div class="container">
             <h2 class="section-title">CENNIK</h2>
             
-            <table class="pricing-table">
+            <table class="quote-table">
                 <thead>
                     <tr>
                         <th>Usługa</th>
@@ -444,40 +456,95 @@
         </div>
     </section>
 
-    <!-- KONTAKT -->
+    <!-- KONTAKT & WYCENA -->
     <section id="kontakt">
         <div class="container">
-            <h2 class="section-title">KONTAKT</h2>
+            <h2 class="section-title">WYCENA PROJEKTU</h2>
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>OldSchool by WWWojtek</h3>
-                    <p>Masz pomysł? Napisz lub zadzwoń — zrobimy to ręcznie, ale profesjonalnie.</p>
+                    <p>Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
                     <br>
                     <p>📧 <strong>frekig52@gmail.com</strong></p>
                     <p>📱 <strong>604 296 360</strong></p>
                     <br>
-                    <p><em>Ręczne podejście do każdego projektu</em></p>
+                    <p><em>Bezpłatna wycena każdego projektu</em></p>
                     <br>
-                    <a href="mailto:frekig52@gmail.com?subject=Zapytanie ze strony OldSchool&body=Cześć Wojtek, chciałbym zapytać o:" class="btn btn-dark" style="margin-top: 15px;">
+                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek&body=Cześć Wojtek, chciałbym zapytać o wycenę strony:" class="btn btn-dark" style="margin-top: 15px;">
                         WYŚLIJ EMAIL
                     </a>
                 </div>
+                
                 <div class="contact-form">
-                    <h3>Wyślij wiadomość</h3>
-                    <form action="mailto:frekig52@gmail.com" method="post" enctype="text/plain">
+                    <h3>Formularz Wyceny</h3>
+                    <form id="quoteForm">
                         <div class="form-group">
-                            <label for="name">Imię:</label>
+                            <label for="name">Imię i Nazwisko:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="message">Wiadomość:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="phone">Telefon:</label>
+                            <input type="tel" id="phone" name="phone">
                         </div>
-                        <button type="submit" class="btn btn-dark" style="width: 100%;">WYŚLIJ WIADOMOŚĆ</button>
+                        
+                        <div class="form-group">
+                            <label>Jakiej strony potrzebujesz?</label>
+                            <div class="service-option">
+                                <input type="checkbox" id="service1" name="service" value="Strona Wizytówka">
+                                <label for="service1">Strona Wizytówka (400-900 zł)</label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service2" name="service" value="Landing Page">
+                                <label for="service2">Landing Page (600-1200 zł)</label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service3" name="service" value="Sklep Internetowy">
+                                <label for="service3">Sklep Internetowy (2000-4500 zł)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pages">Liczba podstron:</label>
+                            <select id="pages" name="pages">
+                                <option value="1">1 strona</option>
+                                <option value="2-3">2-3 strony</option>
+                                <option value="4-5">4-5 stron</option>
+                                <option value="6+">6+ stron</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deadline">Planowany termin:</label>
+                            <select id="deadline" name="deadline">
+                                <option value="1-tydzien">1 tydzień</option>
+                                <option value="2-tygodnie">2 tygodnie</option>
+                                <option value="1-miesiac">1 miesiąc</option>
+                                <option value="flexible">Elastyczny</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Planowany budżet:</label>
+                            <select id="budget" name="budget">
+                                <option value="do-500">do 500 zł</option>
+                                <option value="500-1000">500-1000 zł</option>
+                                <option value="1000-2000">1000-2000 zł</option>
+                                <option value="2000+">2000+ zł</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Opis projektu:</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-dark" style="width: 100%;">WYŚLIJ ZAPYTANIE O WYCENĘ</button>
                     </form>
                 </div>
             </div>
@@ -493,17 +560,28 @@
     </footer>
 
     <script>
-        // Formularz otwiera klienta email
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // Formularz wyceny
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const phone = document.getElementById('phone').value;
+            const pages = document.getElementById('pages').value;
+            const deadline = document.getElementById('deadline').value;
+            const budget = document.getElementById('budget').value;
+            const description = document.getElementById('description').value;
             
-            const subject = `Zapytanie od ${name} - OldSchool WWWojtek`;
-            const body = `Imię: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AWiadomość:%0D%0A${message}`;
+            // Zaznaczone usługi
+            const services = [];
+            document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
+                services.push(checkbox.value);
+            });
             
-            window.location.href = `mailto:frekig52@gmail.com?subject=${subject}&body=${body}`;
-            e.preventDefault();
+            const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
+            const body = `DANE KLIENTA:%0D%0AImię: ${name}%0D%0AEmail: ${email}%0D%0ATelefon: ${phone}%0D%0A%0D%0AUSŁUGI:%0D%0A${services.join(', ')}%0D%0A%0D%0ASZCZEGÓŁY:%0D%0ALiczba podstron: ${pages}%0D%0ATermin: ${deadline}%0D%0ABudżet: ${budget}%0D%0A%0D%0AOPIS PROJEKTU:%0D%0A${description}%0D%0A%0D%0A---%0D%0AWycena przygotowana automatycznie`;
+            
+            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
     </script>
 </body>
