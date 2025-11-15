@@ -1,28 +1,421 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLD SCHOOL by WWWojtek</title>
     <style>
-        body { background: #f6ecd9; font-family: Arial; margin: 0; padding: 20px; }
-        header { border-bottom: 2px solid #3b2b20; padding: 20px 0; }
-        h1 { font-family: monospace; color: #3b2b20; }
-        button { background: #3b2b20; color: white; padding: 10px; border: none; margin: 5px; }
-        footer { margin-top: 50px; border-top: 2px solid #3b2b20; padding: 20px 0; }
+        /* RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* STYL RETRO */
+        body {
+            background-color: #f6ecd9;
+            color: #3b2b20;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* KONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* HEADER */
+        header {
+            background: rgba(255,255,255,0.9);
+            border-bottom: 3px solid #3b2b20;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: #3b2b20;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .logo-text h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* NAVIGACJA */
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #3b2b20;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            border: 2px solid #3b2b20;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* PRZYCISKI */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid #3b2b20;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+        
+        .btn-dark {
+            background: #3b2b20;
+            color: white;
+        }
+        
+        .btn-green {
+            background: #4ef08a;
+            color: #3b2b20;
+            border-color: #4ef08a;
+        }
+        
+        /* SEKCJE */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-family: 'Courier New', monospace;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        /* PORTFOLIO */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border: 3px solid #3b2b20;
+            padding: 20px;
+            box-shadow: 8px 8px 0 #3b2b20;
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        /* CENNIK */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-item {
+            background: white;
+            border: 3px solid #3b2b20;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 6px 6px 0 #3b2b20;
+        }
+        
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #3b2b20;
+        }
+        
+        /* KONTAKT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border: 3px solid #3b2b20;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border: 3px solid #3b2b20;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #3b2b20;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #3b2b20;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        /* RESPONSYWNOŚĆ */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header>
-        <h1>OLD SCHOOL by WWWojtek</h1>
-        <p>Strony internetowe w stylu retro</p>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">W</div>
+                    <div class="logo-text">
+                        <h1>OLD SCHOOL</h1>
+                        <p>by WWWojtek</p>
+                    </div>
+                </div>
+                <nav>
+                    <a href="#uslugi">Usługi</a>
+                    <a href="#portfolio">Realizacje</a>
+                    <a href="#cennik">Cennik</a>
+                    <a href="#kontakt">Kontakt</a>
+                </nav>
+            </div>
+        </div>
     </header>
-    
-    <main>
-        <button>CENNIK</button>
-        <button style="background: #4ef08a; color: #3b2b20;">KONTAKT</button>
-    </main>
 
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>OLD SCHOOL</h1>
+            <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
+            <div class="hero-buttons">
+                <a href="#cennik" class="btn btn-dark">ZOBACZ CENNIK</a>
+                <a href="#kontakt" class="btn btn-green">KONTAKT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- USŁUGI -->
+    <section id="uslugi">
+        <div class="container">
+            <h2 class="section-title">USŁUGI</h2>
+            <div class="pricing-grid">
+                <div class="pricing-item">
+                    <h3>Strona Wizytówka</h3>
+                    <div class="price">400-900 zł</div>
+                    <p>1-3 podstrony, formularz kontaktowy, responsywny design</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>Landing Page</h3>
+                    <div class="price">600-1200 zł</div>
+                    <p>Konwersyjny layout, CTA, integracja analytics</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>Sklep Internetowy</h3>
+                    <div class="price">2000-4500 zł</div>
+                    <p>Płatności, produkty, panel zamówień, szkolenie</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" style="background: rgba(255,255,255,0.5);">
+        <div class="container">
+            <h2 class="section-title">REALIZACJE</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 1</div>
+                    <h3>Nazwa Projektu 1</h3>
+                    <p>Krótki opis projektu i technologii</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 2</div>
+                    <h3>Nazwa Projektu 2</h3>
+                    <p>Krótki opis projektu i technologii</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 3</div>
+                    <h3>Nazwa Projektu 3</h3>
+                    <p>Krótki opis projektu i technologii</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section id="cennik">
+        <div class="container">
+            <h2 class="section-title">CENNIK</h2>
+            <div class="pricing-grid">
+                <div class="pricing-item">
+                    <h3>Strona Wizytówka</h3>
+                    <div class="price">400-900 zł</div>
+                    <p>Idealna dla małych firm i freelancerów</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>Landing Page</h3>
+                    <div class="price">600-1200 zł</div>
+                    <p>Optymalizacja pod konwersję</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>Sklep Internetowy</h3>
+                    <div class="price">2000-4500 zł</div>
+                    <p>Pełna funkcjonalność e-commerce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+        <div class="container">
+            <h2 class="section-title">KONTAKT</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>OldSchool by WWWojtek</h3>
+                    <p>Masz pomysł? Napisz lub zadzwoń — zrobimy to ręcznie, ale profesjonalnie.</p>
+                    <br>
+                    <p>📧 <strong>frekig52@gmail.com</strong></p>
+                    <p>📱 <strong>604 296 360</strong></p>
+                    <br>
+                    <p><em>Ręczne podejście do każdego projektu</em></p>
+                </div>
+                <div class="contact-form">
+                    <h3>Wyślij wiadomość</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Imię:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Wiadomość:</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="width: 100%;">WYŚLIJ WIADOMOŚĆ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>📧 frekig52@gmail.com | 📱 604 296 360</p>
+        <div class="container">
+            <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
+            <p>📧 frekig52@gmail.com | 📱 604 296 360</p>
+        </div>
     </footer>
+
+    <script>
+        // Prosta walidacja formularza
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Dziękuję za wiadomość! Odpowiem najszybciej jak to możliwe.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
