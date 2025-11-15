@@ -155,6 +155,14 @@
             border: 3px solid #3b2b20;
             padding: 20px;
             box-shadow: 8px 8px 0 #3b2b20;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
         }
         
         .portfolio-image {
@@ -165,6 +173,8 @@
             justify-content: center;
             margin-bottom: 15px;
             font-weight: bold;
+            background-size: cover;
+            background-position: center;
         }
         
         /* CENNIK */
@@ -228,6 +238,32 @@
             font-family: 'Courier New', monospace;
         }
         
+        /* TABELKA CEN */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border: 3px solid #3b2b20;
+        }
+        
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid #3b2b20;
+        }
+        
+        .pricing-table th {
+            background: #3b2b20;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
         /* FOOTER */
         footer {
             background: #3b2b20;
@@ -255,6 +291,10 @@
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .pricing-table {
+                font-size: 14px;
             }
         }
     </style>
@@ -322,21 +362,34 @@
         <div class="container">
             <h2 class="section-title">REALIZACJE</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 1</div>
-                    <h3>Nazwa Projektu 1</h3>
-                    <p>Krótki opis projektu i technologii</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 2</div>
-                    <h3>Nazwa Projektu 2</h3>
-                    <p>Krótki opis projektu i technologii</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">ZDJĘCIE PROJEKTU 3</div>
-                    <h3>Nazwa Projektu 3</h3>
-                    <p>Krótki opis projektu i technologii</p>
-                </div>
+                <a href="https://klaudia-3hjx.vercel.app" target="_blank" class="portfolio-item">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; font-size: 18px;">
+                        STRONA KLAUDII
+                    </div>
+                    <h3>Strona Klaudii</h3>
+                    <p>Personalna strona wizytówkowa</p>
+                </a>
+                <a href="https://rafa-five-phi.vercel.app" target="_blank" class="portfolio-item">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #4ecdc4, #556270); color: white; font-size: 18px;">
+                        STRONA RAFAŁA
+                    </div>
+                    <h3>Strona Rafała</h3>
+                    <p>Landing page dla freelancera</p>
+                </a>
+                <a href="https://maniek-przewozy-przew-z.vercel.app" target="_blank" class="portfolio-item">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; font-size: 18px;">
+                        PRZEWOZY MANIEK
+                    </div>
+                    <h3>Przewozy Maniek</h3>
+                    <p>Strona firmowa transportu</p>
+                </a>
+                <a href="https://www.adelbertusshop.com" target="_blank" class="portfolio-item">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #11998e, #38ef7d); color: white; font-size: 18px;">
+                        ADELBERTUS SHOP
+                    </div>
+                    <h3>Adelbertus Shop</h3>
+                    <p>Sklep internetowy e-commerce</p>
+                </a>
             </div>
         </div>
     </section>
@@ -345,23 +398,49 @@
     <section id="cennik">
         <div class="container">
             <h2 class="section-title">CENNIK</h2>
-            <div class="pricing-grid">
-                <div class="pricing-item">
-                    <h3>Strona Wizytówka</h3>
-                    <div class="price">400-900 zł</div>
-                    <p>Idealna dla małych firm i freelancerów</p>
-                </div>
-                <div class="pricing-item">
-                    <h3>Landing Page</h3>
-                    <div class="price">600-1200 zł</div>
-                    <p>Optymalizacja pod konwersję</p>
-                </div>
-                <div class="pricing-item">
-                    <h3>Sklep Internetowy</h3>
-                    <div class="price">2000-4500 zł</div>
-                    <p>Pełna funkcjonalność e-commerce</p>
-                </div>
-            </div>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Usługa</th>
+                        <th>Cena</th>
+                        <th>Zawartość</th>
+                        <th>Czas realizacji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Strona Wizytówka</strong></td>
+                        <td>400-900 zł</td>
+                        <td>1-3 podstron, formularz, responsywność</td>
+                        <td>3-7 dni</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Landing Page</strong></td>
+                        <td>600-1200 zł</td>
+                        <td>Strona konwersyjna, CTA, analytics</td>
+                        <td>5-10 dni</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sklep Internetowy</strong></td>
+                        <td>2000-4500 zł</td>
+                        <td>Płatności, produkty, panel, szkolenie</td>
+                        <td>2-4 tygodnie</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drobne poprawki</strong></td>
+                        <td>50-100 zł/godz.</td>
+                        <td>Zmiany w istniejącej stronie</td>
+                        <td>1-2 dni</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Opieka miesięczna</strong></td>
+                        <td>39-199 zł/m-c</td>
+                        <td>Aktualizacje, backup, wsparcie</td>
+                        <td>Stała współpraca</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -378,21 +457,25 @@
                     <p>📱 <strong>604 296 360</strong></p>
                     <br>
                     <p><em>Ręczne podejście do każdego projektu</em></p>
+                    <br>
+                    <a href="mailto:frekig52@gmail.com?subject=Zapytanie ze strony OldSchool&body=Cześć Wojtek, chciałbym zapytać o:" class="btn btn-dark" style="margin-top: 15px;">
+                        WYŚLIJ EMAIL
+                    </a>
                 </div>
                 <div class="contact-form">
                     <h3>Wyślij wiadomość</h3>
-                    <form>
+                    <form action="mailto:frekig52@gmail.com" method="post" enctype="text/plain">
                         <div class="form-group">
                             <label for="name">Imię:</label>
-                            <input type="text" id="name" required>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Wiadomość:</label>
-                            <textarea id="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-dark" style="width: 100%;">WYŚLIJ WIADOMOŚĆ</button>
                     </form>
@@ -410,11 +493,17 @@
     </footer>
 
     <script>
-        // Prosta walidacja formularza
+        // Formularz otwiera klienta email
         document.querySelector('form').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = `Zapytanie od ${name} - OldSchool WWWojtek`;
+            const body = `Imię: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AWiadomość:%0D%0A${message}`;
+            
+            window.location.href = `mailto:frekig52@gmail.com?subject=${subject}&body=${body}`;
             e.preventDefault();
-            alert('Dziękuję za wiadomość! Odpowiem najszybciej jak to możliwe.');
-            this.reset();
         });
     </script>
 </body>
