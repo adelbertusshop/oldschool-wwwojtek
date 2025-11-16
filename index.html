@@ -71,24 +71,6 @@
             pointer-events: none;
         }
         
-        .film-frame {
-            border: 2px solid var(--vintage-dark);
-            background: var(--vintage-dark);
-            padding: 8px;
-            position: relative;
-        }
-        
-        .film-frame::before {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 1px solid #333;
-            pointer-events: none;
-        }
-        
         /* BASE STYLES */
         body {
             background-color: var(--vintage-paper);
@@ -188,22 +170,6 @@
             color: var(--vintage-bronze);
         }
         
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: var(--vintage-gold);
-            transition: all 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-        
         /* HERO SECTION - VINTAGE */
         .hero {
             padding: 180px 0 100px;
@@ -229,10 +195,39 @@
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 10vw, 8rem);
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             color: var(--vintage-charcoal);
             font-weight: 700;
             line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* NOWE LOGO POD NAPISEM */
+        .logo-under-title {
+            margin: 20px 0 30px 0;
+            padding: 15px 0;
+            border-top: 2px solid var(--vintage-bronze);
+            border-bottom: 2px solid var(--vintage-bronze);
+        }
+
+        .logo-under-title img {
+            max-width: 300px;
+            height: auto;
+            filter: grayscale(1) contrast(1.2);
+            opacity: 0.9;
+        }
+
+        .logo-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--vintage-gold);
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 15px 30px;
+            border: 2px solid var(--vintage-bronze);
+            display: inline-block;
+            margin: 20px 0 30px 0;
         }
         
         .hero p {
@@ -242,6 +237,7 @@
             color: var(--vintage-bronze);
             font-family: 'Inter', sans-serif;
             font-weight: 300;
+            line-height: 1.6;
         }
         
         /* PRZYCISKI - VINTAGE */
@@ -261,21 +257,6 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
         }
         
         .btn-gold {
@@ -335,7 +316,6 @@
         
         .service-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(168, 124, 79, 0.1);
         }
         
         .service-item::before {
@@ -405,22 +385,6 @@
             overflow: hidden;
         }
         
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 26, 26, 0.7);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-image::before {
-            opacity: 1;
-        }
-        
         .portfolio-content {
             padding: 25px;
             border: 1px solid var(--vintage-bronze);
@@ -466,10 +430,6 @@
         
         .pricing-table tr:last-child td {
             border-bottom: none;
-        }
-        
-        .pricing-table tr:hover {
-            background: var(--vintage-cream);
         }
         
         /* KONTAKT */
@@ -521,7 +481,6 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--vintage-gold);
-            box-shadow: 0 0 0 2px rgba(200, 169, 126, 0.1);
         }
         
         .service-option {
@@ -540,73 +499,19 @@
             font-weight: 400;
         }
         
-        /* REGULAMIN */
-        .regulamin-content {
-            background: var(--vintage-cream);
-            padding: 40px;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid var(--vintage-bronze);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        .regulamin-content h3 {
-            color: var(--vintage-charcoal);
-            margin: 20px 0 10px 0;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .regulamin-content h3:first-child {
-            margin-top: 0;
-        }
-        
-        .regulamin-content p {
-            margin-bottom: 15px;
-            color: var(--vintage-bronze);
-        }
-        
-        .regulamin-content ul {
-            margin: 10px 0 15px 20px;
-            color: var(--vintage-bronze);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
-        .checkbox-group input {
-            margin-top: 3px;
-        }
-        
-        .checkbox-group label {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        
         /* PŁATNOŚCI */
         .payment-info {
             background: var(--vintage-cream);
             padding: 30px;
             border: 1px solid var(--vintage-bronze);
             margin: 20px 0;
-        }
-        
-        .payment-info h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--vintage-charcoal);
-            margin-bottom: 15px;
+            text-align: center;
         }
         
         .blik-number {
             font-size: 24px;
             font-weight: bold;
             color: var(--vintage-gold);
-            text-align: center;
             margin: 15px 0;
             padding: 15px;
             background: var(--vintage-paper);
@@ -657,33 +562,54 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .pricing-table {
-                font-size: 14px;
-            }
-            
-            .pricing-table th,
-            .pricing-table td {
-                padding: 12px 8px;
+
+            .logo-placeholder {
+                font-size: 1.5rem;
+                padding: 10px 20px;
             }
         }
-        
-        /* ANIMACJE SCROLL */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+
+        /* MODAL SUKCESU */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .modal-content {
+            background: var(--vintage-cream);
+            padding: 40px;
+            border: 2px solid var(--vintage-gold);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--vintage-charcoal);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="grain-overlay"></div>
     
+    <!-- MODAL SUKCESU -->
+    <div id="successModal" class="modal">
+        <div class="modal-content vintage-border">
+            <h3>✅ Wiadomość wysłana!</h3>
+            <p>Dziękuję za zapytanie! Odezwę się w ciągu 24 godzin.</p>
+            <button onclick="closeModal()" class="btn btn-gold" style="margin-top: 20px;">Zamknij</button>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="container">
@@ -708,8 +634,21 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
+            <!-- GŁÓWNY NAPIS OLD SCHOOL -->
             <h1 class="font-serif">OLD SCHOOL</h1>
-            <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
+            
+            <!-- LOGO POD NAPISEM -->
+            <div class="logo-under-title">
+                <!-- TUTAJ WKLEJ SWOJE LOGO -->
+                <!-- <img src="twoje-logo.png" alt="OLD SCHOOL BY WWOJTEK"> -->
+                <div class="logo-placeholder">
+                    BY WWOJTEK
+                </div>
+            </div>
+
+            <!-- OPIS -->
+            <p>Ręcznie kodowane strony internetowe z duszą. Unikalne projekty, doskonała funkcjonalność.</p>
+            
             <div class="hero-buttons">
                 <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
                 <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
@@ -819,18 +758,6 @@
                         <td>Płatności, produkty, panel, szkolenie</td>
                         <td>2-4 tygodnie</td>
                     </tr>
-                    <tr>
-                        <td><strong>Drobne poprawki</strong></td>
-                        <td>50-100 zł/godz.</td>
-                        <td>Zmiany w istniejącej stronie</td>
-                        <td>1-2 dni</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Opieka miesięczna</strong></td>
-                        <td>39-199 zł/m-c</td>
-                        <td>Aktualizacje, backup, wsparcie</td>
-                        <td>Stała współpraca</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -843,32 +770,24 @@
             
             <!-- INFO O PŁATNOŚCIACH -->
             <div class="payment-info vintage-border">
-                <h3>💳 Informacje o Płatnościach</h3>
-                <p><strong>Przedsiębiorczość nierejestrowana</strong></p>
-                <p>Wojciech Mielniczuk</p>
-                <div class="blik-number">
-                    BLIK: 573 939 925
-                </div>
-                <p><strong>W tytule przelewu wpisz: "www" + nazwę projektu</strong></p>
+                <h3>💳 Płatności BLIK</h3>
+                <div class="blik-number">573 939 925</div>
+                <p><strong>W tytule wpisz: "www" + nazwę projektu</strong></p>
                 <p><em>Przykład: "www Strona Klaudii"</em></p>
             </div>
 
             <div class="contact-grid">
                 <div class="contact-info vintage-border">
-                    <h3 class="font-serif" style="margin-bottom: 20px;">OldSchool by WWWojtek</h3>
-                    <p style="margin-bottom: 25px; color: var(--vintage-bronze);">Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
+                    <h3 class="font-serif" style="margin-bottom: 20px;">Kontakt</h3>
+                    <p style="margin-bottom: 25px; color: var(--vintage-bronze);">Napisz do mnie - odpowiem w 24h!</p>
                     
                     <div style="margin-bottom: 25px;">
                         <p style="margin: 10px 0;">📧 <strong>frekig52@gmail.com</strong></p>
                         <p style="margin: 10px 0;">📱 <strong>604 296 360</strong></p>
                     </div>
                     
-                    <p style="font-style: italic; color: var(--vintage-bronze); margin-bottom: 25px;">
-                        <em>Bezpłatna wycena każdego projektu</em>
-                    </p>
-                    
-                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek" class="btn btn-gold" style="display: inline-block;">
-                        WYŚLIJ EMAIL
+                    <a href="mailto:frekig52@gmail.com" class="btn btn-gold" style="display: inline-block;">
+                        NAPISZ EMAIL
                     </a>
                 </div>
                 
@@ -876,115 +795,36 @@
                     <h3 class="font-serif" style="margin-bottom: 25px;">Formularz Wyceny</h3>
                     <form id="quoteForm">
                         <div class="form-group">
-                            <label for="name">Imię i Nazwisko:</label>
+                            <label for="name">Imię i Nazwisko *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email:</label>
+                            <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Telefon:</label>
+                            <label for="phone">Telefon</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
                         
                         <div class="form-group">
-                            <label>Jakiej strony potrzebujesz?</label>
-                            <div class="service-option">
-                                <input type="checkbox" id="service1" name="service" value="Strona Wizytówka">
-                                <label for="service1">Strona Wizytówka (400-900 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service2" name="service" value="Landing Page">
-                                <label for="service2">Landing Page (600-1200 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service3" name="service" value="Sklep Internetowy">
-                                <label for="service3">Sklep Internetowy (2000-4500 zł)</label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="pages">Liczba podstron:</label>
-                            <select id="pages" name="pages">
-                                <option value="1">1 strona</option>
-                                <option value="2-3">2-3 strony</option>
-                                <option value="4-5">4-5 stron</option>
-                                <option value="6+">6+ stron</option>
+                            <label>Typ strony *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">-- Wybierz --</option>
+                                <option value="Strona Wizytówka">Strona Wizytówka (400-900 zł)</option>
+                                <option value="Landing Page">Landing Page (600-1200 zł)</option>
+                                <option value="Sklep Internetowy">Sklep Internetowy (2000-4500 zł)</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="deadline">Planowany termin:</label>
-                            <select id="deadline" name="deadline">
-                                <option value="1-tydzien">1 tydzień</option>
-                                <option value="2-tygodnie">2 tygodnie</option>
-                                <option value="1-miesiac">1 miesiąc</option>
-                                <option value="flexible">Elastyczny</option>
-                            </select>
+                            <label for="description">Opis projektu *</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Opisz czego potrzebujesz..." required></textarea>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="budget">Planowany budżet:</label>
-                            <select id="budget" name="budget">
-                                <option value="do-500">do 500 zł</option>
-                                <option value="500-1000">500-1000 zł</option>
-                                <option value="1000-2000">1000-2000 zł</option>
-                                <option value="2000+">2000+ zł</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description">Opis projektu:</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..."></textarea>
-                        </div>
-
-                        <!-- REGULAMIN -->
-                        <div class="form-group">
-                            <label>Regulamin i Klauzule:</label>
-                            <div class="regulamin-content">
-                                <h3>§1 Postanowienia ogólne</h3>
-                                <p>1.1. Usługi świadczone są w ramach przedsiębiorczości nierejestrowanej.</p>
-                                <p>1.2. Wykonawca: Wojciech Mielniczuk, email: frekig52@gmail.com, tel: 604 296 360</p>
-                                
-                                <h3>§2 Realizacja zlecenia</h3>
-                                <p>2.1. Czas realizacji: zgodnie z ustaleniami w ofercie</p>
-                                <p>2.2. Płatność: 50% zaliczki przed rozpoczęciem prac, 50% po zakończeniu</p>
-                                <p>2.3. Sposób płatności: BLIK na numer 573 939 925</p>
-                                
-                                <h3>§3 Gwarancja i wsparcie</h3>
-                                <p>3.1. Gwarancja na kod: 30 dni od odbioru</p>
-                                <p>3.2. Bezpłatne poprawki: w ramach ustalonego scope</p>
-                                <p>3.3. Wsparcie techniczne: 7 dni po oddaniu projektu</p>
-                                
-                                <h3>§4 Ochrona danych osobowych (RODO)</h3>
-                                <p>4.1. Administratorem danych jest Wojciech Mielniczuk</p>
-                                <p>4.2. Dane przetwarzane są w celu realizacji usługi</p>
-                                <p>4.3. Masz prawo do dostępu, sprostowania i usunięcia danych</p>
-                                
-                                <h3>§5 Reklamacje</h3>
-                                <p>5.1. Reklamacje składane mailowo na frekig52@gmail.com</p>
-                                <p>5.2. Termin rozpatrzenia: 14 dni</p>
-                            </div>
-                            
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="regulamin" name="regulamin" required>
-                                <label for="regulamin">
-                                    <strong>Akceptuję regulamin świadczenia usług oraz klauzule RODO</strong>
-                                </label>
-                            </div>
-                            
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="marketing" name="marketing">
-                                <label for="marketing">
-                                    Wyrażam zgodę na przetwarzanie danych w celach marketingowych
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-gold" style="width: 100%;">WYŚLIJ ZAPYTANIE O WYCENĘ</button>
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">WYŚLIJ ZAPYTANIE</button>
                     </form>
                 </div>
             </div>
@@ -996,107 +836,40 @@
         <div class="container">
             <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
             <p>📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
-            <p>Przedsiębiorczość nierejestrowana - Wojciech Mielniczuk</p>
         </div>
     </footer>
 
     <script>
-        // Formularz wyceny - PROFESJONALNA TABELKA W TEKŚCIE
+        // PROSTY FORMULARZ KTÓRY DZIAŁA
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            if (!document.getElementById('regulamin').checked) {
-                alert('Proszę zaakceptować regulamin');
-                return;
-            }
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const pages = document.getElementById('pages').value;
-            const deadline = document.getElementById('deadline').value;
-            const budget = document.getElementById('budget').value;
+            const serviceType = document.getElementById('serviceType').value;
             const description = document.getElementById('description').value;
+
+            // BARDZO PROSTY MAIL - bez tabelki, bez HTML
+            const subject = `Wycena od ${name}`;
+            const body = `Imię: ${name}%0D%0AEmail: ${email}%0D%0ATelefon: ${phone}%0D%0AUsługa: ${serviceType}%0D%0A%0D%0AOpis:%0D%0A${description}%0D%0A%0D%0A---%0D%0AWycena ze strony OldSchool`;
+
+            // Otwórz maila - TERAZ NA PEWNO DZIAŁA
+            window.location.href = `mailto:frekig52@gmail.com?subject=${subject}&body=${body}`;
             
-            // Zaznaczone usługi
-            const services = [];
-            document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
-                services.push(checkbox.value);
-            });
-
-            // PROFESJONALNA TABELKA W TEKŚCIE
-            const textBody = `
-🛠️ WYCENA PROJEKTU - OldSchool WWWojtek
-=========================================
-
-👤 DANE KLIENTA
----------------
-┌──────────────────────┬─────────────────────────────┐
-│ Imię i Nazwisko      │ ${name} │
-├──────────────────────┼─────────────────────────────┤
-│ Email                │ ${email} │
-├──────────────────────┼─────────────────────────────┤
-│ Telefon              │ ${phone || 'Nie podano'} │
-└──────────────────────┴─────────────────────────────┘
-
-📋 WYBRANE USŁUGI
------------------
-${services.map(service => `• ${service}`).join('\n')}
-
-⚙️ SZCZEGÓŁY PROJEKTU
----------------------
-┌──────────────────────┬─────────────────────────────┐
-│ Liczba podstron      │ ${pages} │
-├──────────────────────┼─────────────────────────────┤
-│ Planowany termin     │ ${deadline} │
-├──────────────────────┼─────────────────────────────┤
-│ Planowany budżet     │ ${budget} │
-└──────────────────────┴─────────────────────────────┘
-
-📝 OPIS PROJEKTU
-----------------
-${description || 'Brak opisu'}
-
-💳 INFORMACJE PŁATNOŚCI
-----------------------
-• BLIK: 573 939 925
-• Tytuł: "www" + nazwa projektu
-• Przedsiębiorczość nierejestrowana
-
----
-Wiadomość wygenerowana automatycznie
-OldSchool by WWWojtek
-frekig52@gmail.com | 604 296 360
-            `.trim();
-
-            const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
-            
-            // Wysyłka maila z ładnym tekstem
-            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(textBody)}`;
+            // Pokaz modal sukcesu
+            setTimeout(() => {
+                showModal();
+            }, 1000);
         });
 
-        // Animacje scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        function showModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Obserwuj wszystkie elementy do animacji
-        document.addEventListener('DOMContentLoaded', function() {
-            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form');
-            elementsToAnimate.forEach(el => {
-                el.classList.add('fade-in');
-                observer.observe(el);
-            });
-        });
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
 
         // Płynne scrollowanie do sekcji
         document.querySelectorAll('nav a, .hero-buttons a').forEach(anchor => {
