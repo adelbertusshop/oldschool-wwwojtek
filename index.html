@@ -586,6 +586,39 @@
             font-family: 'Courier New', monospace;
         }
         
+        /* REGULAMIN */
+        .regulamin-content {
+            background: var(--vintage-cream);
+            padding: 40px;
+            margin-top: 40px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+        
+        .regulamin-content h3 {
+            color: var(--vintage-charcoal);
+            margin: 25px 0 15px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .regulamin-content h4 {
+            color: var(--vintage-bronze);
+            margin: 20px 0 10px 0;
+        }
+        
+        .regulamin-content p {
+            margin-bottom: 15px;
+            color: var(--vintage-charcoal);
+        }
+        
+        .regulamin-content ul {
+            margin: 10px 0 20px 20px;
+        }
+        
+        .regulamin-content li {
+            margin-bottom: 8px;
+        }
+        
         /* FOOTER */
         footer {
             background: var(--vintage-charcoal);
@@ -599,6 +632,21 @@
         footer p {
             margin: 10px 0;
             opacity: 0.8;
+        }
+        
+        .footer-links {
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: var(--vintage-gold);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--vintage-beige);
         }
         
         /* RESPONSYWNOŚĆ */
@@ -639,6 +687,12 @@
             .pricing-table td {
                 padding: 12px 8px;
             }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
         }
         
         /* ANIMACJE SCROLL */
@@ -674,6 +728,7 @@
             font-size: 26px;
             cursor: pointer;
             transition: transform .2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         #chatbot-button:hover { transform: scale(1.1); }
 
@@ -689,51 +744,98 @@
             flex-direction: column;
             color: var(--vintage-beige);
             font-family: 'Playfair Display', serif;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
 
         #chatbot-header {
-            padding: 10px;
+            padding: 12px 15px;
             border-bottom: 1px solid var(--vintage-bronze);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--vintage-dark);
         }
 
         #chatbot-messages {
             flex-grow: 1;
             overflow-y: auto;
-            padding: 10px;
+            padding: 15px;
             font-family: "Inter", sans-serif;
             font-size: 14px;
+            background: var(--vintage-charcoal);
         }
 
         .message {
-            margin-bottom: 10px;
-            padding: 8px;
-            border-left: 2px solid var(--vintage-gold);
+            margin-bottom: 12px;
+            padding: 10px;
+            border-left: 3px solid var(--vintage-gold);
             background: rgba(255,255,255,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .message-user {
+            border-left-color: var(--vintage-bronze);
+            background: rgba(168, 124, 79, 0.1);
         }
 
         #chatbot-input-area {
             display: flex;
             border-top: 1px solid var(--vintage-bronze);
+            background: var(--vintage-dark);
         }
 
         #chatbot-input {
             flex-grow: 1;
-            padding: 10px;
+            padding: 12px 15px;
             border: none;
             background: var(--vintage-dark);
             color: var(--vintage-beige);
+            font-family: 'Inter', sans-serif;
+        }
+
+        #chatbot-input::placeholder {
+            color: var(--vintage-bronze);
         }
 
         #chatbot-send {
-            padding: 10px 20px;
+            padding: 12px 20px;
             background: var(--vintage-bronze);
             border: none;
             cursor: pointer;
             color: var(--vintage-dark);
             font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        #chatbot-send:hover {
+            background: var(--vintage-gold);
+        }
+
+        #chatbot-close {
+            background: none;
+            border: none;
+            color: var(--vintage-beige);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            #chatbot-box {
+                width: 300px;
+                left: 10px;
+            }
+            
+            #chatbot-button {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -1009,11 +1111,23 @@
         </div>
     </section>
 
+    <!-- REGULAMIN -->
+    <section id="regulamin" style="background: rgba(248, 245, 240, 0.3);">
+        <div class="container">
+            <h2 class="section-title">REGULAMIN & RODO</h2>
+            <div class="regulamin-content vintage-border">
+                <h3>§1 Postanowienia ogólne</h3>
+                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nie
+</section>
     <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
             <p>📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
+            <div class="footer-links">
+                <a href="#regulamin">Regulamin & RODO</a>
+                <a href="#polityka-prywatnosci">Polityka Prywatności</a>
+            </div>
         </div>
     </footer>
 
@@ -1156,7 +1270,7 @@ OldSchool by WWWojtek
             });
         });
 
-        // CHATBOT SCRIPT
+        // CHATBOT SCRIPT - ULEPSZONY
         const botBox = document.getElementById("chatbot-box");
         const botBtn = document.getElementById("chatbot-button");
         const botClose = document.getElementById("chatbot-close");
@@ -1169,6 +1283,9 @@ OldSchool by WWWojtek
         function sendMessage(text, sender="bot") {
             const div = document.createElement("div");
             div.classList.add("message");
+            if (sender === "user") {
+                div.classList.add("message-user");
+            }
             div.innerHTML = `<b>${sender === "bot" ? "BOT" : "TY"}:</b> ${text}`;
             msgArea.appendChild(div);
             msgArea.scrollTop = msgArea.scrollHeight;
@@ -1177,31 +1294,54 @@ OldSchool by WWWojtek
         const botReplies = (msg) => {
             msg = msg.toLowerCase();
 
-            if (msg.includes("strona") || msg.includes("wizytówka"))
-                return "Strona wizytówka? Stary dobry klasyk. Cena 400–900 zł. Mogę Ci pokazać przykłady z portfolio. 🔧";
+            if (msg.includes("strona") || msg.includes("wizytówka")) {
+                return "🛠️ Strona wizytówka to klasyk! 1-3 podstrony, formularz kontaktowy, pełna responsywność. Cena 400-900 zł w zależności od złożoności. Idealna dla małych firm i freelancerów.";
+            }
 
-            if (msg.includes("sklep"))
-                return "Sklep internetowy? Robię je w klimacie retro – ceny 2000–4500 zł. Jak chcesz mogę Cię przeprowadzić po funkcjach.";
+            if (msg.includes("landing") || msg.includes("lądowanie")) {
+                return "🎯 Landing Page - strona konwersyjna skupiona na jednym celu. Integracja analytics, CTA, optymalizacja pod SEO. Cena 600-1200 zł. Perfect dla kampanii marketingowych!";
+            }
 
-            if (msg.includes("portfolio") || msg.includes("realizacje")) {
+            if (msg.includes("sklep") || msg.includes("e-commerce")) {
+                return "🛒 Sklep internetowy z pełną funkcjonalnością: system płatności, zarządzanie produktami, panel zamówień + szkolenie. Cena 2000-4500 zł. Gotowy do sprzedaży!";
+            }
+
+            if (msg.includes("portfolio") || msg.includes("realizacje") || msg.includes("projekty")) {
                 document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
-                return "Przewijam Ci do realizacji. Te projekty to crème de la crème mojego Old School stylu.";
+                return "📂 Przewijam do portfolio! Zobacz moje realizacje: Strona Klaudii, Rafała, Przewozy Maniek i sklep Adelbertus. Retro vibe w każdym pixelu!";
             }
 
-            if (msg.includes("cennik")) {
+            if (msg.includes("cennik") || msg.includes("cena") || msg.includes("ile kosztuje")) {
                 document.querySelector("#cennik").scrollIntoView({ behavior: "smooth" });
-                return "Już Ci otwieram cennik. Żadnych ukrytych kosztów – old school = uczciwie.";
+                return "💰 Otwieram cennik! Przejrzyste ceny bez ukrytych kosztów. Od prostych wizytówek po zaawansowane sklepy - wszystko w stylu old school!";
             }
 
-            if (msg.includes("kontakt")) {
+            if (msg.includes("kontakt") || msg.includes("wycena") || msg.includes("mail")) {
                 document.querySelector("#kontakt").scrollIntoView({ behavior: "smooth" });
-                return "Lecimy do kontaktu – jak chcesz, to zrobię Ci darmową wycenę.";
+                return "📞 Lecimy do kontaktu! Wyślij formularz wyceny lub maila na frekig52@gmail.com. Odpowiem w 24h z darmową wyceną!";
             }
 
-            if (msg.includes("poleć") || msg.includes("hit") || msg.includes("trend"))
-                return "Hit sezonu? Twoje PORTFOLIO – szczególnie projekt Klaudii. Ludzie kochają to połączenie minimalizmu i koloru. 💫";
+            if (msg.includes("blik") || msg.includes("płatność") || msg.includes("przelew")) {
+                return "💳 Płatność BLIK: 573 939 925\nW tytule: 'www' + nazwa projektu\nPrzykład: 'www strona firmowa'\nSzybko i bezpiecznie!";
+            }
 
-            return "Rozumiem vibe. Możesz mnie pytać o usługi, portfolio, cennik, realizacje i wycenę. Old School zawsze w gotowości.";
+            if (msg.includes("poleć") || msg.includes("hit") || msg.includes("trend") || msg.includes("modny")) {
+                return "🔥 Hit sezonu? Landing page w stylu retro! Minimalizm + vintage kolory. Polecam też portfolio Klaudii - ludzie kochają ten design! 💫";
+            }
+
+            if (msg.includes("retro") || msg.includes("vintage") || msg.includes("old school") || msg.includes("styl")) {
+                return "🎨 Retro vibe to moja specjalność! Ziarniste tekstury, vintage kolory, ręcznie kodowane animacje. Tworzę strony z duszą, nie z szablonów!";
+            }
+
+            if (msg.includes("czas") || msg.includes("realizacja") || msg.includes("termin")) {
+                return "⏰ Czas realizacji:\n• Wizytówka: 3-7 dni\n• Landing: 5-10 dni\n• Sklep: 2-4 tygodnie\nSzybko ale bez pośpiechu - quality first!";
+            }
+
+            if (msg.includes("cześć") || msg.includes("hej") || msg.includes("witaj") || msg.includes("hi") || msg.includes("hello")) {
+                return "👋 Cześć! Jestem Old School Bot. Mogę Ci pomóc z:\n• Informacjami o usługach\n• Portfolio i cenami\n• Płatnościami BLIK\n• Wyceną projektu\n• Retro trendami\nO co chcesz zapytać?";
+            }
+
+            return "🤔 Rozumiem vibe! Możesz mnie spytać o:\n• Rodzaje stron (wizytówka, landing, sklep)\n• Portfolio i cennik\n• Płatność BLIK\n• Czas realizacji\n• Retro design trendy\n• Darmową wycenę\nOld School zawsze w gotowości!";
         };
 
         document.getElementById("chatbot-send").onclick = () => {
@@ -1213,6 +1353,13 @@ OldSchool by WWWojtek
             setTimeout(() => sendMessage(response), 300);
             input.value = "";
         };
+
+        // Enter do wysyłania wiadomości
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById("chatbot-send").click();
+            }
+        });
     </script>
 </body>
 </html>
