@@ -539,6 +539,26 @@
             margin-bottom: 0;
             font-weight: 400;
         }
+
+        /* BLIK INFO */
+        .blik-info {
+            background: var(--vintage-cream);
+            padding: 25px;
+            border: 1px solid var(--vintage-bronze);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .blik-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--vintage-gold);
+            margin: 15px 0;
+            padding: 15px;
+            background: var(--vintage-paper);
+            border: 2px dashed var(--vintage-bronze);
+            font-family: 'Courier New', monospace;
+        }
         
         /* FOOTER */
         footer {
@@ -767,6 +787,17 @@
     <section id="kontakt">
         <div class="container">
             <h2 class="section-title">WYCENA PROJEKTU</h2>
+
+            <!-- DODANE: INFORMACJA O BLIK -->
+            <div class="blik-info vintage-border">
+                <h3 style="margin-bottom: 15px; color: var(--vintage-charcoal);">💳 Płatność BLIK</h3>
+                <div class="blik-number">573 939 925</div>
+                <p style="margin: 10px 0; color: var(--vintage-bronze);">
+                    <strong>W tytule przelewu wpisz: "www" + nazwę projektu</strong><br>
+                    <em>Przykład: "www strona firmowa"</em>
+                </p>
+            </div>
+
             <div class="contact-grid">
                 <div class="contact-info vintage-border">
                     <h3 class="font-serif" style="margin-bottom: 20px;">OldSchool by WWWojtek</h3>
@@ -866,12 +897,12 @@
     <footer>
         <div class="container">
             <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
-            <p>📧 frekig52@gmail.com | 📱 604 296 360</p>
+            <p>📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
         </div>
     </footer>
 
     <script>
-        // Formularz wyceny
+        // Formularz wyceny Z TABELKĄ W MAILU
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -888,9 +919,43 @@
             document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
                 services.push(checkbox.value);
             });
+
+            // PROSTA TABELKA W MAILU
+            const body = `
+🛠️ WYCENA PROJEKTU - OldSchool WWWojtek
+=========================================
+
+👤 DANE KLIENTA:
+----------------
+Imię: ${name}
+Email: ${email}
+Telefon: ${phone || 'Nie podano'}
+
+📋 WYBRANE USŁUGI:
+------------------
+${services.map(service => `• ${service}`).join('\\n')}
+
+⚙️ SZCZEGÓŁY PROJEKTU:
+----------------------
+Liczba podstron: ${pages}
+Planowany termin: ${deadline}
+Planowany budżet: ${budget}
+
+📝 OPIS PROJEKTU:
+-----------------
+${description || 'Brak opisu'}
+
+💳 INFORMACJE PŁATNOŚCI:
+-----------------------
+BLIK: 573 939 925
+W tytule: "www" + nazwa projektu
+
+---
+Wycena przygotowana automatycznie
+OldSchool by WWWojtek
+            `.trim();
             
             const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
-            const body = `DANE KLIENTA:%0D%0AImię: ${name}%0D%0AEmail: ${email}%0D%0ATelefon: ${phone}%0D%0A%0D%0AUSŁUGI:%0D%0A${services.join(', ')}%0D%0A%0D%0ASZCZEGÓŁY:%0D%0ALiczba podstron: ${pages}%0D%0ATermin: ${deadline}%0D%0ABudżet: ${budget}%0D%0A%0D%0AOPIS PROJEKTU:%0D%0A${description}%0D%0A%0D%0A---%0D%0AWycena przygotowana automatycznie`;
             
             window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
