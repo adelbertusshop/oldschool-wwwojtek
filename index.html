@@ -586,8 +586,8 @@
             font-family: 'Courier New', monospace;
         }
         
-        /* REGULAMIN */
-        .regulamin-content {
+        /* PARTNERZY */
+        .partnerzy-content {
             background: var(--vintage-cream);
             padding: 40px;
             margin-top: 40px;
@@ -595,28 +595,35 @@
             line-height: 1.8;
         }
         
-        .regulamin-content h3 {
-            color: var(--vintage-charcoal);
-            margin: 25px 0 15px 0;
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .partner-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--vintage-paper);
+            border: 1px solid var(--vintage-bronze);
+        }
+        
+        .partner-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--vintage-gold);
+        }
+        
+        .partner-item h4 {
             font-family: 'Playfair Display', serif;
-        }
-        
-        .regulamin-content h4 {
-            color: var(--vintage-bronze);
-            margin: 20px 0 10px 0;
-        }
-        
-        .regulamin-content p {
-            margin-bottom: 15px;
             color: var(--vintage-charcoal);
+            margin-bottom: 15px;
         }
         
-        .regulamin-content ul {
-            margin: 10px 0 20px 20px;
-        }
-        
-        .regulamin-content li {
-            margin-bottom: 8px;
+        .partner-item p {
+            color: var(--vintage-bronze);
+            font-size: 14px;
         }
         
         /* FOOTER */
@@ -676,6 +683,10 @@
             }
             
             .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partner-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1111,14 +1122,39 @@
         </div>
     </section>
 
-    <!-- REGULAMIN -->
-    <section id="regulamin" style="background: rgba(248, 245, 240, 0.3);">
+    <!-- PARTNERZY -->
+    <section id="partnerzy" style="background: rgba(248, 245, 240, 0.3);">
         <div class="container">
-            <h2 class="section-title">REGULAMIN & RODO</h2>
-            <div class="regulamin-content vintage-border">
-                <h3>§1 Postanowienia ogólne</h3>
-                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nie
-</section>
+            <h2 class="section-title">PARTNERZY & WSPÓŁPRACA</h2>
+            <div class="partnerzy-content vintage-border" style="text-align: center; padding: 40px;">
+                <h3 style="margin-bottom: 30px; color: var(--vintage-charcoal);">Dziękujemy naszym partnerom</h3>
+                
+                <div class="partner-grid">
+                    <div class="partner-item">
+                        <div class="partner-icon">🎨</div>
+                        <h4>Adelbertus Shop</h4>
+                        <p>Specjalne podziękowania za profesjonalne grafiki i projekt logo strony. Wasza kreatywność nadała niepowtarzalny charakter naszemu brandowi.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">⚡</div>
+                        <h4>Vercel</h4>
+                        <p>Za niezawodny hosting i błyskawiczne deploymenty. Nasze strony działają z prędkością światła dzięki waszej platformie.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">🔧</div>
+                        <h4>GitHub</h4>
+                        <p>Za doskonałe narzędzia do version control i współpracy nad kodem. Profesjonalne zarządzanie projektami na najwyższym poziomie.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">🎯</div>
+                        <h4>Zespół OLD SCHOOL</h4>
+                        <p>Dziękuję wszystkim klientom i współpracownikom za zaufanie i inspirację. Razem tworzymy wyjątkowe projekty w retro stylu!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -1246,7 +1282,7 @@ OldSchool by WWWojtek
 
         // Obserwuj wszystkie elementy do animacji
         document.addEventListener('DOMContentLoaded', function() {
-            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form');
+            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form, .partner-item');
             elementsToAnimate.forEach(el => {
                 el.classList.add('fade-in');
                 observer.observe(el);
