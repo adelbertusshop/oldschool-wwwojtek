@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLD SCHOOL by WWWojtek - Vintage Craft</title>
+    <meta name="description" content="Old School by WWWojtek - Ręcznie kodowane strony internetowe w vintage stylu. Strony wizytówki, landing pages, sklepy internetowe.">
+    <meta name="keywords" content="strony internetowe, vintage, old school, web development, WWWojtek">
+    <meta name="author" content="WWWojtek">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -52,6 +55,7 @@
             pointer-events: none;
             z-index: 50;
             animation: grain 8s steps(10) infinite;
+            transform: translateZ(0);
         }
         
         /* VINTAGE BORDER STYLES */
@@ -188,6 +192,11 @@
             color: var(--vintage-bronze);
         }
         
+        nav a:focus {
+            outline: 2px solid var(--vintage-gold);
+            outline-offset: 2px;
+        }
+        
         nav a::after {
             content: '';
             position: absolute;
@@ -239,7 +248,7 @@
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             max-width: 600px;
             margin: 0 auto 40px;
-            color: var(--vintage-bronze);
+            color: #8b6b4f;
             font-family: 'Inter', sans-serif;
             font-weight: 300;
         }
@@ -261,6 +270,21 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            will-change: transform;
+        }
+        
+        .btn:focus {
+            outline: 2px solid var(--vintage-gold);
+            outline-offset: 2px;
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
         
         .btn::before {
@@ -331,6 +355,7 @@
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
+            will-change: transform;
         }
         
         .service-item:hover {
@@ -386,6 +411,7 @@
             display: block;
             transition: all 0.3s ease;
             position: relative;
+            will-change: transform;
         }
         
         .portfolio-item:hover {
@@ -651,19 +677,24 @@
             </div>
         </div>
     </header>
-
     <!-- HERO -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="font-serif">OLD SCHOOL</h1>
-            <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
-            <div class="hero-buttons">
-                <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
-                <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
-            </div>
+<section class="hero">
+    <div class="container">
+        <h1 class="font-serif">OLD SCHOOL</h1>
+        
+        <div style="text-align: center; margin: 20px 0 30px 0;">
+            <img src="https://i.ibb.co/bjPCxYwm/file-00000000df30720ab17a4f529e847530.png" 
+                 alt="Old School Logo" 
+                 style="max-width: 200px; height: auto; opacity: 0.9;">
         </div>
-    </section>
-
+        
+        <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
+        <div class="hero-buttons">
+            <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
+            <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
+        </div>
+    </div>
+</section>
     <!-- USŁUGI -->
     <section id="uslugi">
         <div class="container">
@@ -902,9 +933,30 @@
     </footer>
 
     <script>
+        // Walidacja formularza
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const services = document.querySelectorAll('input[name="service"]:checked');
+            
+            if (!name || !email) {
+                alert('Proszę wypełnić wymagane pola: Imię i Email');
+                return false;
+            }
+            
+            if (services.length === 0) {
+                alert('Proszę wybrać przynajmniej jedną usługę');
+                return false;
+            }
+            
+            return true;
+        }
+
         // Formularz wyceny Z TABELKĄ W MAILU
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            if (!validateForm()) return;
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -933,7 +985,7 @@ Telefon: ${phone || 'Nie podano'}
 
 📋 WYBRANE USŁUGI:
 ------------------
-${services.map(service => `• ${service}`).join('\\n')}
+${services.map(service => `• ${service}`).join('\n')}
 
 ⚙️ SZCZEGÓŁY PROJEKTU:
 ----------------------
