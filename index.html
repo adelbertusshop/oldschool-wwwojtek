@@ -652,6 +652,89 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* CHATBOT */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 99999;
+        }
+
+        #chatbot-button {
+            width: 60px;
+            height: 60px;
+            background: var(--vintage-bronze);
+            border: 2px solid var(--vintage-dark);
+            color: var(--vintage-paper);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            cursor: pointer;
+            transition: transform .2s;
+        }
+        #chatbot-button:hover { transform: scale(1.1); }
+
+        #chatbot-box {
+            width: 320px;
+            height: 420px;
+            background: var(--vintage-charcoal);
+            border: 2px solid var(--vintage-bronze);
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            color: var(--vintage-beige);
+            font-family: 'Playfair Display', serif;
+        }
+
+        #chatbot-header {
+            padding: 10px;
+            border-bottom: 1px solid var(--vintage-bronze);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chatbot-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-left: 2px solid var(--vintage-gold);
+            background: rgba(255,255,255,0.05);
+        }
+
+        #chatbot-input-area {
+            display: flex;
+            border-top: 1px solid var(--vintage-bronze);
+        }
+
+        #chatbot-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            background: var(--vintage-dark);
+            color: var(--vintage-beige);
+        }
+
+        #chatbot-send {
+            padding: 10px 20px;
+            background: var(--vintage-bronze);
+            border: none;
+            cursor: pointer;
+            color: var(--vintage-dark);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -677,24 +760,26 @@
             </div>
         </div>
     </header>
+
     <!-- HERO -->
-<section class="hero">
-    <div class="container">
-        <h1 class="font-serif">OLD SCHOOL</h1>
-        
-        <div style="text-align: center; margin: 20px 0 30px 0;">
-            <img src="https://i.ibb.co/bjPCxYwm/file-00000000df30720ab17a4f529e847530.png" 
-                 alt="Old School Logo" 
-                 style="max-width: 200px; height: auto; opacity: 0.9;">
+    <section class="hero">
+        <div class="container">
+            <h1 class="font-serif">OLD SCHOOL</h1>
+            
+            <div style="text-align: center; margin: 20px 0 30px 0;">
+                <img src="https://i.ibb.co/bjPCxYwm/file-00000000df30720ab17a4f529e847530.png" 
+                     alt="Old School Logo" 
+                     style="max-width: 200px; height: auto; opacity: 0.9;">
+            </div>
+            
+            <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
+            <div class="hero-buttons">
+                <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
+                <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
+            </div>
         </div>
-        
-        <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
-        <div class="hero-buttons">
-            <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
-            <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
-        </div>
-    </div>
-</section>
+    </section>
+
     <!-- USŁUGI -->
     <section id="uslugi">
         <div class="container">
@@ -932,6 +1017,25 @@
         </div>
     </footer>
 
+    <!-- CHATBOT OLD SCHOOL -->
+    <div id="chatbot-container">
+        <div id="chatbot-button">💬</div>
+
+        <div id="chatbot-box">
+            <div id="chatbot-header">
+                <span>OLD SCHOOL BOT</span>
+                <button id="chatbot-close">✖</button>
+            </div>
+
+            <div id="chatbot-messages"></div>
+
+            <div id="chatbot-input-area">
+                <input id="chatbot-input" type="text" placeholder="Napisz wiadomość...">
+                <button id="chatbot-send">➤</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Walidacja formularza
         function validateForm() {
@@ -1051,6 +1155,64 @@ OldSchool by WWWojtek
                 }
             });
         });
+
+        // CHATBOT SCRIPT
+        const botBox = document.getElementById("chatbot-box");
+        const botBtn = document.getElementById("chatbot-button");
+        const botClose = document.getElementById("chatbot-close");
+        const msgArea = document.getElementById("chatbot-messages");
+        const input = document.getElementById("chatbot-input");
+
+        botBtn.onclick = () => botBox.style.display = "flex";
+        botClose.onclick = () => botBox.style.display = "none";
+
+        function sendMessage(text, sender="bot") {
+            const div = document.createElement("div");
+            div.classList.add("message");
+            div.innerHTML = `<b>${sender === "bot" ? "BOT" : "TY"}:</b> ${text}`;
+            msgArea.appendChild(div);
+            msgArea.scrollTop = msgArea.scrollHeight;
+        }
+
+        const botReplies = (msg) => {
+            msg = msg.toLowerCase();
+
+            if (msg.includes("strona") || msg.includes("wizytówka"))
+                return "Strona wizytówka? Stary dobry klasyk. Cena 400–900 zł. Mogę Ci pokazać przykłady z portfolio. 🔧";
+
+            if (msg.includes("sklep"))
+                return "Sklep internetowy? Robię je w klimacie retro – ceny 2000–4500 zł. Jak chcesz mogę Cię przeprowadzić po funkcjach.";
+
+            if (msg.includes("portfolio") || msg.includes("realizacje")) {
+                document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
+                return "Przewijam Ci do realizacji. Te projekty to crème de la crème mojego Old School stylu.";
+            }
+
+            if (msg.includes("cennik")) {
+                document.querySelector("#cennik").scrollIntoView({ behavior: "smooth" });
+                return "Już Ci otwieram cennik. Żadnych ukrytych kosztów – old school = uczciwie.";
+            }
+
+            if (msg.includes("kontakt")) {
+                document.querySelector("#kontakt").scrollIntoView({ behavior: "smooth" });
+                return "Lecimy do kontaktu – jak chcesz, to zrobię Ci darmową wycenę.";
+            }
+
+            if (msg.includes("poleć") || msg.includes("hit") || msg.includes("trend"))
+                return "Hit sezonu? Twoje PORTFOLIO – szczególnie projekt Klaudii. Ludzie kochają to połączenie minimalizmu i koloru. 💫";
+
+            return "Rozumiem vibe. Możesz mnie pytać o usługi, portfolio, cennik, realizacje i wycenę. Old School zawsze w gotowości.";
+        };
+
+        document.getElementById("chatbot-send").onclick = () => {
+            const text = input.value.trim();
+            if (!text) return;
+
+            sendMessage(text, "user");
+            const response = botReplies(text);
+            setTimeout(() => sendMessage(response), 300);
+            input.value = "";
+        };
     </script>
 </body>
 </html>
