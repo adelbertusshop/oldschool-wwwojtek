@@ -871,7 +871,7 @@
     </footer>
 
     <script>
-        // Formularz wyceny
+        // Formularz wyceny - GENERUJE ŁADNĄ TABELKĘ W MAILU
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -888,11 +888,79 @@
             document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
                 services.push(checkbox.value);
             });
-            
+
+            // TWORZENIE ŁADNEJ TABELKI W HTML DLA MAILA
+            const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .email-container { max-width: 600px; margin: 0 auto; }
+        .header { background: #2a2a2a; color: #c8a97e; padding: 20px; text-align: center; }
+        .content { padding: 20px; background: #f9f7f2; }
+        .table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .table th { background: #c8a97e; color: #2a2a2a; padding: 12px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e8e0d5; }
+        .section { margin: 20px 0; }
+        .section-title { color: #a87c4f; font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h2>🛠️ Wycena Projektu - OldSchool WWWojtek</h2>
+        </div>
+        <div class="content">
+            <div class="section">
+                <div class="section-title">👤 DANE KLIENTA</div>
+                <table class="table">
+                    <tr><td><strong>Imię i Nazwisko:</strong></td><td>${name}</td></tr>
+                    <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
+                    <tr><td><strong>Telefon:</strong></td><td>${phone || 'Nie podano'}</td></tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📋 WYBRANE USŁUGI</div>
+                <table class="table">
+                    ${services.map(service => `<tr><td>• ${service}</td></tr>`).join('')}
+                </table>
+            </div>
+
+            <div class="section">
+                <div class="section-title">⚙️ SZCZEGÓŁY PROJEKTU</div>
+                <table class="table">
+                    <tr><td><strong>Liczba podstron:</strong></td><td>${pages}</td></tr>
+                    <tr><td><strong>Planowany termin:</strong></td><td>${deadline}</td></tr>
+                    <tr><td><strong>Planowany budżet:</strong></td><td>${budget}</td></tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📝 OPIS PROJEKTU</div>
+                <p style="background: white; padding: 15px; border-left: 4px solid #c8a97e;">
+                    ${description || 'Brak opisu'}
+                </p>
+            </div>
+
+            <hr style="border: 1px solid #e8e0d5; margin: 30px 0;">
+            <p style="text-align: center; color: #666; font-size: 12px;">
+                Wiadomość wygenerowana automatycznie z formularza strony OldSchool by WWWojtek
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+            `;
+
             const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
-            const body = `DANE KLIENTA:%0D%0AImię: ${name}%0D%0AEmail: ${email}%0D%0ATelefon: ${phone}%0D%0A%0D%0AUSŁUGI:%0D%0A${services.join(', ')}%0D%0A%0D%0ASZCZEGÓŁY:%0D%0ALiczba podstron: ${pages}%0D%0ATermin: ${deadline}%0D%0ABudżet: ${budget}%0D%0A%0D%0AOPIS PROJEKTU:%0D%0A${description}%0D%0A%0D%0A---%0D%0AWycena przygotowana automatycznie`;
             
-            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // Kodowanie HTML dla URL
+            const encodedHtmlBody = encodeURIComponent(htmlBody);
+            
+            // Wysyłka maila z HTML
+            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodedHtmlBody}`;
         });
 
         // Animacje scroll
