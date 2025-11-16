@@ -540,6 +540,79 @@
             font-weight: 400;
         }
         
+        /* REGULAMIN */
+        .regulamin-content {
+            background: var(--vintage-cream);
+            padding: 40px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .regulamin-content h3 {
+            color: var(--vintage-charcoal);
+            margin: 20px 0 10px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .regulamin-content h3:first-child {
+            margin-top: 0;
+        }
+        
+        .regulamin-content p {
+            margin-bottom: 15px;
+            color: var(--vintage-bronze);
+        }
+        
+        .regulamin-content ul {
+            margin: 10px 0 15px 20px;
+            color: var(--vintage-bronze);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .checkbox-group input {
+            margin-top: 3px;
+        }
+        
+        .checkbox-group label {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        /* PŁATNOŚCI */
+        .payment-info {
+            background: var(--vintage-cream);
+            padding: 30px;
+            border: 1px solid var(--vintage-bronze);
+            margin: 20px 0;
+        }
+        
+        .payment-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--vintage-charcoal);
+            margin-bottom: 15px;
+        }
+        
+        .blik-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--vintage-gold);
+            text-align: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: var(--vintage-paper);
+            border: 2px dashed var(--vintage-bronze);
+        }
+        
         /* FOOTER */
         footer {
             background: var(--vintage-charcoal);
@@ -767,6 +840,19 @@
     <section id="kontakt">
         <div class="container">
             <h2 class="section-title">WYCENA PROJEKTU</h2>
+            
+            <!-- INFO O PŁATNOŚCIACH -->
+            <div class="payment-info vintage-border">
+                <h3>💳 Informacje o Płatnościach</h3>
+                <p><strong>Przedsiębiorczość nierejestrowana</strong></p>
+                <p>Wojciech Mielniczuk</p>
+                <div class="blik-number">
+                    BLIK: 573 939 925
+                </div>
+                <p><strong>W tytule przelewu wpisz: "www" + nazwę projektu</strong></p>
+                <p><em>Przykład: "www Strona Klaudii"</em></p>
+            </div>
+
             <div class="contact-grid">
                 <div class="contact-info vintage-border">
                     <h3 class="font-serif" style="margin-bottom: 20px;">OldSchool by WWWojtek</h3>
@@ -781,7 +867,7 @@
                         <em>Bezpłatna wycena każdego projektu</em>
                     </p>
                     
-                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek&body=Cześć Wojtek, chciałbym zapytać o wycenę strony:" class="btn btn-gold" style="display: inline-block;">
+                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek" class="btn btn-gold" style="display: inline-block;">
                         WYŚLIJ EMAIL
                     </a>
                 </div>
@@ -854,6 +940,49 @@
                             <label for="description">Opis projektu:</label>
                             <textarea id="description" name="description" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..."></textarea>
                         </div>
+
+                        <!-- REGULAMIN -->
+                        <div class="form-group">
+                            <label>Regulamin i Klauzule:</label>
+                            <div class="regulamin-content">
+                                <h3>§1 Postanowienia ogólne</h3>
+                                <p>1.1. Usługi świadczone są w ramach przedsiębiorczości nierejestrowanej.</p>
+                                <p>1.2. Wykonawca: Wojciech Mielniczuk, email: frekig52@gmail.com, tel: 604 296 360</p>
+                                
+                                <h3>§2 Realizacja zlecenia</h3>
+                                <p>2.1. Czas realizacji: zgodnie z ustaleniami w ofercie</p>
+                                <p>2.2. Płatność: 50% zaliczki przed rozpoczęciem prac, 50% po zakończeniu</p>
+                                <p>2.3. Sposób płatności: BLIK na numer 573 939 925</p>
+                                
+                                <h3>§3 Gwarancja i wsparcie</h3>
+                                <p>3.1. Gwarancja na kod: 30 dni od odbioru</p>
+                                <p>3.2. Bezpłatne poprawki: w ramach ustalonego scope</p>
+                                <p>3.3. Wsparcie techniczne: 7 dni po oddaniu projektu</p>
+                                
+                                <h3>§4 Ochrona danych osobowych (RODO)</h3>
+                                <p>4.1. Administratorem danych jest Wojciech Mielniczuk</p>
+                                <p>4.2. Dane przetwarzane są w celu realizacji usługi</p>
+                                <p>4.3. Masz prawo do dostępu, sprostowania i usunięcia danych</p>
+                                
+                                <h3>§5 Reklamacje</h3>
+                                <p>5.1. Reklamacje składane mailowo na frekig52@gmail.com</p>
+                                <p>5.2. Termin rozpatrzenia: 14 dni</p>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="regulamin" name="regulamin" required>
+                                <label for="regulamin">
+                                    <strong>Akceptuję regulamin świadczenia usług oraz klauzule RODO</strong>
+                                </label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="marketing" name="marketing">
+                                <label for="marketing">
+                                    Wyrażam zgodę na przetwarzanie danych w celach marketingowych
+                                </label>
+                            </div>
+                        </div>
                         
                         <button type="submit" class="btn btn-gold" style="width: 100%;">WYŚLIJ ZAPYTANIE O WYCENĘ</button>
                     </form>
@@ -866,14 +995,20 @@
     <footer>
         <div class="container">
             <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
-            <p>📧 frekig52@gmail.com | 📱 604 296 360</p>
+            <p>📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
+            <p>Przedsiębiorczość nierejestrowana - Wojciech Mielniczuk</p>
         </div>
     </footer>
 
     <script>
-        // Formularz wyceny - GENERUJE ŁADNĄ TABELKĘ W MAILU
+        // Formularz wyceny - PROFESJONALNA TABELKA W TEKŚCIE
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            if (!document.getElementById('regulamin').checked) {
+                alert('Proszę zaakceptować regulamin');
+                return;
+            }
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -889,78 +1024,55 @@
                 services.push(checkbox.value);
             });
 
-            // TWORZENIE ŁADNEJ TABELKI W HTML DLA MAILA
-            const htmlBody = `
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body { font-family: Arial, sans-serif; color: #333; }
-        .email-container { max-width: 600px; margin: 0 auto; }
-        .header { background: #2a2a2a; color: #c8a97e; padding: 20px; text-align: center; }
-        .content { padding: 20px; background: #f9f7f2; }
-        .table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        .table th { background: #c8a97e; color: #2a2a2a; padding: 12px; text-align: left; }
-        .table td { padding: 12px; border-bottom: 1px solid #e8e0d5; }
-        .section { margin: 20px 0; }
-        .section-title { color: #a87c4f; font-weight: bold; margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <div class="header">
-            <h2>🛠️ Wycena Projektu - OldSchool WWWojtek</h2>
-        </div>
-        <div class="content">
-            <div class="section">
-                <div class="section-title">👤 DANE KLIENTA</div>
-                <table class="table">
-                    <tr><td><strong>Imię i Nazwisko:</strong></td><td>${name}</td></tr>
-                    <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
-                    <tr><td><strong>Telefon:</strong></td><td>${phone || 'Nie podano'}</td></tr>
-                </table>
-            </div>
+            // PROFESJONALNA TABELKA W TEKŚCIE
+            const textBody = `
+🛠️ WYCENA PROJEKTU - OldSchool WWWojtek
+=========================================
 
-            <div class="section">
-                <div class="section-title">📋 WYBRANE USŁUGI</div>
-                <table class="table">
-                    ${services.map(service => `<tr><td>• ${service}</td></tr>`).join('')}
-                </table>
-            </div>
+👤 DANE KLIENTA
+---------------
+┌──────────────────────┬─────────────────────────────┐
+│ Imię i Nazwisko      │ ${name} │
+├──────────────────────┼─────────────────────────────┤
+│ Email                │ ${email} │
+├──────────────────────┼─────────────────────────────┤
+│ Telefon              │ ${phone || 'Nie podano'} │
+└──────────────────────┴─────────────────────────────┘
 
-            <div class="section">
-                <div class="section-title">⚙️ SZCZEGÓŁY PROJEKTU</div>
-                <table class="table">
-                    <tr><td><strong>Liczba podstron:</strong></td><td>${pages}</td></tr>
-                    <tr><td><strong>Planowany termin:</strong></td><td>${deadline}</td></tr>
-                    <tr><td><strong>Planowany budżet:</strong></td><td>${budget}</td></tr>
-                </table>
-            </div>
+📋 WYBRANE USŁUGI
+-----------------
+${services.map(service => `• ${service}`).join('\n')}
 
-            <div class="section">
-                <div class="section-title">📝 OPIS PROJEKTU</div>
-                <p style="background: white; padding: 15px; border-left: 4px solid #c8a97e;">
-                    ${description || 'Brak opisu'}
-                </p>
-            </div>
+⚙️ SZCZEGÓŁY PROJEKTU
+---------------------
+┌──────────────────────┬─────────────────────────────┐
+│ Liczba podstron      │ ${pages} │
+├──────────────────────┼─────────────────────────────┤
+│ Planowany termin     │ ${deadline} │
+├──────────────────────┼─────────────────────────────┤
+│ Planowany budżet     │ ${budget} │
+└──────────────────────┴─────────────────────────────┘
 
-            <hr style="border: 1px solid #e8e0d5; margin: 30px 0;">
-            <p style="text-align: center; color: #666; font-size: 12px;">
-                Wiadomość wygenerowana automatycznie z formularza strony OldSchool by WWWojtek
-            </p>
-        </div>
-    </div>
-</body>
-</html>
-            `;
+📝 OPIS PROJEKTU
+----------------
+${description || 'Brak opisu'}
+
+💳 INFORMACJE PŁATNOŚCI
+----------------------
+• BLIK: 573 939 925
+• Tytuł: "www" + nazwa projektu
+• Przedsiębiorczość nierejestrowana
+
+---
+Wiadomość wygenerowana automatycznie
+OldSchool by WWWojtek
+frekig52@gmail.com | 604 296 360
+            `.trim();
 
             const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
             
-            // Kodowanie HTML dla URL
-            const encodedHtmlBody = encodeURIComponent(htmlBody);
-            
-            // Wysyłka maila z HTML
-            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodedHtmlBody}`;
+            // Wysyłka maila z ładnym tekstem
+            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(textBody)}`;
         });
 
         // Animacje scroll
