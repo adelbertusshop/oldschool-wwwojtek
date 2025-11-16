@@ -626,6 +626,44 @@
             font-size: 14px;
         }
         
+        /* REGULAMIN */
+        .regulamin-content {
+            background: var(--vintage-cream);
+            padding: 40px;
+            margin-top: 40px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+        
+        .regulamin-content h3 {
+            color: var(--vintage-charcoal);
+            margin: 25px 0 15px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .regulamin-content h4 {
+            color: var(--vintage-bronze);
+            margin: 20px 0 10px 0;
+        }
+        
+        .regulamin-content p {
+            margin-bottom: 15px;
+            color: var(--vintage-charcoal);
+        }
+        
+        .regulamin-content ul {
+            margin: 10px 0 20px 20px;
+        }
+        
+        .regulamin-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* STATYSTYKI */
+        .stat-item {
+            padding: 20px;
+        }
+        
         /* FOOTER */
         footer {
             background: var(--vintage-charcoal);
@@ -1121,7 +1159,8 @@
             </div>
         </div>
     </section>
-        <!-- PREZENTACJA USŁUG -->
+
+    <!-- PREZENTACJA USŁUG -->
     <section id="prezentacja" style="background: rgba(248, 245, 240, 0.5);">
         <div class="container">
             <h2 class="section-title">ZOBACZ JAK TO DZIAŁA</h2>
@@ -1202,85 +1241,7 @@
         </div>
     </section>
 
-    <!-- MODAL DEMO -->
-    <div id="demoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
-        <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; position: relative;">
-            <button onclick="closeDemo()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--vintage-bronze);">✖</button>
-            <h3 id="demoTitle" style="color: var(--vintage-charcoal); margin-bottom: 20px; font-family: 'Playfair Display', serif;"></h3>
-            <div id="demoContent" style="color: var(--vintage-bronze); line-height: 1.6;"></div>
-            <div style="margin-top: 25px; text-align: center;">
-                <button onclick="closeDemo()" class="btn btn-gold" style="margin-right: 10px;">ZAMKNIJ</button>
-                <a href="#kontakt" onclick="closeDemo()" class="btn btn-vintage">ZAMÓW WYCENĘ</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function openDemo(type) {
-            const modal = document.getElementById('demoModal');
-            const title = document.getElementById('demoTitle');
-            const content = document.getElementById('demoContent');
-            
-            const demos = {
-                wizytowka: {
-                    title: '🎯 STRONA WIZYTÓWKA - DEMO',
-                    content: `<p><strong>Co zawiera:</strong></p>
-                             <ul style="margin: 15px 0; padding-left: 20px;">
-                                 <li>1-3 podstron (O nas, Usługi, Kontakt)</li>
-                                 <li>Formularz kontaktowy z walidacją</li>
-                                 <li>Pełna responsywność (telefon, tablet, desktop)</li>
-                                 <li>Optymalizacja SEO</li>
-                                 <li>Integracja z Google Analytics</li>
-                                 <li>Mapa dojazdu</li>
-                                 <li>Social media links</li>
-                             </ul>
-                             <p><strong>Czas realizacji:</strong> 3-7 dni</p>
-                             <p><strong>Idealna dla:</strong> małych firm, freelancerów, specjalistów</p>`
-                },
-                landing: {
-                    title: '🚀 LANDING PAGE - DEMO',
-                    content: `<p><strong>Co zawiera:</strong></p>
-                             <ul style="margin: 15px 0; padding-left: 20px;">
-                                 <li>Hero section z mocnym CTA</li>
-                                 <li>Sekcja korzyści i funkcjonalności</li>
-                                 <li>Formularz lead generation</li>
-                                 <li>Social proof i opinie klientów</li>
-                                 <li>Zaawansowana analityka</li>
-                                 <li>A/B testing ready</li>
-                                 <li>Integracja z CRM</li>
-                                 <li>Optymalizacja konwersji</li>
-                             </ul>
-                             <p><strong>Czas realizacji:</strong> 5-10 dni</p>
-                             <p><strong>Idealna dla:</strong> startupów, kampanii, produktów</p>`
-                },
-                sklep: {
-                    title: '🛒 SKLEP INTERNETOWY - DEMO',
-                    content: `<p><strong>Co zawiera:</strong></p>
-                             <ul style="margin: 15px 0; padding-left: 20px;">
-                                 <li>Katalog produktów z kategoriami</li>
-                                 <li>Koszyk i proces zamówienia</li>
-                                 <li>System płatności (BLIK, przelewy, karty)</li>
-                                 <li>Panel administracyjny</li>
-                                 <li>Zarządzanie zamówieniami</li>
-                                 <li>System promocji i kodów rabatowych</li>
-                                 <li>Integracja z kurierami</li>
-                                 <li>Szkolenie z obsługi</li>
-                             </ul>
-                             <p><strong>Czas realizacji:</strong> 2-4 tygodnie</p>
-                             <p><strong>Idealny dla:</strong> sprzedawców, producentów, handlu</p>`
-                }
-            };
-            
-            title.textContent = demos[type].title;
-            content.innerHTML = demos[type].content;
-            modal.style.display = 'flex';
-        }
-        
-        function closeDemo() {
-            document.getElementById('demoModal').style.display = 'none';
-        }
-    </script>
-        <!-- STATYSTYKI I ZAUFANIE -->
+    <!-- STATYSTYKI I ZAUFANIE -->
     <section style="background: var(--vintage-charcoal); color: var(--vintage-beige); padding: 80px 0;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;">
@@ -1417,35 +1378,42 @@
             </div>
         </div>
     </section>
+
     <!-- REGULAMIN & POLITYKA PRYWATNOŚCI -->
-<section id="regulamin" style="background: rgba(248, 245, 240, 0.3);">
-    <div class="container">
-        <h2 class="section-title">REGULAMIN & POLITYKA PRYWATNOŚCI</h2>
-        <div class="regulamin-content vintage-border">
-            <h3>§1 Postanowienia ogólne</h3>
-            <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nierejestrowana pod nazwą OLD SCHOOL by WWWojtek.</p>
-            
-            <h3>§2 Świadczenie usług</h3>
-            <p>2.1. Usługi obejmują projektowanie i tworzenie stron internetowych, sklepów internetowych oraz landing pages.</p>
-            <p>2.2. Czas realizacji zlecenia uzależniony jest od jego złożoności i jest podany w cenniku.</p>
-            <p>2.3. Płatności realizowane są z góry w formie przelewu bankowego lub BLIK na numer: 573 939 925.</p>
-            
-            <h3>§3 Polityka prywatności RODO</h3>
-            <p>3.1. Administratorem danych jest OLD SCHOOL by WWWojtek.</p>
-            <p>3.2. Dane osobowe przetwarzane są wyłącznie w celu realizacji zleconych usług.</p>
-            <p>3.3. Dane przechowywane są przez okres niezbędny do realizacji usługi i rozliczeń podatkowych.</p>
-            <p>3.4. Klient ma prawo dostępu do swoich danych, ich poprawiania oraz żądania usunięcia.</p>
-            
-            <h3>§4 Prawa autorskie</h3>
-            <p>4.1. Wszystkie prawa autorskie do stworzonych stron internetowych przechodzą na klienta po dokonaniu pełnej zapłaty.</p>
-            <p>4.2. OLD SCHOOL by WWWojtek zastrzega sobie prawo do prezentacji wykonanych projektów w portfolio.</p>
-            
-            <h3>§5 Postanowienia końcowe</h3>
-            <p>5.1. Wszelkie spory rozstrzygane będą polubownie, a w razie konieczności przez właściwy sąd.</p>
-            <p>5.2. Regulamin wchodzi w życie z dniem 01.01.2024 roku.</p>
+    <section id="regulamin" style="background: rgba(248, 245, 240, 0.3);">
+        <div class="container">
+            <h2 class="section-title">REGULAMIN & POLITYKA PRYWATNOŚCI</h2>
+            <div class="regulamin-content vintage-border">
+                <h3>§1 Postanowienia ogólne</h3>
+                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nierejestrowana pod nazwą OLD SCHOOL by WWWojtek.</p>
+                
+                <h3>§2 Świadczenie usług</h3>
+                <p>2.1. Usługi obejmują projektowanie i tworzenie stron internetowych, sklepów internetowych oraz landing pages.</p>
+                <p>2.2. Czas realizacji zlecenia uzależniony jest od jego złożoności i jest podany w cenniku.</p>
+                <p>2.3. Płatności realizowane są z góry w formie przelewu bankowego lub BLIK na numer: 573 939 925.</p>
+                
+                <h3>§3 Polityka prywatności RODO</h3>
+                <p>3.1. Administratorem danych jest OLD SCHOOL by WWWojtek.</p>
+                <p>3.2. Dane osobowe przetwarzane są wyłącznie w celu realizacji zleconych usług.</p>
+                <p>3.3. Dane przechowywane są przez okres niezbędny do realizacji usługi i rozliczeń podatkowych.</p>
+                <p>3.4. Klient ma prawo dostępu do swoich danych, ich poprawiania oraz żądania usunięcia.</p>
+                
+                <h3>§4 Prawa autorskie</h3>
+                <p>4.1. Wszystkie prawa autorskie do stworzonych stron internetowych przechodzą na klienta po dokonaniu pełnej zapłaty.</p>
+                <p>4.2. OLD SCHOOL by WWWojtek zastrzega sobie prawo do prezentacji wykonanych projektów w portfolio.</p>
+                
+                <h3>§5 Postanowienia końcowe</h3>
+                <p>5.1. Wszelkie spory rozstrzygane będą polubownie, a w razie konieczności przez właściwy sąd.</p>
+                <p>5.2. Regulamin wchodzi w życie z dniem 01.01.2024 roku.</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <img src="https://i.ibb.co/9V0Z4ZN/retro-pixel.png" style="width:40px;height:40px;border-radius:6px;">
+                    <p style="margin-top: 10px; color: var(--vintage-bronze); font-style: italic;">OLD SCHOOL by WWWojtek - Ręcznie kodowane strony z duszą</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -1463,18 +1431,32 @@
         <div id="chatbot-button">💬</div>
 
         <div id="chatbot-box">
-           <div id="chatbot-header">
-    <span style="display: flex; align-items: center; gap: 8px;">
-        <img src="https://i.ibb.co/cWkfhWg/Screenshot-2025-11-16-15-26-54.png" alt="OLD SCHOOL BOT" style="width:24px;height:24px;border-radius:4px;">
-        OLD SCHOOL BOT
-    </span>
-    <button id="chatbot-close">✖</button>
-</div>
+            <div id="chatbot-header">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                    <img src="https://i.ibb.co/cWkfhWg/Screenshot-2025-11-16-15-26-54.png" alt="OLD SCHOOL BOT" style="width:24px;height:24px;border-radius:4px;">
+                    OLD SCHOOL BOT
+                </span>
+                <button id="chatbot-close">✖</button>
+            </div>
+
             <div id="chatbot-messages"></div>
 
             <div id="chatbot-input-area">
                 <input id="chatbot-input" type="text" placeholder="Napisz wiadomość...">
                 <button id="chatbot-send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DEMO -->
+    <div id="demoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; position: relative;">
+            <button onclick="closeDemo()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--vintage-bronze);">✖</button>
+            <h3 id="demoTitle" style="color: var(--vintage-charcoal); margin-bottom: 20px; font-family: 'Playfair Display', serif;"></h3>
+            <div id="demoContent" style="color: var(--vintage-bronze); line-height: 1.6;"></div>
+            <div style="margin-top: 25px; text-align: center;">
+                <button onclick="closeDemo()" class="btn btn-gold" style="margin-right: 10px;">ZAMKNIJ</button>
+                <a href="#kontakt" onclick="closeDemo()" class="btn btn-vintage">ZAMÓW WYCENĘ</a>
             </div>
         </div>
     </div>
@@ -1575,7 +1557,7 @@ OldSchool by WWWojtek
 
         // Obserwuj wszystkie elementy do animacji
         document.addEventListener('DOMContentLoaded', function() {
-            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form, .partner-item');
+            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form, .partner-item, .prezentacja-item');
             elementsToAnimate.forEach(el => {
                 el.classList.add('fade-in');
                 observer.observe(el);
@@ -1599,7 +1581,72 @@ OldSchool by WWWojtek
             });
         });
 
-        // CHATBOT SCRIPT - ULEPSZONY
+        // Demo modal functions
+        function openDemo(type) {
+            const modal = document.getElementById('demoModal');
+            const title = document.getElementById('demoTitle');
+            const content = document.getElementById('demoContent');
+            
+            const demos = {
+                wizytowka: {
+                    title: '🎯 STRONA WIZYTÓWKA - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul style="margin: 15px 0; padding-left: 20px;">
+                                 <li>1-3 podstron (O nas, Usługi, Kontakt)</li>
+                                 <li>Formularz kontaktowy z walidacją</li>
+                                 <li>Pełna responsywność (telefon, tablet, desktop)</li>
+                                 <li>Optymalizacja SEO</li>
+                                 <li>Integracja z Google Analytics</li>
+                                 <li>Mapa dojazdu</li>
+                                 <li>Social media links</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 3-7 dni</p>
+                             <p><strong>Idealna dla:</strong> małych firm, freelancerów, specjalistów</p>`
+                },
+                landing: {
+                    title: '🚀 LANDING PAGE - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul style="margin: 15px 0; padding-left: 20px;">
+                                 <li>Hero section z mocnym CTA</li>
+                                 <li>Sekcja korzyści i funkcjonalności</li>
+                                 <li>Formularz lead generation</li>
+                                 <li>Social proof i opinie klientów</li>
+                                 <li>Zaawansowana analityka</li>
+                                 <li>A/B testing ready</li>
+                                 <li>Integracja z CRM</li>
+                                 <li>Optymalizacja konwersji</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 5-10 dni</p>
+                             <p><strong>Idealna dla:</strong> startupów, kampanii, produktów</p>`
+                },
+                sklep: {
+                    title: '🛒 SKLEP INTERNETOWY - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul style="margin: 15px 0; padding-left: 20px;">
+                                 <li>Katalog produktów z kategoriami</li>
+                                 <li>Koszyk i proces zamówienia</li>
+                                 <li>System płatności (BLIK, przelewy, karty)</li>
+                                 <li>Panel administracyjny</li>
+                                 <li>Zarządzanie zamówieniami</li>
+                                 <li>System promocji i kodów rabatowych</li>
+                                 <li>Integracja z kurierami</li>
+                                 <li>Szkolenie z obsługi</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 2-4 tygodnie</p>
+                             <p><strong>Idealny dla:</strong> sprzedawców, producentów, handlu</p>`
+                }
+            };
+            
+            title.textContent = demos[type].title;
+            content.innerHTML = demos[type].content;
+            modal.style.display = 'flex';
+        }
+        
+        function closeDemo() {
+            document.getElementById('demoModal').style.display = 'none';
+        }
+
+        // CHATBOT SCRIPT - ROZSZERZONA WIEDZA
         const botBox = document.getElementById("chatbot-box");
         const botBtn = document.getElementById("chatbot-button");
         const botClose = document.getElementById("chatbot-close");
@@ -1623,6 +1670,68 @@ OldSchool by WWWojtek
         const botReplies = (msg) => {
             msg = msg.toLowerCase();
 
+            // NOWE: TECHNOLOGIE I NOWOCZESNE ROZWIĄZANIA
+            if (msg.includes("technologie") || msg.includes("tech") || msg.includes("nowoczesn")) {
+                return "🛠️ Używam najnowszych technologii:\n• HTML5, CSS3, JavaScript ES6+\n• React/Vue dla interaktywności\n• Node.js dla backendu\n• MongoDB/PostgreSQL bazy danych\n• WebGL dla animacji 3D\n• PWA - Progressive Web Apps\n• Headless CMS do łatwej edycji treści";
+            }
+
+            if (msg.includes("seo") || msg.includes("google") || msg.includes("pozycjonowanie")) {
+                return "🔍 SEO w standardzie:\n• Core Web Vitals 90+ punktów\n• Structured Data (JSON-LD)\n• Meta tagi, Open Graph\n• Sitemap XML, robots.txt\n• SSL, HTTPS, HTTP/2\n• Mobile-first indexing\n• Local SEO dla firm";
+            }
+
+            if (msg.includes("animacje") || msg.includes("efekty") || msg.includes("3d")) {
+                return "🎬 Zaawansowane animacje:\n• CSS Transitions/Animations\n• GSAP dla płynnych efektów\n• Three.js dla grafiki 3D\n• Lottie dla animowanych ikon\n• Scroll-triggered animations\n• Micro-interactions\n• Parallax scrolling";
+            }
+
+            if (msg.includes("e-commerce") || msg.includes("sklep") || msg.includes("płatności")) {
+                return "🛒 E-commerce solutions:\n• WooCommerce / Shopify\n• Stripe, PayPal, Przelewy24\n• BLIK, Apple Pay, Google Pay\n• System inventory management\n• Abandoned cart recovery\n• Multi-currency, multi-language\n• Integration with ERP systems";
+            }
+
+            if (msg.includes("cms") || msg.includes("panel") || msg.includes("zarządzanie")) {
+                return "📝 Systemy CMS:\n• WordPress (headless)\n• Strapi - self-hosted\n• Sanity.io\n• Contentful\n• Custom admin panels\n• Role-based access\n• Version control for content";
+            }
+
+            // NOWE: BEZPIECZEŃSTWO I OPTYMALIZACJA
+            if (msg.includes("bezpieczeństwo") || msg.includes("security") || msg.includes("hack")) {
+                return "🛡️ Security first:\n• OWASP security standards\n• SQL injection protection\n• XSS prevention\n• CSRF tokens\n• Rate limiting\n• Regular security audits\n• DDoS protection\n• Data encryption";
+            }
+
+            if (msg.includes("szybkość") || msg.includes("performance") || msg.includes("ładowanie")) {
+                return "⚡ Performance optimization:\n• Lighthouse score 90+\n• Image optimization (WebP, AVIF)\n• Lazy loading\n• Code splitting\n• CDN implementation\n• Caching strategies\n• Critical CSS inlining\n• Bundle optimization";
+            }
+
+            if (msg.includes("mobile") || msg.includes("aplikacja") || msg.includes("pwa")) {
+                return "📱 Mobile & PWA:\n• Responsive design\n• Touch-friendly interfaces\n• PWA installation\n• Offline functionality\n• Push notifications\n• App-like experience\n• Cross-platform compatibility";
+            }
+
+            // NOWE: TRENDY 2024
+            if (msg.includes("trend") || msg.includes("nowości") || msg.includes("2024")) {
+                return "🌟 Trendy 2024:\n• AI-powered features\n• Voice search optimization\n• Dark mode designs\n• Neumorphism/Glass morphism\n• Micro-interactions\n• 3D elements and animations\n• Sustainable web design\n• Augmented Reality integration";
+            }
+
+            if (msg.includes("ai") || msg.includes("sztuczna") || msg.includes("chatgpt")) {
+                return "🤖 AI Integration:\n• AI-powered chatbots\n• Content generation assistants\n• Image recognition\n• Predictive analytics\n• Personalization engines\n• Voice interfaces\n• Machine learning features";
+            }
+
+            // NOWE: INTEGRACJE
+            if (msg.includes("integracja") || msg.includes("api") || msg.includes("system")) {
+                return "🔗 Integrations:\n• CRM systems (HubSpot, Salesforce)\n• Email marketing (Mailchimp)\n• Social media APIs\n• Payment gateways\n• Shipping carriers\n• Analytics tools\n• Calendar systems\n• Third-party services";
+            }
+
+            if (msg.includes("analytics") || msg.includes("dane") || msg.includes("statystyki")) {
+                return "📊 Analytics & Data:\n• Google Analytics 4\n• Hotjar for user behavior\n• A/B testing setup\n• Conversion tracking\n• Custom event tracking\n• Data visualization\n• Real-time dashboards\n• Privacy-compliant tracking";
+            }
+
+            // NOWE: DODATKOWE USŁUGI
+            if (msg.includes("opieka") || msg.includes("support") || msg.includes("utrzymanie")) {
+                return "🔧 Maintenance & Support:\n• Monthly maintenance plans\n• Security updates\n• Performance monitoring\n• Backup solutions\n• Content updates\n• Technical support\n• Hosting management\n• Regular health checks";
+            }
+
+            if (msg.includes("hosting") || msg.includes("serwer") || msg.includes("domena")) {
+                return "🌐 Hosting & Domains:\n• VPS/Cloud hosting setup\n• Domain registration\n• SSL certificates\n• Email configuration\n• CDN setup\n• Server optimization\n• Security hardening\n• Migration services";
+            }
+
+            // PODSTAWOWE FUNKCJE
             if (msg.includes("strona") || msg.includes("wizytówka")) {
                 return "🛠️ Strona wizytówka to klasyk! 1-3 podstrony, formularz kontaktowy, pełna responsywność. Cena 400-900 zł w zależności od złożoności. Idealna dla małych firm i freelancerów.";
             }
@@ -1667,10 +1776,15 @@ OldSchool by WWWojtek
             }
 
             if (msg.includes("cześć") || msg.includes("hej") || msg.includes("witaj") || msg.includes("hi") || msg.includes("hello")) {
-                return "👋 Cześć! Jestem Old School Bot. Mogę Ci pomóc z:\n• Informacjami o usługach\n• Portfolio i cenami\n• Płatnościami BLIK\n• Wyceną projektu\n• Retro trendami\nO co chcesz zapytać?";
+                return "👋 Cześć! Jestem Old School Bot - ekspert od stron internetowych. Mogę Ci pomóc z:\n• Technologiami webowymi\n• SEO i optymalizacją\n• E-commerce rozwiązaniami\n• Bezpieczeństwem i performance\n• Nowoczesnymi trendami\n• Integracjami i API\nO co chcesz zapytać?";
             }
 
-            return "🤔 Rozumiem vibe! Możesz mnie spytać o:\n• Rodzaje stron (wizytówka, landing, sklep)\n• Portfolio i cennik\n• Płatność BLIK\n• Czas realizacji\n• Retro design trendy\n• Darmową wycenę\nOld School zawsze w gotowości!";
+            // NOWE: POMOC I WSPARCIE
+            if (msg.includes("pomoc") || msg.includes("help") || msg.includes("co umiesz")) {
+                return "🤖 Mogę Ci pomóc z:\n• Informacjami o usługach\n• Nowoczesnymi technologiami\n• SEO i optymalizacją\n• Bezpieczeństwem stron\n• Trendami 2024\n• Integracjami systemów\n• Performance optimization\n• E-commerce solutions\n• AI features\n• PWA i mobile apps\nCo Cię interesuje?";
+            }
+
+            return "🤔 Rozumiem pytanie! Mogę Ci pomóc z:\n• Technologiami web developmentu\n• SEO i optymalizacją wydajności\n• E-commerce i systemami płatności\n• Bezpieczeństwem i hostingiem\n• Nowoczesnymi trendami 2024\n• AI i machine learning\n• Integracjami z zewnętrznymi systemami\n• Mobile apps i PWA\nO co dokładnie chcesz zapytać?";
         };
 
         document.getElementById("chatbot-send").onclick = () => {
