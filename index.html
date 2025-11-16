@@ -3,34 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLD SCHOOL by WWWojtek</title>
+    <title>OLD SCHOOL by WWWojtek - Vintage Craft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* RESET */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* RESET I PODSTAWY */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         
-        /* STYL RETRO */
+        /* VARIABLES - VINTAGE COLORS */
+        :root {
+            --vintage-dark: #1a1a1a;
+            --vintage-charcoal: #2a2a2a;
+            --vintage-beige: #e8e0d5;
+            --vintage-cream: #f5f1e8;
+            --vintage-paper: #f9f7f2;
+            --vintage-gold: #c8a97e;
+            --vintage-bronze: #a87c4f;
+            --vintage-metallic: #d4af37;
+        }
+        
+        /* GRAIN TEXTURE BACKGROUND */
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+        
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wMyIvPjwvc3ZnPg==');
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 50;
+            animation: grain 8s steps(10) infinite;
+        }
+        
+        /* VINTAGE BORDER STYLES */
+        .vintage-border {
+            border: 1px solid var(--vintage-bronze);
+            position: relative;
+        }
+        
+        .vintage-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid rgba(200, 169, 126, 0.3);
+            pointer-events: none;
+        }
+        
+        .film-frame {
+            border: 2px solid var(--vintage-dark);
+            background: var(--vintage-dark);
+            padding: 8px;
+            position: relative;
+        }
+        
+        .film-frame::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid #333;
+            pointer-events: none;
+        }
+        
+        /* BASE STYLES */
         body {
-            background-color: #f6ecd9;
-            color: #3b2b20;
-            font-family: 'Courier New', monospace;
-            line-height: 1.6;
-            padding: 0;
-            margin: 0;
+            background-color: var(--vintage-paper);
+            color: var(--vintage-charcoal);
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        
+        .font-sans {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
         
         /* KONTAINER */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* HEADER */
+        /* HEADER - VINTAGE STYLE */
         header {
-            background: rgba(255,255,255,0.9);
-            border-bottom: 3px solid #3b2b20;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(248, 245, 240, 0.95);
+            border-bottom: 1px solid var(--vintage-bronze);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
         
         .header-content {
@@ -46,119 +139,253 @@
         }
         
         .logo-img {
-            width: 60px;
-            height: 60px;
-            background: #3b2b20;
-            color: white;
+            width: 70px;
+            height: 70px;
+            background: var(--vintage-charcoal);
+            color: var(--vintage-gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Courier New', monospace;
+            font-family: 'Playfair Display', serif;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 28px;
+            border: 2px solid var(--vintage-bronze);
+            border-radius: 50%;
         }
         
         .logo-text h1 {
-            font-family: 'Courier New', monospace;
-            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
             font-weight: bold;
+            color: var(--vintage-charcoal);
         }
         
         .logo-text p {
-            font-size: 12px;
-            color: #666;
+            font-size: 13px;
+            color: var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
         }
         
         /* NAVIGACJA */
         nav {
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
         
         nav a {
             text-decoration: none;
-            color: #3b2b20;
-            font-weight: bold;
-            padding: 5px 10px;
-            border: 2px solid transparent;
+            color: var(--vintage-charcoal);
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         nav a:hover {
-            border: 2px solid #3b2b20;
+            border: 1px solid var(--vintage-bronze);
+            color: var(--vintage-bronze);
         }
         
-        /* HERO SECTION */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--vintage-gold);
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* HERO SECTION - VINTAGE */
         .hero {
-            padding: 80px 0;
+            padding: 180px 0 100px;
             text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--vintage-beige) 0%, transparent 50%, var(--vintage-bronze) 100%);
+            opacity: 0.1;
+            pointer-events: none;
         }
         
         .hero h1 {
-            font-family: 'Courier New', monospace;
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin-bottom: 30px;
+            color: var(--vintage-charcoal);
+            font-weight: 700;
+            line-height: 1.1;
         }
         
         .hero p {
-            font-size: 20px;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
             max-width: 600px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
+            color: var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
         }
         
-        /* PRZYCISKI */
+        /* PRZYCISKI - VINTAGE */
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            margin: 0 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            margin: 0 8px;
             text-decoration: none;
-            font-weight: bold;
-            border: 3px solid #3b2b20;
-            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            border: 1px solid;
+            font-family: 'Inter', sans-serif;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn-dark {
-            background: #3b2b20;
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-gold {
+            background: var(--vintage-gold);
+            color: var(--vintage-dark);
+            border-color: var(--vintage-gold);
+        }
+        
+        .btn-gold:hover {
+            background: var(--vintage-bronze);
+            border-color: var(--vintage-bronze);
+            transform: translateY(-2px);
+        }
+        
+        .btn-vintage {
+            background: transparent;
+            color: var(--vintage-charcoal);
+            border-color: var(--vintage-bronze);
+        }
+        
+        .btn-vintage:hover {
+            background: var(--vintage-bronze);
             color: white;
-        }
-        
-        .btn-green {
-            background: #4ef08a;
-            color: #3b2b20;
-            border-color: #4ef08a;
+            transform: translateY(-2px);
         }
         
         /* SEKCJE */
         section {
-            padding: 60px 0;
+            padding: 100px 0;
+            position: relative;
         }
         
         .section-title {
-            font-family: 'Courier New', monospace;
-            font-size: 36px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             text-align: center;
-            margin-bottom: 40px;
-            text-transform: uppercase;
+            margin-bottom: 60px;
+            color: var(--vintage-charcoal);
+            font-weight: 700;
+        }
+        
+        /* USŁUGI/PRODUKTY */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .service-item {
+            background: var(--vintage-cream);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(168, 124, 79, 0.1);
+        }
+        
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid var(--vintage-bronze);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .service-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--vintage-charcoal);
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--vintage-gold);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .service-item p {
+            color: var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
         }
         
         /* PORTFOLIO */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
         .portfolio-item {
             background: white;
-            border: 3px solid #3b2b20;
-            padding: 20px;
-            box-shadow: 8px 8px 0 #3b2b20;
             text-decoration: none;
             color: inherit;
             display: block;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .portfolio-item:hover {
@@ -166,38 +393,83 @@
         }
         
         .portfolio-image {
-            height: 200px;
-            background: #ddd;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 0;
             font-weight: bold;
             background-size: cover;
             background-position: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* CENNIK */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 26, 26, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        .pricing-item {
+        .portfolio-item:hover .portfolio-image::before {
+            opacity: 1;
+        }
+        
+        .portfolio-content {
+            padding: 25px;
+            border: 1px solid var(--vintage-bronze);
+            border-top: none;
+        }
+        
+        .portfolio-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--vintage-charcoal);
+        }
+        
+        .portfolio-content p {
+            color: var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        /* CENNIK - VINTAGE TABLE */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
             background: white;
-            border: 3px solid #3b2b20;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 6px 6px 0 #3b2b20;
+            border: 1px solid var(--vintage-bronze);
+            font-family: 'Inter', sans-serif;
         }
         
-        .price {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 15px 0;
-            color: #3b2b20;
+        .pricing-table th,
+        .pricing-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--vintage-beige);
+        }
+        
+        .pricing-table th {
+            background: var(--vintage-charcoal);
+            color: var(--vintage-gold);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricing-table tr:hover {
+            background: var(--vintage-cream);
         }
         
         /* KONTAKT */
@@ -209,80 +481,78 @@
         }
         
         .contact-info {
-            background: white;
-            padding: 30px;
-            border: 3px solid #3b2b20;
+            background: var(--vintage-cream);
+            padding: 40px;
+            position: relative;
         }
         
         .contact-form {
-            background: white;
-            padding: 30px;
-            border: 3px solid #3b2b20;
+            background: var(--vintage-cream);
+            padding: 40px;
+            position: relative;
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--vintage-charcoal);
+            font-family: 'Inter', sans-serif;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #3b2b20;
-            font-family: 'Courier New', monospace;
-        }
-        
-        /* TABELKA WYCENY */
-        .quote-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+            padding: 12px 15px;
+            border: 1px solid var(--vintage-bronze);
             background: white;
-            border: 3px solid #3b2b20;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
         }
         
-        .quote-table th,
-        .quote-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 2px solid #3b2b20;
-        }
-        
-        .quote-table th {
-            background: #3b2b20;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .quote-table tr:last-child td {
-            border-bottom: none;
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--vintage-gold);
+            box-shadow: 0 0 0 2px rgba(200, 169, 126, 0.1);
         }
         
         .service-option {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin: 10px 0;
+            gap: 12px;
+            margin: 8px 0;
         }
         
         .service-option input {
             width: auto;
         }
         
+        .service-option label {
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+        
         /* FOOTER */
         footer {
-            background: #3b2b20;
-            color: white;
-            padding: 40px 0;
+            background: var(--vintage-charcoal);
+            color: var(--vintage-beige);
+            padding: 60px 0 30px;
             margin-top: 60px;
             text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        footer p {
+            margin: 10px 0;
+            opacity: 0.8;
         }
         
         /* RESPONSYWNOŚĆ */
@@ -292,26 +562,55 @@
                 gap: 20px;
             }
             
-            .hero h1 {
-                font-size: 36px;
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
             }
             
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
             
-            .quote-table {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-table {
                 font-size: 14px;
             }
+            
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px 8px;
+            }
+        }
+        
+        /* ANIMACJE SCROLL */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
+    <div class="grain-overlay"></div>
+    
     <!-- HEADER -->
     <header>
         <div class="container">
@@ -336,11 +635,11 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <h1>OLD SCHOOL</h1>
+            <h1 class="font-serif">OLD SCHOOL</h1>
             <p>Ręcznie kodowane strony internetowe w 8-bitowym klimacie. Prostota. Pixele. Dusza.</p>
             <div class="hero-buttons">
-                <a href="#cennik" class="btn btn-dark">ZOBACZ CENNIK</a>
-                <a href="#kontakt" class="btn btn-green">WYCENA PROJEKTU</a>
+                <a href="#cennik" class="btn btn-gold">ZOBACZ CENNIK</a>
+                <a href="#kontakt" class="btn btn-vintage">WYCENA PROJEKTU</a>
             </div>
         </div>
     </section>
@@ -349,18 +648,18 @@
     <section id="uslugi">
         <div class="container">
             <h2 class="section-title">USŁUGI</h2>
-            <div class="pricing-grid">
-                <div class="pricing-item">
+            <div class="services-grid">
+                <div class="service-item vintage-border">
                     <h3>Strona Wizytówka</h3>
                     <div class="price">400-900 zł</div>
                     <p>1-3 podstrony, formularz kontaktowy, responsywny design</p>
                 </div>
-                <div class="pricing-item">
+                <div class="service-item vintage-border">
                     <h3>Landing Page</h3>
                     <div class="price">600-1200 zł</div>
                     <p>Konwersyjny layout, CTA, integracja analytics</p>
                 </div>
-                <div class="pricing-item">
+                <div class="service-item vintage-border">
                     <h3>Sklep Internetowy</h3>
                     <div class="price">2000-4500 zł</div>
                     <p>Płatności, produkty, panel zamówień, szkolenie</p>
@@ -370,37 +669,45 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="portfolio" style="background: rgba(255,255,255,0.5);">
+    <section id="portfolio" style="background: rgba(248, 245, 240, 0.5);">
         <div class="container">
             <h2 class="section-title">REALIZACJE</h2>
             <div class="portfolio-grid">
                 <a href="https://klaudia-3hjx.vercel.app" target="_blank" class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; font-size: 18px;">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; font-size: 18px; font-family: 'Playfair Display', serif;">
                         STRONA KLAUDII
                     </div>
-                    <h3>Strona Klaudii</h3>
-                    <p>Personalna strona wizytówkowa</p>
+                    <div class="portfolio-content">
+                        <h3>Strona Klaudii</h3>
+                        <p>Personalna strona wizytówkowa</p>
+                    </div>
                 </a>
                 <a href="https://rafa-five-phi.vercel.app" target="_blank" class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(45deg, #4ecdc4, #556270); color: white; font-size: 18px;">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #4ecdc4, #556270); color: white; font-size: 18px; font-family: 'Playfair Display', serif;">
                         STRONA RAFAŁA
                     </div>
-                    <h3>Strona Rafała</h3>
-                    <p>Landing page dla freelancera</p>
+                    <div class="portfolio-content">
+                        <h3>Strona Rafała</h3>
+                        <p>Landing page dla freelancera</p>
+                    </div>
                 </a>
                 <a href="https://maniek-przewozy-przew-z.vercel.app" target="_blank" class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; font-size: 18px;">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; font-size: 18px; font-family: 'Playfair Display', serif;">
                         PRZEWOZY MANIEK
                     </div>
-                    <h3>Przewozy Maniek</h3>
-                    <p>Strona firmowa transportu</p>
+                    <div class="portfolio-content">
+                        <h3>Przewozy Maniek</h3>
+                        <p>Strona firmowa transportu</p>
+                    </div>
                 </a>
                 <a href="https://www.adelbertusshop.com" target="_blank" class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(45deg, #11998e, #38ef7d); color: white; font-size: 18px;">
+                    <div class="portfolio-image" style="background: linear-gradient(45deg, #11998e, #38ef7d); color: white; font-size: 18px; font-family: 'Playfair Display', serif;">
                         ADELBERTUS SHOP
                     </div>
-                    <h3>Adelbertus Shop</h3>
-                    <p>Sklep internetowy e-commerce</p>
+                    <div class="portfolio-content">
+                        <h3>Adelbertus Shop</h3>
+                        <p>Sklep internetowy e-commerce</p>
+                    </div>
                 </a>
             </div>
         </div>
@@ -411,7 +718,7 @@
         <div class="container">
             <h2 class="section-title">CENNIK</h2>
             
-            <table class="quote-table">
+            <table class="pricing-table">
                 <thead>
                     <tr>
                         <th>Usługa</th>
@@ -461,22 +768,26 @@
         <div class="container">
             <h2 class="section-title">WYCENA PROJEKTU</h2>
             <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>OldSchool by WWWojtek</h3>
-                    <p>Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
-                    <br>
-                    <p>📧 <strong>frekig52@gmail.com</strong></p>
-                    <p>📱 <strong>604 296 360</strong></p>
-                    <br>
-                    <p><em>Bezpłatna wycena każdego projektu</em></p>
-                    <br>
-                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek&body=Cześć Wojtek, chciałbym zapytać o wycenę strony:" class="btn btn-dark" style="margin-top: 15px;">
+                <div class="contact-info vintage-border">
+                    <h3 class="font-serif" style="margin-bottom: 20px;">OldSchool by WWWojtek</h3>
+                    <p style="margin-bottom: 25px; color: var(--vintage-bronze);">Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <p style="margin: 10px 0;">📧 <strong>frekig52@gmail.com</strong></p>
+                        <p style="margin: 10px 0;">📱 <strong>604 296 360</strong></p>
+                    </div>
+                    
+                    <p style="font-style: italic; color: var(--vintage-bronze); margin-bottom: 25px;">
+                        <em>Bezpłatna wycena każdego projektu</em>
+                    </p>
+                    
+                    <a href="mailto:frekig52@gmail.com?subject=Wycena projektu - OldSchool WWWojtek&body=Cześć Wojtek, chciałbym zapytać o wycenę strony:" class="btn btn-gold" style="display: inline-block;">
                         WYŚLIJ EMAIL
                     </a>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>Formularz Wyceny</h3>
+                <div class="contact-form vintage-border">
+                    <h3 class="font-serif" style="margin-bottom: 25px;">Formularz Wyceny</h3>
                     <form id="quoteForm">
                         <div class="form-group">
                             <label for="name">Imię i Nazwisko:</label>
@@ -544,7 +855,7 @@
                             <textarea id="description" name="description" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-dark" style="width: 100%;">WYŚLIJ ZAPYTANIE O WYCENĘ</button>
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">WYŚLIJ ZAPYTANIE O WYCENĘ</button>
                     </form>
                 </div>
             </div>
@@ -582,6 +893,46 @@
             const body = `DANE KLIENTA:%0D%0AImię: ${name}%0D%0AEmail: ${email}%0D%0ATelefon: ${phone}%0D%0A%0D%0AUSŁUGI:%0D%0A${services.join(', ')}%0D%0A%0D%0ASZCZEGÓŁY:%0D%0ALiczba podstron: ${pages}%0D%0ATermin: ${deadline}%0D%0ABudżet: ${budget}%0D%0A%0D%0AOPIS PROJEKTU:%0D%0A${description}%0D%0A%0D%0A---%0D%0AWycena przygotowana automatycznie`;
             
             window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+
+        // Animacje scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Obserwuj wszystkie elementy do animacji
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form');
+            elementsToAnimate.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+        });
+
+        // Płynne scrollowanie do sekcji
+        document.querySelectorAll('nav a, .hero-buttons a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
         });
     </script>
 </body>
