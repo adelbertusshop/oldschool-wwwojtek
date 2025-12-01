@@ -1481,7 +1481,7 @@
             return true;
         }
 
-        // Formularz wyceny Z TABELKĄ W MAILU
+        // Formularz wyceny - POPRAWIONA WERSJA
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1501,7 +1501,7 @@
                 services.push(checkbox.value);
             });
 
-            // PROSTA TABELKA W MAILU
+            // PROSTA TABELKA W MAILU - POPRAWIONA FORMATKA
             const body = `
 🛠️ WYCENA PROJEKTU - OldSchool WWWojtek
 =========================================
@@ -1538,7 +1538,62 @@ OldSchool by WWWojtek
             
             const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
             
-            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // BEZPOŚREDNIE OTWARCIE MAILA Z WYPEŁNIONYMI DANYMI
+            const mailtoLink = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Informacja dla użytkownika
+            alert('Otwieram Twój klient poczty...\n\nDane zostaną wypełnione automatycznie.\nKliknij WYŚLIJ w swoim programie pocztowym.');
+            
+            // Otwarcie maila
+            window.location.href = mailtoLink;
+            
+            // Reset formularza po 2 sekundach
+            setTimeout(() => {
+                document.getElementById('quoteForm').reset();
+            }, 2000);
+        });
+
+        // Funkcja dla przycisku "Bezpłatna wycena" w sekcji kontaktu - DODANA FUNKCJONALNOŚĆ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Znajdź przycisk "WYŚLIJ EMAIL" w sekcji kontakt i dodaj mu funkcjonalność
+            const contactEmailBtn = document.querySelector('.contact-info a.btn-gold');
+            if (contactEmailBtn) {
+                contactEmailBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const name = prompt('Podaj swoje imię:');
+                    if (!name) return;
+                    
+                    const email = prompt('Podaj swój email:');
+                    if (!email) return;
+                    
+                    const projectType = prompt('Jaki projekt Cię interesuje?\n(strona wizytówka, landing page, sklep, poprawki, inne)');
+                    
+                    const subject = `Zapytanie o wycenę od ${name} - OldSchool WWWojtek`;
+                    const body = `
+Witaj Wojtek,
+
+Chciałbym/chciałabym zapytać o wycenę projektu:
+
+👤 Moje dane:
+Imię: ${name}
+Email: ${email}
+
+📋 Typ projektu:
+${projectType || 'Nie podano'}
+
+💬 Dodatkowe informacje:
+[Proszę opisać tutaj swój projekt]
+
+---
+Wysłano ze strony: OldSchool by WWWojtek
+                    `.trim();
+                    
+                    window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    alert('Otwieram Twoją skrzynkę mailową...\nDane są już wypełnione!\nKliknij WYŚLIJ w swoim programie pocztowym.');
+                });
+            }
         });
 
         // Animacje scroll
@@ -1756,7 +1811,7 @@ OldSchool by WWWojtek
 
             if (msg.includes("kontakt") || msg.includes("wycena") || msg.includes("mail")) {
                 document.querySelector("#kontakt").scrollIntoView({ behavior: "smooth" });
-                return "📞 Lecimy do kontaktu! Wyślij formularz wyceny lub maila na frekig52@gmail.com. Odpowiem w 24h z darmową wyceną!";
+                return "📞 Lecimy do kontaktu! Wyślij formularz wyceny lub użyj przycisku 'WYŚLIJ EMAIL' - otworzy się Twój program pocztowy z wypełnionymi danymi!";
             }
 
             if (msg.includes("blik") || msg.includes("płatność") || msg.includes("przelew")) {
