@@ -1462,6 +1462,7 @@
     </div>
 
     <script>
+   <script>
         // Walidacja formularza
         function validateForm() {
             const name = document.getElementById('name').value;
@@ -1501,33 +1502,27 @@
                 services.push(checkbox.value);
             });
 
-            // PROSTA TABELKA W MAILU - POPRAWIONA FORMATKA
+            // PROSTA TABELKA W MAILU
             const body = `
-🛠️ WYCENA PROJEKTU - OldSchool WWWojtek
-=========================================
+WYCENA PROJEKTU - OldSchool WWWojtek
 
-👤 DANE KLIENTA:
-----------------
+DANE KLIENTA:
 Imię: ${name}
 Email: ${email}
 Telefon: ${phone || 'Nie podano'}
 
-📋 WYBRANE USŁUGI:
-------------------
+WYBRANE USŁUGI:
 ${services.map(service => `• ${service}`).join('\n')}
 
-⚙️ SZCZEGÓŁY PROJEKTU:
-----------------------
+SZCZEGÓŁY PROJEKTU:
 Liczba podstron: ${pages}
 Planowany termin: ${deadline}
 Planowany budżet: ${budget}
 
-📝 OPIS PROJEKTU:
------------------
+OPIS PROJEKTU:
 ${description || 'Brak opisu'}
 
-💳 INFORMACJE PŁATNOŚCI:
------------------------
+INFORMACJE PŁATNOŚCI:
 BLIK: 573 939 925
 W tytule: "www" + nazwa projektu
 
@@ -1538,24 +1533,15 @@ OldSchool by WWWojtek
             
             const subject = `Wycena projektu od ${name} - OldSchool WWWojtek`;
             
-            // BEZPOŚREDNIE OTWARCIE MAILA Z WYPEŁNIONYMI DANYMI
-            const mailtoLink = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // PROSTE OTWARCIE MAILA
+            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
-            // Informacja dla użytkownika
-            alert('Otwieram Twój klient poczty...\n\nDane zostaną wypełnione automatycznie.\nKliknij WYŚLIJ w swoim programie pocztowym.');
-            
-            // Otwarcie maila
-            window.location.href = mailtoLink;
-            
-            // Reset formularza po 2 sekundach
-            setTimeout(() => {
-                document.getElementById('quoteForm').reset();
-            }, 2000);
+            // Reset formularza
+            document.getElementById('quoteForm').reset();
         });
 
-        // Funkcja dla przycisku "Bezpłatna wycena" w sekcji kontaktu - DODANA FUNKCJONALNOŚĆ
+        // Przycisk "WYŚLIJ EMAIL" w sekcji kontakt
         document.addEventListener('DOMContentLoaded', function() {
-            // Znajdź przycisk "WYŚLIJ EMAIL" w sekcji kontakt i dodaj mu funkcjonalność
             const contactEmailBtn = document.querySelector('.contact-info a.btn-gold');
             if (contactEmailBtn) {
                 contactEmailBtn.addEventListener('click', function(e) {
@@ -1567,31 +1553,21 @@ OldSchool by WWWojtek
                     const email = prompt('Podaj swój email:');
                     if (!email) return;
                     
-                    const projectType = prompt('Jaki projekt Cię interesuje?\n(strona wizytówka, landing page, sklep, poprawki, inne)');
-                    
                     const subject = `Zapytanie o wycenę od ${name} - OldSchool WWWojtek`;
                     const body = `
 Witaj Wojtek,
 
-Chciałbym/chciałabym zapytać o wycenę projektu:
+Chciałbym/chciałabym zapytać o wycenę projektu.
 
-👤 Moje dane:
+Moje dane:
 Imię: ${name}
 Email: ${email}
-
-📋 Typ projektu:
-${projectType || 'Nie podano'}
-
-💬 Dodatkowe informacje:
-[Proszę opisać tutaj swój projekt]
 
 ---
 Wysłano ze strony: OldSchool by WWWojtek
                     `.trim();
                     
                     window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    
-                    alert('Otwieram Twoją skrzynkę mailową...\nDane są już wypełnione!\nKliknij WYŚLIJ w swoim programie pocztowym.');
                 });
             }
         });
