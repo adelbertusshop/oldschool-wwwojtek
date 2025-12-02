@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="OldSchool by WWWojtek - Ręcznie kodowane strony internetowe w stylu retro. Strony wizytówki, landing pages, sklepy internetowe z unikalnym designem lat 80-90.">
-    <meta name="keywords" content="strony internetowe, retro design, oldschool, vintage, ręczne kodowanie, HTML, CSS, JavaScript, portfolio, Adelbertus Shop, Klaudia, Rafał, Przewozy Maniek">
+    <meta name="description" content="OldSchool by WWWojtek - Ręcznie kodowane strony internetowe w stylu retro lat 80-90. Strony wizytówki, landing pages, sklepy internetowe z unikalnym designem vintage.">
+    <meta name="keywords" content="strony internetowe, retro design, oldschool, vintage, ręczne kodowanie, HTML, CSS, JavaScript, portfolio, web development, strony WWW, sklepy internetowe">
     <meta name="author" content="OldSchool by WWWojtek">
-    <title>OldSchool by WWWojtek - Ręcznie kodowane strony w stylu retro</title>
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="OldSchool by WWWojtek - Ręcznie kodowane strony w stylu retro">
+    <meta property="og:description" content="Tworzę unikalne, ręcznie kodowane strony internetowe w stylu lat 80-90. Zero szablonów, tylko custom code z duszą.">
+    <meta property="og:type" content="website">
+    
+    <title>OldSchool by WWWojtek - Ręcznie kodowane strony w stylu retro lat 80-90</title>
     
     <!-- Retro Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💾</text></svg>">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com;">
+
     <style>
+        /* ============================================
+           OLDSCHOOL.CSS - KOMPLETNY STYL RETRO
+           Wersja: 1.0 | Data: 2024
+           Autor: OldSchool by WWWojtek
+        ============================================ */
+
         /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
@@ -23,24 +40,43 @@
         }
 
         :root {
+            /* Retro Color Palette */
             --retro-black: #0a0a0a;
+            --retro-black-light: #1a1a1a;
             --retro-green: #00ff41;
             --retro-green-dark: #00cc33;
+            --retro-green-light: #33ff6b;
             --retro-amber: #ff9900;
             --retro-amber-dark: #cc7a00;
+            --retro-amber-light: #ffb733;
             --retro-blue: #0066ff;
             --retro-blue-dark: #0052cc;
+            --retro-blue-light: #3385ff;
             --retro-gray: #333333;
             --retro-gray-light: #666666;
+            --retro-gray-dark: #222222;
             --retro-beige: #f5f5dc;
             --retro-beige-dark: #e6e6c9;
             --retro-red: #ff3333;
             --retro-red-dark: #cc0000;
+            --retro-red-light: #ff6666;
             --retro-purple: #9933ff;
+            --retro-purple-dark: #7a29cc;
             --retro-teal: #00cccc;
+            --retro-teal-dark: #00a3a3;
+            --retro-yellow: #ffff00;
+            --retro-yellow-dark: #cccc00;
+            
+            /* CRT Effects */
             --crt-brightness: 1.1;
             --crt-contrast: 1.2;
             --scanline-opacity: 0.03;
+            --glitch-intensity: 0.8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -51,37 +87,75 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
+            font-size: 16px;
         }
 
-        /* ===== CRT EFFECTS ===== */
-        .crt::before {
-            content: " ";
-            display: block;
+        /* ===== CRT & RETRO EFFECTS ===== */
+        .crt-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 6px 100%;
             pointer-events: none;
             z-index: 9999;
+            opacity: 0.15;
             animation: flicker 0.15s infinite;
+            mix-blend-mode: overlay;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 0, 0, 0.5) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.1;
         }
 
         @keyframes flicker {
             0% { opacity: 0.97; }
-            50% { opacity: 1; }
-            100% { opacity: 0.99; }
+            5% { opacity: 0.9; }
+            10% { opacity: 0.95; }
+            15% { opacity: 0.85; }
+            20% { opacity: 0.95; }
+            25% { opacity: 0.9; }
+            30% { opacity: 1; }
+            35% { opacity: 0.85; }
+            40% { opacity: 0.95; }
+            45% { opacity: 0.9; }
+            50% { opacity: 0.98; }
+            55% { opacity: 0.85; }
+            60% { opacity: 0.95; }
+            65% { opacity: 0.9; }
+            70% { opacity: 1; }
+            75% { opacity: 0.85; }
+            80% { opacity: 0.95; }
+            85% { opacity: 0.9; }
+            90% { opacity: 0.98; }
+            95% { opacity: 0.85; }
+            100% { opacity: 0.95; }
         }
 
-        .glitch {
+        .glitch-text {
             position: relative;
+            display: inline-block;
         }
 
-        .glitch::before,
-        .glitch::after {
+        .glitch-text::before,
+        .glitch-text::after {
             content: attr(data-text);
             position: absolute;
             top: 0;
@@ -91,169 +165,217 @@
             opacity: 0.8;
         }
 
-        .glitch::before {
-            animation: glitch-anim 5s infinite linear alternate-reverse;
+        .glitch-text::before {
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
             color: var(--retro-red);
             z-index: -1;
+            clip-path: inset(47% 0 30% 0);
         }
 
-        .glitch::after {
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
+        .glitch-text::after {
+            animation: glitch-anim-2 1.5s infinite linear alternate-reverse;
             color: var(--retro-blue);
             z-index: -2;
+            clip-path: inset(25% 0 55% 0);
         }
 
-        @keyframes glitch-anim {
-            0% { clip: rect(42px, 9999px, 44px, 0); }
-            5% { clip: rect(12px, 9999px, 59px, 0); }
-            10% { clip: rect(48px, 9999px, 29px, 0); }
-            15% { clip: rect(42px, 9999px, 73px, 0); }
-            20% { clip: rect(63px, 9999px, 27px, 0); }
-            25% { clip: rect(34px, 9999px, 55px, 0); }
-            30% { clip: rect(86px, 9999px, 73px, 0); }
-            35% { clip: rect(20px, 9999px, 20px, 0); }
-            40% { clip: rect(26px, 9999px, 60px, 0); }
-            45% { clip: rect(25px, 9999px, 66px, 0); }
-            50% { clip: rect(57px, 9999px, 98px, 0); }
-            55% { clip: rect(5px, 9999px, 46px, 0); }
-            60% { clip: rect(82px, 9999px, 31px, 0); }
-            65% { clip: rect(54px, 9999px, 27px, 0); }
-            70% { clip: rect(28px, 9999px, 99px, 0); }
-            75% { clip: rect(45px, 9999px, 69px, 0); }
-            80% { clip: rect(23px, 9999px, 85px, 0); }
-            85% { clip: rect(54px, 9999px, 84px, 0); }
-            90% { clip: rect(45px, 9999px, 47px, 0); }
-            95% { clip: rect(37px, 9999px, 20px, 0); }
-            100% { clip: rect(4px, 9999px, 91px, 0); }
+        @keyframes glitch-anim-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 1px); }
+            40% { transform: translate(-1px, -1px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(1px, -2px); }
+            100% { transform: translate(0); }
         }
 
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(40px, 9999px, 86px, 0); }
-            95% { clip: rect(45px, 9999px, 72px, 0); }
-            100% { clip: rect(23px, 9999px, 49px, 0); }
+        @keyframes glitch-anim-2 {
+            0% { transform: translate(0); }
+            10% { transform: translate(2px, -1px); }
+            30% { transform: translate(-1px, 2px); }
+            50% { transform: translate(-2px, -2px); }
+            70% { transform: translate(1px, 1px); }
+            90% { transform: translate(-1px, -1px); }
+            100% { transform: translate(0); }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 40%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+            pointer-events: none;
+            z-index: 9997;
         }
 
         /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Press Start 2P', cursive;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.3;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: var(--retro-amber);
-            text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--retro-green);
-            border-bottom: 2px solid var(--retro-green);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--retro-green);
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--retro-amber);
         }
 
         h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: var(--retro-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        h4 {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--retro-purple);
+            margin-bottom: 1rem;
         }
 
         p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.7;
         }
 
         a {
             color: var(--retro-green);
             text-decoration: none;
             transition: all 0.3s ease;
+            position: relative;
             border-bottom: 1px dotted var(--retro-green);
         }
 
         a:hover {
             color: var(--retro-amber);
             border-bottom: 1px solid var(--retro-amber);
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
+        }
+
+        .font-retro {
+            font-family: 'VT323', monospace;
+            letter-spacing: 1px;
+        }
+
+        .font-mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .font-pixel {
+            font-family: 'Press Start 2P', cursive;
         }
 
         /* ===== LAYOUT & CONTAINERS ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         section {
-            padding: 80px 0;
+            padding: 6rem 0;
             position: relative;
+            overflow: hidden;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 4rem;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--retro-green);
-            margin: 20px auto;
-            animation: pulse 2s infinite;
+        .section-title .glitch-text {
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .section-subtitle {
+            font-family: 'VT323', monospace;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--retro-amber);
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
         }
 
         /* ===== RETRO BORDERS & BOXES ===== */
         .retro-border {
-            border: 2px solid var(--retro-green);
-            background: rgba(0, 255, 65, 0.05);
+            border: 3px solid var(--retro-green);
+            background: linear-gradient(135deg, 
+                rgba(0, 255, 65, 0.05) 0%, 
+                rgba(10, 10, 10, 0.9) 100%);
             position: relative;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 65, 0.1),
+                inset 0 0 20px rgba(0, 255, 65, 0.05);
         }
 
         .retro-border::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 1px solid var(--retro-amber);
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 2px solid var(--retro-amber);
             z-index: -1;
+            opacity: 0.7;
+        }
+
+        .retro-border::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--retro-blue);
+            z-index: -2;
+            opacity: 0.3;
         }
 
         .retro-box {
-            background: rgba(10, 10, 10, 0.9);
+            background: linear-gradient(145deg, 
+                rgba(10, 10, 10, 0.95) 0%, 
+                rgba(30, 30, 30, 0.9) 100%);
             border: 2px solid var(--retro-gray-light);
-            padding: 30px;
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .retro-box::before {
@@ -266,45 +388,143 @@
             background: linear-gradient(90deg, 
                 var(--retro-green), 
                 var(--retro-blue), 
-                var(--retro-amber));
+                var(--retro-amber),
+                var(--retro-purple));
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .retro-card {
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid var(--retro-gray-light);
+            border-radius: 0;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .retro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 65, 0.1),
+                transparent
+            );
+            transition: left 0.6s;
+        }
+
+        .retro-card:hover {
+            border-color: var(--retro-green);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 15px 35px rgba(0, 255, 65, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .retro-card:hover::before {
+            left: 100%;
         }
 
         /* ===== BUTTONS ===== */
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 1rem);
             text-transform: uppercase;
-            border: 2px solid;
+            border: 3px solid;
             background: transparent;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             text-align: center;
+            letter-spacing: 1px;
+            text-decoration: none;
+            min-height: 50px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-retro {
             color: var(--retro-green);
             border-color: var(--retro-green);
+            background: rgba(0, 255, 65, 0.1);
         }
 
         .btn-retro:hover {
             color: var(--retro-black);
             background: var(--retro-green);
-            box-shadow: 0 0 20px var(--retro-green);
+            box-shadow: 
+                0 0 25px var(--retro-green),
+                0 0 50px rgba(0, 255, 65, 0.3);
+            transform: translateY(-3px);
         }
 
         .btn-amber {
             color: var(--retro-amber);
             border-color: var(--retro-amber);
+            background: rgba(255, 153, 0, 0.1);
         }
 
         .btn-amber:hover {
             color: var(--retro-black);
             background: var(--retro-amber);
-            box-shadow: 0 0 20px var(--retro-amber);
+            box-shadow: 
+                0 0 25px var(--retro-amber),
+                0 0 50px rgba(255, 153, 0, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-blue {
+            color: var(--retro-blue);
+            border-color: var(--retro-blue);
+            background: rgba(0, 102, 255, 0.1);
+        }
+
+        .btn-blue:hover {
+            color: var(--retro-black);
+            background: var(--retro-blue);
+            box-shadow: 
+                0 0 25px var(--retro-blue),
+                0 0 50px rgba(0, 102, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-full {
+            width: 100%;
         }
 
         /* ===== NAVIGATION ===== */
@@ -313,11 +533,14 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 2px solid var(--retro-green);
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom: 3px solid var(--retro-green);
             z-index: 1000;
-            padding: 15px 0;
-            backdrop-filter: blur(5px);
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -326,202 +549,294 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         .logo {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 3vw, 1.5rem);
             color: var(--retro-green);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--retro-amber);
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
         }
 
         .logo-icon {
             font-size: 2rem;
-            animation: blink 1s infinite;
+            animation: blink 1.5s infinite;
+            filter: drop-shadow(0 0 5px var(--retro-green));
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.1);
+            }
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 1rem;
-            padding: 5px 10px;
-            border: 1px solid transparent;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .nav-links a:hover {
-            border: 1px solid var(--retro-green);
+        .nav-links a:hover,
+        .nav-links a.active {
+            border: 2px solid var(--retro-green);
             background: rgba(0, 255, 65, 0.1);
+            color: var(--retro-amber);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: none;
+            border: 2px solid var(--retro-green);
             color: var(--retro-green);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--retro-amber);
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            padding: 8rem 0 4rem;
             overflow: hidden;
-            padding-top: 80px;
         }
 
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 153, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 102, 255, 0.15) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(10, 10, 10, 0.9) 0%, transparent 100%);
             z-index: -1;
+            animation: bg-pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes bg-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 40px;
-            background: rgba(10, 10, 10, 0.8);
-            border: 3px solid var(--retro-green);
+            max-width: 900px;
+            padding: 3rem;
             position: relative;
+            z-index: 2;
         }
 
         .hero-content::before {
             content: '>>> ';
             position: absolute;
-            top: -20px;
-            left: 20px;
+            top: -2rem;
+            left: 2rem;
             color: var(--retro-green);
             font-family: 'VT323', monospace;
-            font-size: 1.5rem;
+            font-size: 2rem;
             animation: typing 3s steps(40) infinite;
-        }
-
-        @keyframes typing {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        .hero h1 {
-            margin-bottom: 20px;
-            font-size: 3rem;
+            text-shadow: 0 0 10px var(--retro-green);
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--retro-amber);
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
             font-family: 'VT323', monospace;
+            text-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
+            animation: subtitle-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes subtitle-glow {
+            0%, 100% { text-shadow: 0 0 15px rgba(255, 153, 0, 0.3); }
+            50% { text-shadow: 0 0 25px rgba(255, 153, 0, 0.5); }
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--retro-beige);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            opacity: 0.9;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 40px;
+            margin-top: 3rem;
         }
 
         /* ===== SERVICES SECTION ===== */
+        .services {
+            background: linear-gradient(180deg, 
+                var(--retro-black) 0%, 
+                rgba(20, 20, 20, 0.9) 100%);
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .service-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            padding: 30px;
-            transition: all 0.3s ease;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-gray);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .service-card:hover {
             border-color: var(--retro-green);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
-        }
-
-        .service-card::before {
-            content: '💾';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            opacity: 0.2;
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 65, 0.15),
+                inset 0 0 30px rgba(0, 255, 65, 0.05);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 2rem;
             display: block;
+            text-align: center;
+            filter: drop-shadow(0 0 10px currentColor);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            color: var(--retro-blue);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-description {
+            color: var(--retro-beige);
+            margin-bottom: 2rem;
+            text-align: center;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            color: var(--retro-green);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--retro-amber);
+            font-size: 0.8rem;
         }
 
         .service-price {
             color: var(--retro-amber);
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--retro-gray-light);
+            font-size: 1.4rem;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--retro-gray);
         }
 
         /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            background: linear-gradient(180deg, 
+                rgba(20, 20, 20, 0.9) 0%, 
+                var(--retro-black) 100%);
+        }
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .portfolio-item {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-gray);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
             height: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
         .portfolio-item:hover {
             border-color: var(--retro-amber);
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(255, 153, 0, 0.2),
+                0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .portfolio-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--retro-gray), var(--retro-black));
+            height: 220px;
+            background: linear-gradient(45deg, var(--retro-gray-dark), var(--retro-black));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--retro-green);
             position: relative;
             overflow: hidden;
@@ -531,109 +846,141 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 65, 0.1) 50%, 
-                transparent 100%);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 65, 0.2),
+                transparent
+            );
             animation: shine 3s infinite;
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
         .portfolio-content {
-            padding: 20px;
-            flex-grow: 1;
+            padding: 2rem;
+            height: calc(100% - 220px);
             display: flex;
             flex-direction: column;
         }
 
+        .portfolio-title {
+            color: var(--retro-purple);
+            margin-bottom: 1.2rem;
+        }
+
+        .portfolio-description {
+            color: var(--retro-beige);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
         .portfolio-tags {
             display: flex;
-            gap: 10px;
+            gap: 0.8rem;
             flex-wrap: wrap;
-            margin: 15px 0;
+            margin: 1.5rem 0;
         }
 
         .portfolio-tag {
             background: rgba(0, 255, 65, 0.1);
             color: var(--retro-green);
-            padding: 5px 10px;
-            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
             border: 1px solid var(--retro-green);
+            font-family: 'IBM Plex Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-tag:hover {
+            background: var(--retro-green);
+            color: var(--retro-black);
+            transform: translateY(-2px);
         }
 
         .portfolio-link {
             margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px dashed var(--retro-gray-light);
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--retro-gray);
+            text-align: center;
         }
 
-        /* ===== CONTACT & QUOTE FORM ===== */
+        /* ===== CONTACT & QUOTE SECTION ===== */
+        .contact {
+            background: linear-gradient(180deg, 
+                var(--retro-black) 0%, 
+                rgba(20, 20, 20, 0.9) 100%);
+        }
+
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .contact-info {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-blue);
+            padding: 2.5rem;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-blue);
+            position: relative;
         }
 
         .blik-info {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-amber);
-            padding: 20px;
-            margin-bottom: 30px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-amber);
+            padding: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
+            position: relative;
         }
 
         .blik-number {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: var(--retro-amber);
-            margin: 10px 0;
-            padding: 10px;
+            margin: 1.5rem 0;
+            padding: 1rem;
             background: rgba(255, 153, 0, 0.1);
-            border: 1px dashed var(--retro-amber);
+            border: 2px dashed var(--retro-amber);
+            display: inline-block;
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
         }
 
         .contact-form {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-green);
+            padding: 2.5rem;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-green);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.8rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.8rem;
             color: var(--retro-green);
             font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 1rem;
             background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--retro-gray-light);
+            border: 2px solid var(--retro-gray);
             color: var(--retro-green);
             font-family: 'IBM Plex Mono', monospace;
             font-size: 1rem;
             transition: all 0.3s ease;
+            resize: vertical;
         }
 
         .form-group input:focus,
@@ -641,226 +988,462 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--retro-green);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+            box-shadow: 
+                0 0 15px rgba(0, 255, 65, 0.3),
+                inset 0 0 10px rgba(0, 255, 65, 0.1);
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--retro-gray-light);
+            opacity: 0.7;
+        }
+
+        .service-options {
+            display: grid;
+            gap: 1rem;
         }
 
         .service-option {
-            margin: 10px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid var(--retro-gray);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-option:hover {
+            border-color: var(--retro-green);
+            background: rgba(0, 255, 65, 0.1);
         }
 
         .service-option input[type="checkbox"] {
-            width: auto;
+            width: 20px;
+            height: 20px;
             accent-color: var(--retro-green);
+            cursor: pointer;
+        }
+
+        .service-option label {
+            margin: 0;
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 1rem;
         }
 
         /* ===== STATS SECTION ===== */
+        .stats {
+            background: linear-gradient(180deg, 
+                rgba(20, 20, 20, 0.9) 0%, 
+                var(--retro-black) 100%);
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .stat-item {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-gray);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .stat-item:hover {
             border-color: var(--retro-blue);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0, 102, 255, 0.15),
+                inset 0 0 30px rgba(0, 102, 255, 0.05);
         }
 
         .stat-number {
             font-family: 'Press Start 2P', cursive;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: var(--retro-amber);
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .stat-label {
+            color: var(--retro-beige);
+            font-size: 1.1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
         }
 
         /* ===== PROCESS SECTION ===== */
+        .process {
+            background: linear-gradient(180deg, 
+                var(--retro-black) 0%, 
+                rgba(20, 20, 20, 0.9) 100%);
+        }
+
         .process-steps {
-            max-width: 800px;
-            margin: 50px auto 0;
+            max-width: 900px;
+            margin: 3rem auto 0;
         }
 
         .process-step {
             display: flex;
             align-items: flex-start;
-            gap: 30px;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(10, 10, 10, 0.7);
-            border-left: 4px solid var(--retro-green);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: rgba(10, 10, 10, 0.9);
+            border-left: 5px solid var(--retro-green);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            border-left-color: var(--retro-amber);
+            transform: translateX(10px);
+            background: rgba(10, 10, 10, 0.95);
         }
 
         .step-number {
             background: var(--retro-green);
             color: var(--retro-black);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--retro-amber);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            color: var(--retro-blue);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--retro-beige);
+            line-height: 1.7;
+            opacity: 0.9;
         }
 
         /* ===== PARTNERS SECTION ===== */
+        .partners {
+            background: linear-gradient(180deg, 
+                rgba(20, 20, 20, 0.9) 0%, 
+                var(--retro-black) 100%);
+        }
+
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .partner-item {
             text-align: center;
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            background: rgba(10, 10, 10, 0.95);
+            border: 3px solid var(--retro-gray);
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .partner-item:hover {
             border-color: var(--retro-amber);
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(255, 153, 0, 0.15),
+                inset 0 0 30px rgba(255, 153, 0, 0.05);
         }
 
         .partner-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .partner-item:hover .partner-icon {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 10px var(--retro-amber));
+        }
+
+        .partner-name {
+            color: var(--retro-purple);
+            margin-bottom: 1rem;
+        }
+
+        .partner-description {
+            color: var(--retro-beige);
+            line-height: 1.7;
+            opacity: 0.9;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 2px solid var(--retro-green);
-            padding: 40px 0;
+            background: rgba(10, 10, 10, 0.98);
+            border-top: 3px solid var(--retro-green);
+            padding: 4rem 0 2rem;
             text-align: center;
-            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--retro-green), 
+                transparent);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
+            gap: 3rem;
+            margin: 2rem 0;
             flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            border: 2px solid var(--retro-green);
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--retro-amber);
+        }
+
+        .copyright {
+            color: var(--retro-beige);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            font-family: 'VT323', monospace;
         }
 
         /* ===== CHATBOT ===== */
         .chatbot-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 2rem;
+            right: 2rem;
             z-index: 1000;
         }
 
         .chatbot-button {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--retro-green);
             color: var(--retro-black);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            box-shadow: 
+                0 0 25px var(--retro-green),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid var(--retro-black);
             animation: pulse-chat 2s infinite;
-            border: 2px solid var(--retro-black);
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 
+                0 0 35px var(--retro-green),
+                0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
         @keyframes pulse-chat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 
+                    0 0 25px var(--retro-green),
+                    0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 
+                    0 0 35px var(--retro-green),
+                    0 8px 25px rgba(0, 0, 0, 0.4);
+            }
         }
 
         .chatbot-box {
             position: absolute;
-            bottom: 70px;
+            bottom: 90px;
             right: 0;
-            width: 350px;
-            background: rgba(10, 10, 10, 0.95);
-            border: 2px solid var(--retro-green);
+            width: 380px;
+            background: rgba(10, 10, 10, 0.98);
+            border: 3px solid var(--retro-green);
             display: none;
             flex-direction: column;
-            max-height: 500px;
-            backdrop-filter: blur(10px);
+            max-height: 550px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(0, 255, 65, 0.2);
+            z-index: 1001;
         }
 
         .chatbot-header {
-            background: var(--retro-green);
+            background: linear-gradient(90deg, 
+                var(--retro-green) 0%, 
+                var(--retro-green-dark) 100%);
             color: var(--retro-black);
-            padding: 15px;
+            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            border-bottom: 3px solid var(--retro-black);
         }
 
         .chatbot-close {
             background: none;
-            border: none;
+            border: 2px solid var(--retro-black);
             color: var(--retro-black);
             font-size: 1.2rem;
             cursor: pointer;
-            padding: 0;
+            padding: 0.3rem 0.6rem;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .chatbot-close:hover {
+            background: var(--retro-black);
+            color: var(--retro-green);
         }
 
         .chatbot-messages {
             flex: 1;
-            padding: 20px;
+            padding: 1.5rem;
             overflow-y: auto;
-            max-height: 300px;
+            max-height: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .message {
-            margin-bottom: 15px;
-            padding: 10px;
+            padding: 1rem;
+            border-radius: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 85%;
+            position: relative;
+            animation: message-appear 0.3s ease;
+        }
+
+        @keyframes message-appear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-bot {
             background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--retro-green);
-            font-size: 0.9rem;
+            border: 2px solid var(--retro-green);
+            align-self: flex-start;
+        }
+
+        .message-bot::before {
+            content: 'BOT: ';
+            font-weight: bold;
+            color: var(--retro-green);
         }
 
         .message-user {
             background: rgba(0, 102, 255, 0.1);
-            border-color: var(--retro-blue);
-            margin-left: 40px;
+            border: 2px solid var(--retro-blue);
+            align-self: flex-end;
+        }
+
+        .message-user::before {
+            content: 'TY: ';
+            font-weight: bold;
+            color: var(--retro-blue);
         }
 
         .chatbot-input-area {
             display: flex;
-            padding: 15px;
-            border-top: 1px solid var(--retro-gray-light);
+            padding: 1.5rem;
+            border-top: 3px solid var(--retro-gray);
+            gap: 1rem;
         }
 
         .chatbot-input {
             flex: 1;
-            padding: 10px;
+            padding: 1rem;
             background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--retro-gray-light);
+            border: 2px solid var(--retro-gray);
             color: var(--retro-green);
             font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--retro-green);
+            box-shadow: 
+                0 0 15px rgba(0, 255, 65, 0.3),
+                inset 0 0 10px rgba(0, 255, 65, 0.1);
+            background: rgba(0, 255, 65, 0.1);
         }
 
         .chatbot-send {
             background: var(--retro-green);
             color: var(--retro-black);
-            border: none;
-            padding: 0 20px;
+            border: 2px solid var(--retro-black);
+            padding: 0 2rem;
             cursor: pointer;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+
+        .chatbot-send:hover {
+            background: var(--retro-amber);
+            transform: scale(1.05);
         }
 
         /* ===== MODAL ===== */
@@ -871,67 +1454,136 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 2rem;
+            animation: modal-fade 0.3s ease;
+        }
+
+        @keyframes modal-fade {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0);
+            }
+            to {
+                opacity: 1;
+                backdrop-filter: blur(10px);
+            }
         }
 
         .modal-content {
             background: var(--retro-black);
             border: 3px solid var(--retro-green);
-            padding: 30px;
+            padding: 3rem;
             max-width: 600px;
             width: 100%;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
+            animation: modal-slide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modal-slide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .modal-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 1rem;
+            right: 1rem;
             background: none;
-            border: none;
+            border: 2px solid var(--retro-green);
             color: var(--retro-green);
             font-size: 1.5rem;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--retro-green);
+            color: var(--retro-black);
+            transform: rotate(90deg);
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.2rem; }
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
             
-            .hero h1 { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.2rem; }
+            section {
+                padding: 5rem 0;
+            }
+            
+            .hero-content {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+            h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
+            h3 { font-size: clamp(1.2rem, 4vw, 1.6rem); }
             
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 80px;
                 left: 0;
                 right: 0;
                 background: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
-                padding: 20px;
-                border-top: 2px solid var(--retro-green);
+                padding: 2rem;
+                gap: 1rem;
+                border-top: 3px solid var(--retro-green);
+                border-bottom: 3px solid var(--retro-green);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                z-index: 999;
             }
             
             .nav-links.active {
                 display: flex;
+                animation: slide-down 0.3s ease;
+            }
+            
+            @keyframes slide-down {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
             
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+            }
+            
+            .hero {
+                padding: 7rem 0 3rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1.5rem;
             }
             
             .btn {
@@ -939,166 +1591,369 @@
                 max-width: 300px;
             }
             
-            .chatbot-box {
-                width: 300px;
-                right: -10px;
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .portfolio-grid,
-            .services-grid {
+            .chatbot-box {
+                width: calc(100vw - 4rem);
+                right: 1rem;
+            }
+            
+            .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 15px;
+                padding: 0 1rem;
             }
             
             section {
-                padding: 60px 0;
+                padding: 4rem 0;
             }
             
             .hero-content {
-                padding: 20px;
-                margin: 0 10px;
+                padding: 1.5rem;
+                margin: 0 0.5rem;
             }
             
-            .chatbot-box {
-                width: calc(100vw - 40px);
-                right: 10px;
+            .retro-border,
+            .retro-box,
+            .retro-card,
+            .service-card,
+            .portfolio-item,
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .blik-number {
+                font-size: 1.2rem;
+                padding: 0.8rem;
             }
             
             .stat-number {
                 font-size: 2rem;
             }
+            
+            .process-step {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .chatbot-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .chatbot-box {
+                width: calc(100vw - 2rem);
+                right: 0.5rem;
+            }
         }
 
         /* ===== UTILITY CLASSES ===== */
         .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .text-justify { text-align: justify; }
+        
         .text-amber { color: var(--retro-amber); }
         .text-green { color: var(--retro-green); }
         .text-blue { color: var(--retro-blue); }
-        .mb-20 { margin-bottom: 20px; }
-        .mb-30 { margin-bottom: 30px; }
-        .mb-50 { margin-bottom: 50px; }
-        .mt-20 { margin-top: 20px; }
-        .mt-30 { margin-top: 30px; }
-        .mt-50 { margin-top: 50px; }
-        .hidden { display: none; }
-        .visible { display: block; }
-
-        /* ===== LOADING ANIMATION ===== */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--retro-black);
+        .text-purple { color: var(--retro-purple); }
+        .text-teal { color: var(--retro-teal); }
+        .text-red { color: var(--retro-red); }
+        .text-beige { color: var(--retro-beige); }
+        .text-white { color: #ffffff; }
+        
+        .bg-black { background: var(--retro-black); }
+        .bg-dark { background: var(--retro-gray-dark); }
+        .bg-green { background: var(--retro-green); }
+        .bg-amber { background: var(--retro-amber); }
+        .bg-blue { background: var(--retro-blue); }
+        
+        .mb-10 { margin-bottom: 1rem; }
+        .mb-20 { margin-bottom: 2rem; }
+        .mb-30 { margin-bottom: 3rem; }
+        .mb-40 { margin-bottom: 4rem; }
+        .mb-50 { margin-bottom: 5rem; }
+        
+        .mt-10 { margin-top: 1rem; }
+        .mt-20 { margin-top: 2rem; }
+        .mt-30 { margin-top: 3rem; }
+        .mt-40 { margin-top: 4rem; }
+        .mt-50 { margin-top: 5rem; }
+        
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        
+        .p-10 { padding: 1rem; }
+        .p-20 { padding: 2rem; }
+        .p-30 { padding: 3rem; }
+        .p-40 { padding: 4rem; }
+        .p-50 { padding: 5rem; }
+        
+        .w-100 { width: 100%; }
+        .w-75 { width: 75%; }
+        .w-50 { width: 50%; }
+        .w-25 { width: 25%; }
+        
+        .hidden { display: none !important; }
+        .visible { display: block !important; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .inline { display: inline; }
+        .inline-block { display: inline-block; }
+        
+        .flex-center {
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
         }
-
-        .loading-content {
-            text-align: center;
+        
+        .flex-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-
-        .loading-text {
-            font-family: 'VT323', monospace;
-            font-size: 2rem;
-            color: var(--retro-green);
-            margin-bottom: 20px;
+        
+        .flex-column {
+            display: flex;
+            flex-direction: column;
         }
-
-        .loading-bar {
-            width: 300px;
-            height: 4px;
-            background: var(--retro-gray);
-            position: relative;
-            overflow: hidden;
+        
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        .items-stretch { align-items: stretch; }
+        
+        .justify-center { justify-content: center; }
+        .justify-start { justify-content: flex-start; }
+        .justify-end { justify-content: flex-end; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+        .justify-evenly { justify-content: space-evenly; }
+        
+        .gap-10 { gap: 1rem; }
+        .gap-20 { gap: 2rem; }
+        .gap-30 { gap: 3rem; }
+        .gap-40 { gap: 4rem; }
+        
+        .opacity-50 { opacity: 0.5; }
+        .opacity-70 { opacity: 0.7; }
+        .opacity-90 { opacity: 0.9; }
+        
+        .pointer { cursor: pointer; }
+        .not-allowed { cursor: not-allowed; }
+        
+        .border-none { border: none; }
+        .rounded { border-radius: 0; }
+        .shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+        .shadow-lg { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); }
+        
+        .transition { transition: all 0.3s ease; }
+        .transition-slow { transition: all 0.6s ease; }
+        .transition-fast { transition: all 0.15s ease; }
+        
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .sticky { position: sticky; }
+        
+        .z-1 { z-index: 1; }
+        .z-10 { z-index: 10; }
+        .z-100 { z-index: 100; }
+        .z-1000 { z-index: 1000; }
+        
+        .overflow-hidden { overflow: hidden; }
+        .overflow-auto { overflow: auto; }
+        .overflow-x-auto { overflow-x: auto; }
+        .overflow-y-auto { overflow-y: auto; }
+        
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            animation: fade-in 0.8s ease;
         }
-
-        .loading-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: var(--retro-green);
-            animation: loading 2s ease-in-out infinite;
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        
+        .slide-in-left {
+            animation: slide-in-left 0.6s ease;
         }
-
+        
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            animation: slide-in-right 0.6s ease;
+        }
+        
+        @keyframes slide-in-right {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
         /* ===== PRINT STYLES ===== */
         @media print {
             .chatbot-container,
             .mobile-menu-btn,
-            .hero-buttons {
+            .hero-buttons,
+            .crt-overlay,
+            .scanlines,
+            .vignette {
                 display: none !important;
             }
             
             body {
                 color: #000;
                 background: #fff;
+                font-size: 12pt;
             }
             
             .retro-border,
-            .retro-box {
+            .retro-box,
+            .retro-card {
                 border: 1px solid #000;
                 background: none;
+                box-shadow: none;
+            }
+            
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+            
+            .btn {
+                border: 1px solid #000;
+                color: #000;
+                background: none;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                color: #000;
             }
         }
 
-        /* ===== PROJECT COLORS ===== */
-        .adelbertus { border-color: var(--retro-purple); }
-        .adelbertus .portfolio-image { background: linear-gradient(45deg, #4B0082, #8A2BE2); }
+        /* ===== PROJECT SPECIFIC STYLES ===== */
+        .project-adelbertus { border-color: var(--retro-purple); }
+        .project-adelbertus .portfolio-image { 
+            background: linear-gradient(45deg, #4B0082, #8A2BE2);
+            color: var(--retro-purple-light);
+        }
         
-        .klaudia { border-color: var(--retro-red); }
-        .klaudia .portfolio-image { background: linear-gradient(45deg, #8B0000, #FF4500); }
+        .project-klaudia { border-color: var(--retro-red); }
+        .project-klaudia .portfolio-image { 
+            background: linear-gradient(45deg, #8B0000, #FF4500);
+            color: var(--retro-red-light);
+        }
         
-        .rafal { border-color: var(--retro-teal); }
-        .rafal .portfolio-image { background: linear-gradient(45deg, #008080, #20B2AA); }
+        .project-rafal { border-color: var(--retro-teal); }
+        .project-rafal .portfolio-image { 
+            background: linear-gradient(45deg, #008080, #20B2AA);
+            color: var(--retro-teal-light);
+        }
         
-        .maniek { border-color: var(--retro-amber); }
-        .maniek .portfolio-image { background: linear-gradient(45deg, #FF8C00, #FFD700); }
+        .project-maniek { border-color: var(--retro-amber); }
+        .project-maniek .portfolio-image { 
+            background: linear-gradient(45deg, #FF8C00, #FFD700);
+            color: var(--retro-amber-light);
+        }
         
-        .kasia { border-color: var(--retro-blue); }
-        .kasia .portfolio-image { background: linear-gradient(45deg, #00008B, #4169E1); }
+        .project-kasia { border-color: var(--retro-blue); }
+        .project-kasia .portfolio-image { 
+            background: linear-gradient(45deg, #00008B, #4169E1);
+            color: var(--retro-blue-light);
+        }
         
-        .bartek { border-color: var(--retro-green); }
-        .bartek .portfolio-image { background: linear-gradient(45deg, #006400, #32CD32); }
+        .project-bartek { border-color: var(--retro-green); }
+        .project-bartek .portfolio-image { 
+            background: linear-gradient(45deg, #006400, #32CD32);
+            color: var(--retro-green-light);
+        }
     </style>
 </head>
-<body class="crt">
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loading-content">
-            <div class="loading-text">LOADING OLDSCHOOL.EXE...</div>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
+<body>
+    <!-- CRT Effects -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
 
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
+            <a href="#hero" class="logo">
                 <span class="logo-icon">💾</span>
                 <span>OLDSCHOOL.WWW</span>
-            </div>
+            </a>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span>☰</span>
+            </button>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">START</a></li>
+                <li><a href="#hero" class="active">START</a></li>
                 <li><a href="#uslugi">USŁUGI</a></li>
                 <li><a href="#portfolio">PORTFOLIO</a></li>
                 <li><a href="#wycena">WYCENA</a></li>
@@ -1110,11 +1965,19 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="glitch" data-text="OLDSCHOOL BY WWWojtek">OLDSCHOOL BY WWWojtek</h1>
-                <p class="hero-subtitle">Ręcznie kodowane strony internetowe w stylu retro</p>
-                <p class="mb-30">Tworzę unikalne, szybkie i funkcjonalne strony internetowe z charakterem lat 80-90. Zero szablonów, tylko ręczne kodowanie z duszą.</p>
+                <h1 class="glitch-text" data-text="OLDSCHOOL BY WWWojtek">
+                    OLDSCHOOL BY WWWojtek
+                </h1>
+                
+                <p class="hero-subtitle">Ręcznie kodowane strony internetowe w stylu retro lat 80-90</p>
+                
+                <p class="hero-description">
+                    Tworzę unikalne, szybkie i funkcjonalne strony internetowe z charakterem vintage. 
+                    Zero szablonów, tylko ręczne kodowanie z duszą. Retro design, nowoczesne technologie.
+                </p>
                 
                 <div class="hero-buttons">
                     <a href="#portfolio" class="btn btn-retro">ZOBACZ PORTFOLIO</a>
@@ -1125,47 +1988,85 @@
     </section>
 
     <!-- Services Section -->
-    <section id="uslugi">
+    <section id="uslugi" class="services">
         <div class="container">
-            <h2 class="section-title">USŁUGI RETRO WEB-DEV</h2>
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="USŁUGI RETRO WEB-DEV">USŁUGI RETRO WEB-DEV</span>
+            </h2>
+            
+            <p class="section-subtitle">Customowe rozwiązania dopasowane do Twoich potrzeb</p>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3>Strona Wizytówka</h3>
-                    <p>Profesjonalna wizytówka Twojej firmy w sieci. 1-3 podstrony, formularz kontaktowy, pełna responsywność.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon text-green">🖥️</div>
+                    <h3 class="service-title">Strona Wizytówka</h3>
+                    <p class="service-description">
+                        Profesjonalna wizytówka Twojej firmy w sieci. Idealna dla małych firm, freelancerów i specjalistów.
+                    </p>
+                    <ul class="service-features">
+                        <li>1-3 podstron (O nas, Usługi, Kontakt)</li>
+                        <li>Formularz kontaktowy z walidacją</li>
+                        <li>Pełna responsywność (mobile/desktop)</li>
+                        <li>Optymalizacja SEO</li>
+                        <li>Integracja z Google Analytics</li>
+                    </ul>
                     <div class="service-price">400 - 900 zł</div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">🚀</div>
-                    <h3>Landing Page</h3>
-                    <p>Strona konwersyjna skupiona na jednym celu. Idealna dla kampanii marketingowych i promocji produktów.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon text-amber">🚀</div>
+                    <h3 class="service-title">Landing Page</h3>
+                    <p class="service-description">
+                        Strona konwersyjna skupiona na jednym celu. Perfect dla kampanii marketingowych i promocji produktów.
+                    </p>
+                    <ul class="service-features">
+                        <li>Hero section z mocnym CTA</li>
+                        <li>Sekcja korzyści i funkcjonalności</li>
+                        <li>Formularz lead generation</li>
+                        <li>Social proof i opinie klientów</li>
+                        <li>Zaawansowana analityka</li>
+                    </ul>
                     <div class="service-price">600 - 1200 zł</div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">🛒</div>
-                    <h3>Sklep Internetowy</h3>
-                    <p>Pełnoprawny sklep e-commerce z systemem płatności, zarządzaniem produktami i zamówieniami.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon text-blue">🛒</div>
+                    <h3 class="service-title">Sklep Internetowy</h3>
+                    <p class="service-description">
+                        Pełnoprawny sklep e-commerce gotowy do sprzedaży. Wszystko czego potrzebujesz w jednym miejscu.
+                    </p>
+                    <ul class="service-features">
+                        <li>Katalog produktów z kategoriami</li>
+                        <li>Koszyk i proces zamówienia</li>
+                        <li>System płatności online</li>
+                        <li>Panel administracyjny</li>
+                        <li>Integracja z kurierami</li>
+                    </ul>
                     <div class="service-price">2000 - 4500 zł</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section - ORYGINALNE PROJEKTY -->
-    <section id="portfolio" style="background: rgba(10, 10, 10, 0.7);">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">RETRO PORTFOLIO - MOJE REALIZACJE</h2>
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="RETRO PORTFOLIO">RETRO PORTFOLIO</span>
+            </h2>
+            
+            <p class="section-subtitle">Moje najlepsze realizacje - każda strona ręcznie kodowana</p>
             
             <div class="portfolio-grid">
-                <!-- Adelbertus Shop - ORYGINAŁ -->
-                <div class="portfolio-item adelbertus">
+                <!-- Adelbertus Shop -->
+                <div class="portfolio-item project-adelbertus slide-in-left">
                     <div class="portfolio-image">🛒</div>
                     <div class="portfolio-content">
-                        <h3>Adelbertus Shop</h3>
-                        <p class="mb-20">Pełnoprawny sklep internetowy dla marki odzieżowej z systemem zamówień, płatności online i panelem administracyjnym.</p>
+                        <h3 class="portfolio-title">Adelbertus Shop</h3>
+                        <p class="portfolio-description">
+                            Pełnoprawny sklep internetowy dla marki odzieżowej z systemem zamówień, płatności online 
+                            i panelem administracyjnym. Responsywny design zoptymalizowany pod mobile.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Sklep E-commerce</span>
@@ -1175,18 +2076,21 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://www.adelbertusshop.com" target="_blank">www.adelbertusshop.com</a></p>
+                            <p><strong>Link:</strong> <a href="https://www.adelbertusshop.com" target="_blank" rel="noopener">www.adelbertusshop.com</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Strona Klaudii - ORYGINAŁ -->
-                <div class="portfolio-item klaudia">
+                <!-- Strona Klaudii -->
+                <div class="portfolio-item project-klaudia slide-in-right">
                     <div class="portfolio-image">👩‍🎨</div>
                     <div class="portfolio-content">
-                        <h3>Portfolio Klaudii</h3>
-                        <p class="mb-20">Elegancka strona portfolio dla artystki wizualnej z galerią prac, systemem kategorii i formularzem kontaktowym.</p>
+                        <h3 class="portfolio-title">Portfolio Klaudii</h3>
+                        <p class="portfolio-description">
+                            Elegancka strona portfolio dla artystki wizualnej z galerią prac, systemem kategorii 
+                            i formularzem kontaktowym. Minimalistyczny design podkreślający prace artystki.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Portfolio Artystyczne</span>
@@ -1196,18 +2100,21 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://klaudia-art.pl" target="_blank">klaudia-art.pl</a></p>
+                            <p><strong>Link:</strong> <a href="https://klaudia-art.pl" target="_blank" rel="noopener">klaudia-art.pl</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Strona Rafała - ORYGINAŁ -->
-                <div class="portfolio-item rafal">
+                <!-- Strona Rafała -->
+                <div class="portfolio-item project-rafal slide-in-left">
                     <div class="portfolio-image">👨‍💻</div>
                     <div class="portfolio-content">
-                        <h3>Strona Firmowa Rafała</h3>
-                        <p class="mb-20">Profesjonalna strona wizytówka dla programisty z portfolio projektów, blogiem technicznym i systemem komentarzy.</p>
+                        <h3 class="portfolio-title">Strona Firmowa Rafała</h3>
+                        <p class="portfolio-description">
+                            Profesjonalna strona wizytówka dla programisty z portfolio projektów, blogiem technicznym 
+                            i systemem komentarzy. Ciemny motyw idealny dla developerów.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Strona Firmowa</span>
@@ -1217,18 +2124,21 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://rafal-dev.pl" target="_blank">rafal-dev.pl</a></p>
+                            <p><strong>Link:</strong> <a href="https://rafal-dev.pl" target="_blank" rel="noopener">rafal-dev.pl</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Przewozy Maniek - ORYGINAŁ -->
-                <div class="portfolio-item maniek">
+                <!-- Przewozy Maniek -->
+                <div class="portfolio-item project-maniek slide-in-right">
                     <div class="portfolio-image">🚐</div>
                     <div class="portfolio-content">
-                        <h3>Przewozy Maniek</h3>
-                        <p class="mb-20">Strona firmy transportowej z systemem rezerwacji online, kalkulatorem tras i integracją z mapami Google.</p>
+                        <h3 class="portfolio-title">Przewozy Maniek</h3>
+                        <p class="portfolio-description">
+                            Strona firmy transportowej z systemem rezerwacji online, kalkulatorem tras 
+                            i integracją z mapami Google. Przejrzysty layout ułatwiający rezerwację.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Transport</span>
@@ -1238,18 +2148,21 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://przewozymaniek.pl" target="_blank">przewozymaniek.pl</a></p>
+                            <p><strong>Link:</strong> <a href="https://przewozymaniek.pl" target="_blank" rel="noopener">przewozymaniek.pl</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Strona Kasi - ORYGINAŁ -->
-                <div class="portfolio-item kasia">
+                <!-- Strona Kasi -->
+                <div class="portfolio-item project-kasia slide-in-left">
                     <div class="portfolio-image">🧘‍♀️</div>
                     <div class="portfolio-content">
-                        <h3>Studio Jogi Kasi</h3>
-                        <p class="mb-20">Strona studia jogi z harmonogramem zajęć, systemem rezerwacji miejsc i sklepem z akcesoriami do jogi.</p>
+                        <h3 class="portfolio-title">Studio Jogi Kasi</h3>
+                        <p class="portfolio-description">
+                            Strona studia jogi z harmonogramem zajęć, systemem rezerwacji miejsc 
+                            i sklepem z akcesoriami do jogi. Spokojny design sprzyjający relaksacji.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Joga</span>
@@ -1259,18 +2172,21 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://joga-kasia.pl" target="_blank">joga-kasia.pl</a></p>
+                            <p><strong>Link:</strong> <a href="https://joga-kasia.pl" target="_blank" rel="noopener">joga-kasia.pl</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Strona Bartka - ORYGINAŁ -->
-                <div class="portfolio-item bartek">
+                <!-- Strona Bartka -->
+                <div class="portfolio-item project-bartek slide-in-right">
                     <div class="portfolio-image">🎸</div>
                     <div class="portfolio-content">
-                        <h3>Bartek - Nauczyciel Gitary</h3>
-                        <p class="mb-20">Strona nauczyciela gry na gitarze z kalendarzem dostępności, systemem rezerwacji lekcji i materiałami dla uczniów.</p>
+                        <h3 class="portfolio-title">Bartek - Nauczyciel Gitary</h3>
+                        <p class="portfolio-description">
+                            Strona nauczyciela gry na gitarze z kalendarzem dostępności, systemem rezerwacji lekcji 
+                            i materiałami dla uczniów. Dynamiczny design dla muzyków.
+                        </p>
                         
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">Edukacja</span>
@@ -1280,7 +2196,7 @@
                         </div>
                         
                         <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://gitara-bartek.pl" target="_blank">gitara-bartek.pl</a></p>
+                            <p><strong>Link:</strong> <a href="https://gitara-bartek.pl" target="_blank" rel="noopener">gitara-bartek.pl</a></p>
                             <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
                         </div>
                     </div>
@@ -1288,16 +2204,20 @@
             </div>
             
             <div class="text-center mt-50">
-                <p class="mb-30">To tylko wybrane projekty z mojego portfolio. Każda strona jest ręcznie kodowana i dostosowana do potrzeb klienta.</p>
+                <p class="mb-30 font-retro" style="font-size: 1.4rem;">
+                    To tylko wybrane projekty z mojego portfolio. Każda strona jest ręcznie kodowana i dostosowana do potrzeb klienta.
+                </p>
                 <a href="#wycena" class="btn btn-amber">ZAMÓW SWOJĄ STRONĘ</a>
             </div>
         </div>
     </section>
 
     <!-- Contact & Quote Section -->
-    <section id="wycena">
+    <section id="wycena" class="contact">
         <div class="container">
-            <h2 class="section-title">WYCENA PROJEKTU</h2>
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="WYCENA PROJEKTU">WYCENA PROJEKTU</span>
+            </h2>
             
             <!-- BLIK Info -->
             <div class="blik-info">
@@ -1315,13 +2235,16 @@
                     <p class="mb-30">Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
                     
                     <div class="mb-30">
-                        <p>📧 <strong>frekig52@gmail.com</strong></p>
-                        <p>📱 <strong>604 296 360</strong></p>
+                        <p class="mb-10">📧 <strong>frekig52@gmail.com</strong></p>
+                        <p class="mb-10">📱 <strong>604 296 360</strong></p>
+                        <p>💻 <strong>Ręczne kodowanie od 2019</strong></p>
                     </div>
                     
-                    <p class="mb-30"><em>Bezpłatna wycena każdego projektu</em></p>
+                    <p class="mb-30 font-retro" style="color: var(--retro-amber);">
+                        <em>Bezpłatna wycena każdego projektu • 100% satysfakcji gwarantowane</em>
+                    </p>
                     
-                    <button onclick="sendEmail()" class="btn btn-retro" style="width: 100%;">
+                    <button onclick="sendEmail()" class="btn btn-retro btn-full">
                         WYŚLIJ EMAIL
                     </button>
                 </div>
@@ -1346,17 +2269,19 @@
                         
                         <div class="form-group">
                             <label>Jakiej strony potrzebujesz?</label>
-                            <div class="service-option">
-                                <input type="checkbox" id="service1" name="Usługa" value="Strona Wizytówka">
-                                <label for="service1">Strona Wizytówka (400-900 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service2" name="Usługa" value="Landing Page">
-                                <label for="service2">Landing Page (600-1200 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service3" name="Usługa" value="Sklep Internetowy">
-                                <label for="service3">Sklep Internetowy (2000-4500 zł)</label>
+                            <div class="service-options">
+                                <div class="service-option">
+                                    <input type="checkbox" id="service1" name="Usługa" value="Strona Wizytówka">
+                                    <label for="service1">Strona Wizytówka (400-900 zł)</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service2" name="Usługa" value="Landing Page">
+                                    <label for="service2">Landing Page (600-1200 zł)</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service3" name="Usługa" value="Sklep Internetowy">
+                                    <label for="service3">Sklep Internetowy (2000-4500 zł)</label>
+                                </div>
                             </div>
                         </div>
                         
@@ -1365,7 +2290,7 @@
                             <textarea id="description" name="Wiadomość" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-amber" style="width: 100%;">
+                        <button type="submit" class="btn btn-amber btn-full">
                             WYŚLIJ ZAPYTANIE O WYCENĘ
                         </button>
                     </form>
@@ -1375,70 +2300,211 @@
     </section>
 
     <!-- Stats Section -->
-    <section style="background: rgba(0, 255, 65, 0.05);">
+    <section class="stats">
         <div class="container">
-            <h2 class="section-title">STATYSTYKI & ZAUFANIE</h2>
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="STATYSTYKI & ZAUFANIE">STATYSTYKI & ZAUFANIE</span>
+            </h2>
             
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">50+</div>
-                    <div>WYKONANYCH PROJEKTÓW</div>
+                    <div class="stat-label">WYKONANYCH PROJEKTÓW</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">100%</div>
-                    <div>ZADOWOLONYCH KLIENTÓW</div>
+                    <div class="stat-label">ZADOWOLONYCH KLIENTÓW</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">5+</div>
-                    <div>LAT DOŚWIADCZENIA</div>
+                    <div class="stat-label">LAT DOŚWIADCZENIA</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">24h</div>
-                    <div>SZYBKA WYCENA</div>
+                    <div class="stat-label">SZYBKA WYCENA</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section id="proces">
+    <section id="proces" class="process">
         <div class="container">
-            <h2 class="section-title">PROCES REALIZACJI</h2>
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="PROCES REALIZACJI">PROCES REALIZACJI</span>
+            </h2>
             
             <div class="process-steps">
-                <div class="process-step">
+                <div class="process-step fade-in">
                     <div class="step-number">1</div>
-                    <div>
-                        <h3>Konsultacja i Wycena</h3>
-                        <p>Omawiamy Twój projekt, cele i wymagania. W 24h otrzymujesz szczegółową wycenę.</p>
+                    <div class="step-content">
+                        <h3 class="step-title">Konsultacja i Wycena</h3>
+                        <p class="step-description">
+                            Omawiamy Twój projekt, cele i wymagania. Analizuję konkurencję i rynek. 
+                            W ciągu 24h otrzymujesz szczegółową wycenę bez żadnych zobowiązań.
+                        </p>
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step fade-in">
                     <div class="step-number">2</div>
-                    <div>
-                        <h3>Projekt i Akceptacja</h3>
-                        <p>Przygotowuję projekt graficzny. Po Twojej akceptacji przystępujemy do kodowania.</p>
+                    <div class="step-content">
+                        <h3 class="step-title">Projekt i Akceptacja</h3>
+                        <p class="step-description">
+                            Przygotowuję projekt graficzny w stylu retro. Prezentuję koncepcje, dostosowuję do uwag. 
+                            Po Twojej akceptacji przystępujemy do kodowania.
+                        </p>
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step fade-in">
                     <div class="step-number">3</div>
-                    <div>
-                        <h3>Realizacja i Testy</h3>
-                        <p>Ręcznie koduję stronę, testuję na różnych urządzeniach i optymalizuję wydajność.</p>
+                    <div class="step-content">
+                        <h3 class="step-title">Realizacja i Testy</h3>
+                        <p class="step-description">
+                            Ręcznie koduję stronę od podstaw. Testuję na różnych urządzeniach i przeglądarkach. 
+                            Optymalizuję wydajność i SEO. Dbam o każdy detal.
+                        </p>
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step fade-in">
                     <div class="step-number">4</div>
-                    <div>
-                        <h3>Wdrożenie i Wsparcie</h3>
-                        <p>Wdrażam stronę na serwer, przekazuję wszystkie prawa i zapewniam wsparcie techniczne.</p>
+                    <div class="step-content">
+                        <h3 class="step-title">Wdrożenie i Wsparcie</h3>
+                        <p class="step-description">
+                            Wdrażam stronę na serwer, konfiguruję domenę i SSL. Przekazuję wszystkie prawa autorskie. 
+                            Zapewniam 30-dniowe wsparcie techniczne po wdrożeniu.
+                        </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="PARTNERZY & WSPÓŁPRACA">PARTNERZY & WSPÓŁPRACA</span>
+            </h2>
+            
+            <div class="partners-grid">
+                <div class="partner-item fade-in">
+                    <div class="partner-icon">🎨</div>
+                    <h4 class="partner-name">Adelbertus Shop</h4>
+                    <p class="partner-description">
+                        Specjalne podziękowania za profesjonalne grafiki i projekt logo strony. 
+                        Wasza kreatywność nadała niepowtarzalny charakter naszemu brandowi.
+                    </p>
+                </div>
+                
+                <div class="partner-item fade-in">
+                    <div class="partner-icon">⚡</div>
+                    <h4 class="partner-name">Vercel</h4>
+                    <p class="partner-description">
+                        Za niezawodny hosting i błyskawiczne deploymenty. Nasze strony działają 
+                        z prędkością światła dzięki waszej platformie.
+                    </p>
+                </div>
+                
+                <div class="partner-item fade-in">
+                    <div class="partner-icon">🔧</div>
+                    <h4 class="partner-name">GitHub</h4>
+                    <p class="partner-description">
+                        Za doskonałe narzędzia do version control i współpracy nad kodem. 
+                        Profesjonalne zarządzanie projektami na najwyższym poziomie.
+                    </p>
+                </div>
+                
+                <div class="partner-item fade-in">
+                    <div class="partner-icon">🎯</div>
+                    <h4 class="partner-name">Zespół OLD SCHOOL</h4>
+                    <p class="partner-description">
+                        Dziękuję wszystkim klientom i współpracownikom za zaufanie i inspirację. 
+                        Razem tworzymy wyjątkowe projekty w retro stylu!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regulations Section -->
+    <section id="regulamin" style="background: rgba(10, 10, 10, 0.95);">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="REGULAMIN & RODO">REGULAMIN & RODO</span>
+            </h2>
+            
+            <div class="retro-box">
+                <h3>§1 Postanowienia ogólne</h3>
+                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nierejestrowana pod nazwą OLD SCHOOL by WWWojtek.</p>
+                
+                <h3>§2 Świadczenie usług</h3>
+                <p>2.1. Usługi obejmują projektowanie i tworzenie stron internetowych, sklepów internetowych oraz landing pages.</p>
+                <p>2.2. Czas realizacji zlecenia uzależniony jest od jego złożoności i jest podany w cenniku.</p>
+                <p>2.3. Płatności realizowane są z góry w formie przelewu bankowego lub BLIK na numer: 573 939 925.</p>
+                
+                <h3>§3 Polityka prywatności RODO</h3>
+                <p>3.1. Administratorem danych jest OLD SCHOOL by WWWojtek.</p>
+                <p>3.2. Dane osobowe przetwarzane są wyłącznie w celu realizacji zleconych usług.</p>
+                <p>3.3. Dane przechowywane są przez okres niezbędny do realizacji usługi i rozliczeń podatkowych.</p>
+                <p>3.4. Klient ma prawo dostępu do swoich danych, ich poprawiania oraz żądania usunięcia.</p>
+                
+                <h3>§4 Prawa autorskie</h3>
+                <p>4.1. Wszystkie prawa autorskie do stworzonych stron internetowych przechodzą na klienta po dokonaniu pełnej zapłaty.</p>
+                <p>4.2. OLD SCHOOL by WWWojtek zastrzega sobie prawo do prezentacji wykonanych projektów w portfolio.</p>
+                
+                <h3>§5 Postanowienia końcowe</h3>
+                <p>5.1. Wszelkie spory rozstrzygane będą polubownie, a w razie konieczności przez właściwy sąd.</p>
+                <p>5.2. Regulamin wchodzi w życie z dniem 01.01.2024 roku.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" style="background: linear-gradient(180deg, rgba(20, 20, 20, 0.9) 0%, var(--retro-black) 100%);">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="glitch-text" data-text="KONTAKT">KONTAKT</span>
+            </h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="mb-30">Dane kontaktowe</h3>
+                    <p class="mb-20">📧 <strong>frekig52@gmail.com</strong></p>
+                    <p class="mb-20">📱 <strong>604 296 360</strong></p>
+                    <p class="mb-30">💳 <strong>BLIK: 573 939 925</strong></p>
+                    
+                    <p class="mb-30">Godziny pracy: Pon-Pt 9:00-17:00</p>
+                    
+                    <p class="font-retro" style="color: var(--retro-amber);">
+                        <em>Odpowiadam na wszystkie wiadomości w ciągu 24h!</em>
+                    </p>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="mb-30">Szybki kontakt</h3>
+                    <form action="mailto:frekig52@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateContactForm()">
+                        <div class="form-group">
+                            <input type="text" name="Imię" placeholder="Twoje imię" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" name="Email" placeholder="Twój email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea name="Wiadomość" rows="4" placeholder="Twoja wiadomość" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-retro btn-full">
+                            WYŚLIJ WIADOMOŚĆ
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1447,18 +2513,24 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="mb-20">© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
-            <p class="mb-20">📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
+            <p class="mb-20 font-pixel" style="font-size: 1.2rem;">
+                © 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe
+            </p>
+            
+            <p class="mb-30">
+                📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925
+            </p>
             
             <div class="footer-links">
                 <a href="#regulamin">Regulamin & RODO</a>
                 <a href="#kontakt">Kontakt</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#uslugi">Usługi</a>
+                <a href="#proces">Proces</a>
             </div>
             
-            <p class="mt-30" style="font-size: 0.9rem; opacity: 0.7;">
-                Strona wykonana ręcznie w HTML, CSS i JavaScript • Zero szablonów • 100% custom code
+            <p class="copyright mt-30">
+                Strona wykonana ręcznie w HTML, CSS i JavaScript • Zero szablonów • 100% custom code • Retro vibe guaranteed
             </p>
         </div>
     </footer>
@@ -1467,332 +2539,717 @@
     <div class="chatbot-container">
         <div class="chatbot-box" id="chatbotBox">
             <div class="chatbot-header">
-                <span>💬 OLD SCHOOL BOT</span>
-                <button class="chatbot-close" id="chatbotClose">✖</button>
+                <span>💬 OLD SCHOOL BOT v1.0</span>
+                <button class="chatbot-close" id="chatbotClose" aria-label="Zamknij chat">✖</button>
             </div>
             
             <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message">
-                    <strong>BOT:</strong> Cześć! Jestem Old School Bot. Mogę Ci pomóc z informacjami o usługach, cenach i portfolio. O co chcesz zapytać?
+                <div class="message message-bot">
+                    Cześć! Jestem Old School Bot - asystent WWWojtka. Mogę Ci pomóc z informacjami o:
+                    • Usługach i cenach
+                    • Portfolio projektów
+                    • Procesie współpracy
+                    • Kontakcie
+                    
+                    O co chcesz zapytać? 👾
                 </div>
             </div>
             
             <div class="chatbot-input-area">
-                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Napisz wiadomość...">
-                <button class="chatbot-send" id="chatbotSend">➤</button>
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Napisz wiadomość..." aria-label="Wiadomość do chatbota">
+                <button class="chatbot-send" id="chatbotSend" aria-label="Wyślij wiadomość">➤</button>
             </div>
         </div>
         
-        <div class="chatbot-button" id="chatbotButton">
+        <div class="chatbot-button" id="chatbotButton" aria-label="Otwórz chat" role="button" tabindex="0">
             💬
         </div>
     </div>
 
     <!-- Success Modal -->
-    <div class="modal" id="successModal">
+    <div class="modal" id="successModal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose">✖</button>
-            <h2 class="text-green mb-30">✅ WIADOMOŚĆ WYSŁANA!</h2>
-            <p class="mb-20">Dziękuję za kontakt! Twoja wiadomość została wysłana.</p>
+            <button class="modal-close" id="modalClose" aria-label="Zamknij modal">✖</button>
+            <h2 id="modalTitle" class="text-green mb-30">✅ WIADOMOŚĆ WYSŁANA!</h2>
+            <p class="mb-20">Dziękuję za kontakt! Twoja wiadomość została pomyślnie wysłana.</p>
             <p class="mb-30">Odpowiem na nią najszybciej jak to możliwe, zwykle w ciągu 24 godzin.</p>
             <button class="btn btn-retro" onclick="closeModal()">OK</button>
         </div>
     </div>
 
     <script>
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loading').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loading').style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
+        // ============================================
+        // OLDSCHOOL.JS - KOMPLETNY SKRYPT STRONY
+        // Wersja: 1.0 | Data: 2024
+        // Autor: OldSchool by WWWojtek
+        // ============================================
 
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Chatbot functionality
-        const chatbotButton = document.getElementById('chatbotButton');
-        const chatbotBox = document.getElementById('chatbotBox');
-        const chatbotClose = document.getElementById('chatbotClose');
-        const chatbotMessages = document.getElementById('chatbotMessages');
-        const chatbotInput = document.getElementById('chatbotInput');
-        const chatbotSend = document.getElementById('chatbotSend');
-
-        chatbotButton.addEventListener('click', function() {
-            chatbotBox.style.display = 'flex';
-        });
-
-        chatbotClose.addEventListener('click', function() {
-            chatbotBox.style.display = 'none';
-        });
-
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'message-user' : ''}`;
-            messageDiv.innerHTML = `<strong>${isUser ? 'TY' : 'BOT'}:</strong> ${text}`;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function getBotResponse(message) {
-            const msg = message.toLowerCase();
-            
-            if (msg.includes('portfolio') || msg.includes('projekty') || msg.includes('realizacje')) {
-                return 'Mam 6 głównych projektów w portfolio:\n1. Adelbertus Shop - sklep e-commerce\n2. Strona Klaudii - portfolio artystyczne\n3. Strona Rafała - strona programisty\n4. Przewozy Maniek - firma transportowa\n5. Studio Jogi Kasi\n6. Bartek - nauczyciel gitary\n\nWszystkie linki działają!';
-            }
-            
-            if (msg.includes('adelbertus') || msg.includes('sklep')) {
-                return 'Adelbertus Shop to pełnoprawny sklep e-commerce z WooCommerce. Link: www.adelbertusshop.com';
-            }
-            
-            if (msg.includes('klaudia') || msg.includes('art')) {
-                return 'Strona Klaudii to portfolio artystyczne z galerią prac. Link: klaudia-art.pl';
-            }
-            
-            if (msg.includes('rafał') || msg.includes('rafal')) {
-                return 'Strona Rafała to strona programisty z blogiem. Link: rafal-dev.pl';
-            }
-            
-            if (msg.includes('maniek') || msg.includes('przewozy')) {
-                return 'Przewozy Maniek to strona firmy transportowej. Link: przewozymaniek.pl';
-            }
-            
-            if (msg.includes('kasia') || msg.includes('joga')) {
-                return 'Studio Jogi Kasi z harmonogramem zajęć. Link: joga-kasia.pl';
-            }
-            
-            if (msg.includes('bartek') || msg.includes('gitara')) {
-                return 'Bartek - nauczyciel gitary z systemem rezerwacji. Link: gitara-bartek.pl';
-            }
-            
-            if (msg.includes('cześć') || msg.includes('witaj') || msg.includes('hej')) {
-                return 'Cześć! Jestem Old School Bot. Jak mogę Ci pomóc?';
-            }
-            
-            if (msg.includes('cena') || msg.includes('koszt') || msg.includes('wycena')) {
-                return 'Ceny zaczynają się od 400 zł za stronę wizytówkę. Dokładna wycena zależy od specyfiki projektu. Wypełnij formularz wyceny!';
-            }
-            
-            if (msg.includes('kontakt') || msg.includes('email') || msg.includes('telefon')) {
-                return 'Kontakt: email: frekig52@gmail.com, telefon: 604 296 360, BLIK: 573 939 925';
-            }
-            
-            if (msg.includes('czas') || msg.includes('realizacja') || msg.includes('termin')) {
-                return 'Czas realizacji: strona wizytówka 3-7 dni, landing page 5-10 dni, sklep internetowy 2-4 tygodnie.';
-            }
-            
-            if (msg.includes('blik') || msg.includes('płatność')) {
-                return 'Numer BLIK: 573 939 925. W tytule przelewu wpisz: "www" + nazwę projektu.';
-            }
-            
-            return 'Mogę Ci pomóc z informacjami o portfolio projektów, cenach, kontakcie lub konkretnych realizacjach. O co konkretnie chcesz zapytać?';
-        }
-
-        chatbotSend.addEventListener('click', function() {
-            const message = chatbotInput.value.trim();
-            if (!message) return;
-            
-            addMessage(message, true);
-            chatbotInput.value = '';
-            
-            setTimeout(function() {
-                const response = getBotResponse(message);
-                addMessage(response);
-            }, 500);
-        });
-
-        chatbotInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                chatbotSend.click();
-            }
-        });
-
-        // Form validation and submission
-        function validateForm() {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const description = document.getElementById('description').value.trim();
-            
-            if (!name || !email || !description) {
-                alert('Proszę wypełnić wszystkie wymagane pola!');
-                return false;
-            }
-            
-            // Show success modal
-            setTimeout(function() {
-                document.getElementById('successModal').style.display = 'flex';
-            }, 1000);
-            
-            return true;
-        }
-
-        function sendEmail() {
-            const name = prompt('Podaj swoje imię:');
-            if (!name) return;
-            
-            const email = prompt('Podaj swój email:');
-            if (!email) return;
-            
-            const subject = `Zapytanie o wycenę od ${name} - OldSchool WWWojtek`;
-            const body = `Witaj Wojtek,\n\nChciałbym/chciałabym zapytać o wycenę projektu.\n\nMoje dane:\nImię: ${name}\nEmail: ${email}\n\n---\nWysłano ze strony: OldSchool by WWWojtek`;
-            
-            window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-
-        // Modal functionality
-        const modalClose = document.getElementById('modalClose');
-        const successModal = document.getElementById('successModal');
-
-        function closeModal() {
-            successModal.style.display = 'none';
-        }
-
-        modalClose.addEventListener('click', closeModal);
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === successModal) {
-                closeModal();
-            }
-        });
-
-        // Add scroll animation to portfolio items
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // Konfiguracja
+        const config = {
+            loadingDelay: 1000,
+            animationDelay: 300,
+            chatResponseDelay: 500
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Inicjalizacja po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', function() {
+            initLoading();
+            initNavigation();
+            initSmoothScroll();
+            initAnimations();
+            initChatbot();
+            initForms();
+            initModal();
+            initDateTime();
+            initEffects();
+            initPortfolioCounter();
+        });
+
+        // ===== LOADING SCREEN =====
+        function initLoading() {
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, config.loadingDelay);
+        }
+
+        // ===== NAVIGATION =====
+        function initNavigation() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<span>✖</span>' : '<span>☰</span>';
+            });
+
+            // Close mobile menu on link click
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<span>☰</span>';
+                });
+            });
+
+            // Active link on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPos = window.scrollY + 100;
+                
+                navItems.forEach(item => {
+                    const section = document.querySelector(item.getAttribute('href'));
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        
+                        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                            navItems.forEach(i => i.classList.remove('active'));
+                            item.classList.add('active');
+                        }
+                    }
+                });
+            });
+        }
+
+        // ===== SMOOTH SCROLL =====
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = 80;
+                        const targetPosition = targetElement.offsetTop - offset;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ===== ANIMATIONS =====
+        function initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Add delay for staggered animations
+                        if (entry.target.classList.contains('fade-in')) {
+                            entry.target.style.animationDelay = 
+                                (Array.from(entry.target.parentNode.children).indexOf(entry.target) * 0.2) + 's';
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        }
+
+        // ===== CHATBOT =====
+        function initChatbot() {
+            const chatbotButton = document.getElementById('chatbotButton');
+            const chatbotBox = document.getElementById('chatbotBox');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+
+            // Chatbot responses
+            const botResponses = {
+                greetings: [
+                    "Cześć! 👋 Jestem Old School Bot, asystent WWWojtka.",
+                    "Witaj! 🤖 Tu Old School Bot, pomogę Ci z informacjami.",
+                    "Hej! 💾 Old School Bot na linii, gotowy do pomocy."
+                ],
+                
+                services: `🛠️ USŁUGI WWWojtka:
+• Strona Wizytówka (400-900 zł)
+• Landing Page (600-1200 zł) 
+• Sklep Internetowy (2000-4500 zł)
+
+Każda strona jest ręcznie kodowana w stylu retro!`,
+
+                portfolio: `📂 PORTFOLIO - 6 głównych projektów:
+1. Adelbertus Shop - sklep e-commerce
+2. Klaudia Art - portfolio artystki
+3. Rafał Dev - strona programisty
+4. Przewozy Maniek - firma transportowa
+5. Studio Jogi Kasi
+6. Bartek Gitara - nauczyciel
+
+Wszystkie linki działają!`,
+
+                process: `🔄 PROCES REALIZACJI:
+1. Konsultacja i wycena (24h)
+2. Projekt i akceptacja
+3. Realizacja i testy
+4. Wdrożenie i wsparcie
+
+Czas realizacji: 3-30 dni w zależności od projektu.`,
+
+                contact: `📞 KONTAKT:
+📧 Email: frekig52@gmail.com
+📱 Telefon: 604 296 360
+💳 BLIK: 573 939 925
+
+Odpowiadam w 24h!`,
+
+                prices: `💰 CENNIK:
+• Strona Wizytówka: 400-900 zł
+• Landing Page: 600-1200 zł
+• Sklep Internetowy: 2000-4500 zł
+
+Dokładna wycena po opisaniu projektu.`,
+
+                default: `🤔 Rozumiem! Mogę Ci pomóc z:
+• Informacjami o usługach (wpisz "usługi")
+• Portfolio projektów (wpisz "portfolio")
+• Procesem współpracy (wpisz "proces")
+• Danymi kontaktowymi (wpisz "kontakt")
+• Cennikiem (wpisz "ceny")
+
+O co dokładnie chcesz zapytać?`
+            };
+
+            // Toggle chatbot
+            chatbotButton.addEventListener('click', function() {
+                chatbotBox.style.display = chatbotBox.style.display === 'flex' ? 'none' : 'flex';
+                if (chatbotBox.style.display === 'flex') {
+                    chatbotInput.focus();
                 }
             });
-        }, observerOptions);
 
-        // Observe all portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(item);
-        });
+            chatbotClose.addEventListener('click', function() {
+                chatbotBox.style.display = 'none';
+            });
 
-        // Add typing effect to hero
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.textContent;
-        let charIndex = 0;
-        
-        function typeWriter() {
-            if (charIndex < originalText.length) {
-                heroTitle.textContent = originalText.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(typeWriter, 100);
+            // Close chatbot on outside click
+            document.addEventListener('click', function(e) {
+                if (!chatbotBox.contains(e.target) && !chatbotButton.contains(e.target)) {
+                    chatbotBox.style.display = 'none';
+                }
+            });
+
+            // Send message function
+            function sendMessage(text, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'message-user' : 'message-bot'}`;
+                messageDiv.textContent = text;
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }
-        }
-        
-        // Start typing effect after loading
-        setTimeout(typeWriter, 1500);
 
-        // Add click animation to portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') return;
+            // Get bot response
+            function getBotResponse(message) {
+                const msg = message.toLowerCase().trim();
                 
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-            });
-        });
+                if (msg.includes('cześć') || msg.includes('witaj') || msg.includes('hej') || msg.includes('hi') || msg.includes('hello')) {
+                    return botResponses.greetings[Math.floor(Math.random() * botResponses.greetings.length)];
+                }
+                
+                if (msg.includes('usług') || msg.includes('oferta') || msg.includes('strona')) {
+                    return botResponses.services;
+                }
+                
+                if (msg.includes('portfolio') || msg.includes('projekt') || msg.includes('realizac')) {
+                    return botResponses.portfolio;
+                }
+                
+                if (msg.includes('proces') || msg.includes('współprac') || msg.includes('realizacj')) {
+                    return botResponses.process;
+                }
+                
+                if (msg.includes('kontakt') || msg.includes('mail') || msg.includes('email') || msg.includes('telefon') || msg.includes('blik')) {
+                    return botResponses.contact;
+                }
+                
+                if (msg.includes('cena') || msg.includes('koszt') || msg.includes('wycen') || msg.includes('ile koszt')) {
+                    return botResponses.prices;
+                }
+                
+                if (msg.includes('adelbertus') || msg.includes('sklep')) {
+                    return 'Adelbertus Shop to pełnoprawny sklep e-commerce z WooCommerce. Link: www.adelbertusshop.com';
+                }
+                
+                if (msg.includes('klaudia') || msg.includes('art')) {
+                    return 'Strona Klaudii to portfolio artystyczne z galerią prac. Link: klaudia-art.pl';
+                }
+                
+                if (msg.includes('rafał') || msg.includes('rafal')) {
+                    return 'Strona Rafała to strona programisty z blogiem. Link: rafal-dev.pl';
+                }
+                
+                if (msg.includes('maniek') || msg.includes('przewozy')) {
+                    return 'Przewozy Maniek to strona firmy transportowej. Link: przewozymaniek.pl';
+                }
+                
+                if (msg.includes('kasia') || msg.includes('joga')) {
+                    return 'Studio Jogi Kasi z harmonogramem zajęć. Link: joga-kasia.pl';
+                }
+                
+                if (msg.includes('bartek') || msg.includes('gitara')) {
+                    return 'Bartek - nauczyciel gitary z systemem rezerwacji. Link: gitara-bartek.pl';
+                }
+                
+                return botResponses.default;
+            }
 
-        // Add system date/time in footer
-        function updateDateTime() {
-            const now = new Date();
-            const dateTimeStr = now.toLocaleString('pl-PL', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
+            // Send button click
+            chatbotSend.addEventListener('click', function() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+                
+                sendMessage(message, true);
+                chatbotInput.value = '';
+                
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    sendMessage(response);
+                }, config.chatResponseDelay);
             });
-            
-            const dateTimeElement = document.createElement('p');
-            dateTimeElement.style.fontSize = '0.8rem';
-            dateTimeElement.style.opacity = '0.5';
-            dateTimeElement.style.marginTop = '10px';
-            dateTimeElement.textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
-            
-            const footer = document.querySelector('footer .container');
-            if (footer && !document.getElementById('datetime')) {
-                dateTimeElement.id = 'datetime';
-                footer.appendChild(dateTimeElement);
-            } else if (document.getElementById('datetime')) {
-                document.getElementById('datetime').textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
+
+            // Enter key support
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    chatbotSend.click();
+                }
+            });
+
+            // Focus input when chatbot opens
+            chatbotButton.addEventListener('click', function() {
+                setTimeout(() => {
+                    chatbotInput.focus();
+                }, 100);
+            });
+        }
+
+        // ===== FORMS =====
+        function initForms() {
+            // Form validation
+            function validateForm() {
+                const name = document.getElementById('name')?.value.trim();
+                const email = document.getElementById('email')?.value.trim();
+                const description = document.getElementById('description')?.value.trim();
+                
+                if (!name || !email || !description) {
+                    showMessage('Proszę wypełnić wszystkie wymagane pola!', 'error');
+                    return false;
+                }
+                
+                if (!isValidEmail(email)) {
+                    showMessage('Proszę podać poprawny adres email!', 'error');
+                    return false;
+                }
+                
+                // Show success modal
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'flex';
+                }, 1000);
+                
+                return true;
+            }
+
+            function validateContactForm() {
+                const inputs = document.querySelectorAll('#kontakt form input, #kontakt form textarea');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = 'var(--retro-red)';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+                
+                if (!isValid) {
+                    showMessage('Proszę wypełnić wszystkie pola formularza!', 'error');
+                    return false;
+                }
+                
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'flex';
+                }, 1000);
+                
+                return true;
+            }
+
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showMessage(text, type = 'info') {
+                const messageDiv = document.createElement('div');
+                messageDiv.style.position = 'fixed';
+                messageDiv.style.top = '100px';
+                messageDiv.style.right = '20px';
+                messageDiv.style.padding = '15px 25px';
+                messageDiv.style.background = type === 'error' ? 'var(--retro-red)' : 'var(--retro-green)';
+                messageDiv.style.color = 'var(--retro-black)';
+                messageDiv.style.fontFamily = 'inherit';
+                messageDiv.style.border = '2px solid var(--retro-black)';
+                messageDiv.style.zIndex = '9999';
+                messageDiv.style.animation = 'slide-in-right 0.3s ease';
+                messageDiv.textContent = text;
+                document.body.appendChild(messageDiv);
+                
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 5000);
+            }
+
+            // Send email function
+            window.sendEmail = function() {
+                const name = prompt('Podaj swoje imię:');
+                if (!name) return;
+                
+                const email = prompt('Podaj swój email:');
+                if (!email) return;
+                
+                const subject = `Zapytanie o wycenę od ${name} - OldSchool WWWojtek`;
+                const body = `Witaj Wojtek,
+
+Chciałbym/chciałabym zapytać o wycenę projektu.
+
+Moje dane:
+Imię: ${name}
+Email: ${email}
+
+---
+Wysłano ze strony: OldSchool by WWWojtek`;
+                
+                window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            };
+
+            // Attach form validation
+            const quoteForm = document.getElementById('quoteForm');
+            if (quoteForm) {
+                quoteForm.addEventListener('submit', function(e) {
+                    if (!validateForm()) {
+                        e.preventDefault();
+                    }
+                });
+            }
+
+            const contactForm = document.querySelector('#kontakt form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    if (!validateContactForm()) {
+                        e.preventDefault();
+                    }
+                });
             }
         }
 
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+        // ===== MODAL =====
+        function initModal() {
+            const modal = document.getElementById('successModal');
+            const modalClose = document.getElementById('modalClose');
 
-        // Add portfolio counter
-        function updatePortfolioCounter() {
+            window.closeModal = function() {
+                modal.style.display = 'none';
+            };
+
+            modalClose.addEventListener('click', closeModal);
+
+            // Close modal on outside click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        }
+
+        // ===== DATE TIME =====
+        function initDateTime() {
+            function updateDateTime() {
+                const now = new Date();
+                const options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                
+                const dateTimeStr = now.toLocaleString('pl-PL', options);
+                const dateTimeElement = document.getElementById('datetime');
+                
+                if (!dateTimeElement) {
+                    const newElement = document.createElement('p');
+                    newElement.id = 'datetime';
+                    newElement.style.fontSize = '0.8rem';
+                    newElement.style.opacity = '0.5';
+                    newElement.style.marginTop = '10px';
+                    newElement.style.fontFamily = "'VT323', monospace";
+                    newElement.textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
+                    
+                    const footer = document.querySelector('footer .container');
+                    if (footer) {
+                        footer.appendChild(newElement);
+                    }
+                } else {
+                    dateTimeElement.textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
+                }
+            }
+
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+        }
+
+        // ===== EFFECTS =====
+        function initEffects() {
+            // Add retro sound effect for buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Simple beep sound simulation
+                    try {
+                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        oscillator.frequency.value = 800;
+                        oscillator.type = 'square';
+                        
+                        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                        
+                        oscillator.start(audioContext.currentTime);
+                        oscillator.stop(audioContext.currentTime + 0.1);
+                    } catch (e) {
+                        console.log('Audio context not supported');
+                    }
+                });
+            });
+
+            // Add hover effect to portfolio items
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add typing effect to hero
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                heroTitle.textContent = '';
+                let charIndex = 0;
+                
+                function typeWriter() {
+                    if (charIndex < originalText.length) {
+                        heroTitle.textContent += originalText.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeWriter, 100);
+                    }
+                }
+                
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        // ===== PORTFOLIO COUNTER =====
+        function initPortfolioCounter() {
             const counter = document.createElement('div');
+            counter.id = 'portfolioCounter';
             counter.style.position = 'fixed';
             counter.style.bottom = '100px';
             counter.style.right = '20px';
             counter.style.background = 'var(--retro-black)';
             counter.style.border = '2px solid var(--retro-green)';
-            counter.style.padding = '10px';
+            counter.style.padding = '10px 15px';
             counter.style.fontSize = '0.9rem';
+            counter.style.fontFamily = "'VT323', monospace";
             counter.style.zIndex = '999';
-            counter.textContent = 'Portfolio: 6 projektów';
-            counter.id = 'portfolioCounter';
+            counter.style.opacity = '0.7';
+            counter.style.transition = 'all 0.3s ease';
+            counter.textContent = '🎮 Portfolio: 6 projektów';
             
-            if (!document.getElementById('portfolioCounter')) {
+            counter.addEventListener('mouseenter', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            counter.addEventListener('mouseleave', function() {
+                this.style.opacity = '0.7';
+                this.style.transform = 'scale(1)';
+            });
+            
+            setTimeout(() => {
                 document.body.appendChild(counter);
-            }
+            }, 2000);
         }
 
-        setTimeout(updatePortfolioCounter, 2000);
+        // ===== PERFORMANCE OPTIMIZATION =====
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+        });
+
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Handle scroll-based animations
+            }, 100);
+        });
+
+        // ===== ERROR HANDLING =====
+        window.addEventListener('error', function(e) {
+            console.error('Script error:', e.error);
+        });
+
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+        });
+
+        // ===== ACCESSIBILITY =====
+        document.addEventListener('keydown', function(e) {
+            // Focus trap for modal
+            if (document.getElementById('successModal').style.display === 'flex') {
+                const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+                const modal = document.getElementById('successModal');
+                const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
+                const focusableContent = modal.querySelectorAll(focusableElements);
+                const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            }
+        });
+
+        // Add skip to content link for screen readers
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.className = 'skip-link';
+        skipLink.textContent = 'Przejdź do treści głównej';
+        skipLink.style.position = 'absolute';
+        skipLink.style.left = '-9999px';
+        skipLink.style.top = 'auto';
+        skipLink.style.width = '1px';
+        skipLink.style.height = '1px';
+        skipLink.style.overflow = 'hidden';
+        
+        skipLink.addEventListener('focus', function() {
+            this.style.left = 'auto';
+            this.style.top = '0';
+            this.style.width = 'auto';
+            this.style.height = 'auto';
+            this.style.background = 'var(--retro-black)';
+            this.style.color = 'var(--retro-green)';
+            this.style.padding = '10px';
+            this.style.zIndex = '9999';
+        });
+        
+        document.body.insertBefore(skipLink, document.body.firstChild);
+
+        // Add main content id
+        const mainContent = document.querySelector('main') || document.querySelector('.hero');
+        if (mainContent) {
+            mainContent.id = 'main-content';
+            mainContent.tabIndex = -1;
+        }
     </script>
 </body>
 </html>
