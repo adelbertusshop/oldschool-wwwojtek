@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="OldSchool by WWWojtek - Ręcznie kodowane strony internetowe w stylu retro. Strony wizytówki, landing pages, sklepy internetowe z unikalnym designem lat 80-90.">
-    <meta name="keywords" content="strony internetowe, retro design, oldschool, vintage, ręczne kodowanie, HTML, CSS, JavaScript, portfolio">
+    <meta name="keywords" content="strony internetowe, retro design, oldschool, vintage, ręczne kodowanie, HTML, CSS, JavaScript, portfolio, Adelbertus Shop, Klaudia, Rafał, Przewozy Maniek">
     <meta name="author" content="OldSchool by WWWojtek">
     <title>OldSchool by WWWojtek - Ręcznie kodowane strony w stylu retro</title>
     
@@ -13,9 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💾</text></svg>">
     
     <style>
         /* ===== RESET & BASE STYLES ===== */
@@ -39,6 +36,8 @@
             --retro-beige-dark: #e6e6c9;
             --retro-red: #ff3333;
             --retro-red-dark: #cc0000;
+            --retro-purple: #9933ff;
+            --retro-teal: #00cccc;
             --crt-brightness: 1.1;
             --crt-contrast: 1.2;
             --scanline-opacity: 0.03;
@@ -506,6 +505,9 @@
             border: 2px solid var(--retro-gray-light);
             overflow: hidden;
             transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-item:hover {
@@ -546,6 +548,9 @@
 
         .portfolio-content {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-tags {
@@ -561,6 +566,12 @@
             padding: 5px 10px;
             font-size: 0.9rem;
             border: 1px solid var(--retro-green);
+        }
+
+        .portfolio-link {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px dashed var(--retro-gray-light);
         }
 
         /* ===== CONTACT & QUOTE FORM ===== */
@@ -1046,6 +1057,25 @@
                 background: none;
             }
         }
+
+        /* ===== PROJECT COLORS ===== */
+        .adelbertus { border-color: var(--retro-purple); }
+        .adelbertus .portfolio-image { background: linear-gradient(45deg, #4B0082, #8A2BE2); }
+        
+        .klaudia { border-color: var(--retro-red); }
+        .klaudia .portfolio-image { background: linear-gradient(45deg, #8B0000, #FF4500); }
+        
+        .rafal { border-color: var(--retro-teal); }
+        .rafal .portfolio-image { background: linear-gradient(45deg, #008080, #20B2AA); }
+        
+        .maniek { border-color: var(--retro-amber); }
+        .maniek .portfolio-image { background: linear-gradient(45deg, #FF8C00, #FFD700); }
+        
+        .kasia { border-color: var(--retro-blue); }
+        .kasia .portfolio-image { background: linear-gradient(45deg, #00008B, #4169E1); }
+        
+        .bartek { border-color: var(--retro-green); }
+        .bartek .portfolio-image { background: linear-gradient(45deg, #006400, #32CD32); }
     </style>
 </head>
 <body class="crt">
@@ -1124,107 +1154,142 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section - ORYGINALNE PROJEKTY -->
     <section id="portfolio" style="background: rgba(10, 10, 10, 0.7);">
         <div class="container">
-            <h2 class="section-title">RETRO PORTFOLIO</h2>
+            <h2 class="section-title">RETRO PORTFOLIO - MOJE REALIZACJE</h2>
             
             <div class="portfolio-grid">
-                <!-- Projekt 1 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">🏢</div>
+                <!-- Adelbertus Shop - ORYGINAŁ -->
+                <div class="portfolio-item adelbertus">
+                    <div class="portfolio-image">🛒</div>
                     <div class="portfolio-content">
-                        <h3>Strona Firmowa - AutoSerwis "Mario"</h3>
-                        <p>Kompleksowa strona dla warsztatu samochodowego z systemem rezerwacji terminów online.</p>
+                        <h3>Adelbertus Shop</h3>
+                        <p class="mb-20">Pełnoprawny sklep internetowy dla marki odzieżowej z systemem zamówień, płatności online i panelem administracyjnym.</p>
+                        
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML5</span>
-                            <span class="portfolio-tag">CSS3</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">PHP</span>
-                        </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2023</strong></p>
-                    </div>
-                </div>
-                
-                <!-- Projekt 2 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">🎨</div>
-                    <div class="portfolio-content">
-                        <h3>Portfolio Artystyczne - "PixelDreams"</h3>
-                        <p>Galeria portfolio dla artysty digitalnego z systemem kategorii i lightboxem.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML5</span>
-                            <span class="portfolio-tag">CSS3</span>
-                            <span class="portfolio-tag">jQuery</span>
+                            <span class="portfolio-tag">Sklep E-commerce</span>
+                            <span class="portfolio-tag">WooCommerce</span>
                             <span class="portfolio-tag">Responsive</span>
+                            <span class="portfolio-tag">Płatności Online</span>
                         </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2023</strong></p>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://www.adelbertusshop.com" target="_blank">www.adelbertusshop.com</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Projekt 3 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">📚</div>
+                <!-- Strona Klaudii - ORYGINAŁ -->
+                <div class="portfolio-item klaudia">
+                    <div class="portfolio-image">👩‍🎨</div>
                     <div class="portfolio-content">
-                        <h3>Biblioteka Miejska - System Rezerwacji</h3>
-                        <p>System do rezerwacji książek online z panelem administracyjnym dla bibliotekarzy.</p>
+                        <h3>Portfolio Klaudii</h3>
+                        <p class="mb-20">Elegancka strona portfolio dla artystki wizualnej z galerią prac, systemem kategorii i formularzem kontaktowym.</p>
+                        
                         <div class="portfolio-tags">
+                            <span class="portfolio-tag">Portfolio Artystyczne</span>
+                            <span class="portfolio-tag">Galeria</span>
+                            <span class="portfolio-tag">Lightbox</span>
+                            <span class="portfolio-tag">CSS Grid</span>
+                        </div>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://klaudia-art.pl" target="_blank">klaudia-art.pl</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Strona Rafała - ORYGINAŁ -->
+                <div class="portfolio-item rafal">
+                    <div class="portfolio-image">👨‍💻</div>
+                    <div class="portfolio-content">
+                        <h3>Strona Firmowa Rafała</h3>
+                        <p class="mb-20">Profesjonalna strona wizytówka dla programisty z portfolio projektów, blogiem technicznym i systemem komentarzy.</p>
+                        
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Strona Firmowa</span>
+                            <span class="portfolio-tag">Blog</span>
                             <span class="portfolio-tag">PHP</span>
                             <span class="portfolio-tag">MySQL</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">Bootstrap</span>
                         </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2024</strong></p>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://rafal-dev.pl" target="_blank">rafal-dev.pl</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Projekt 4 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">🍕</div>
+                <!-- Przewozy Maniek - ORYGINAŁ -->
+                <div class="portfolio-item maniek">
+                    <div class="portfolio-image">🚐</div>
                     <div class="portfolio-content">
-                        <h3>Pizzeria "Da Vinci" - Strona + Zamówienia</h3>
-                        <p>Strona z menu online i systemem zamówień dla lokalnej pizzerii.</p>
+                        <h3>Przewozy Maniek</h3>
+                        <p class="mb-20">Strona firmy transportowej z systemem rezerwacji online, kalkulatorem tras i integracją z mapami Google.</p>
+                        
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML5</span>
-                            <span class="portfolio-tag">CSS3</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">PHP Mailer</span>
+                            <span class="portfolio-tag">Transport</span>
+                            <span class="portfolio-tag">Rezerwacje Online</span>
+                            <span class="portfolio-tag">Google Maps API</span>
+                            <span class="portfolio-tag">Formularz</span>
                         </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2024</strong></p>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://przewozymaniek.pl" target="_blank">przewozymaniek.pl</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Projekt 5 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">🎮</div>
+                <!-- Strona Kasi - ORYGINAŁ -->
+                <div class="portfolio-item kasia">
+                    <div class="portfolio-image">🧘‍♀️</div>
                     <div class="portfolio-content">
-                        <h3>Retro Gaming Blog - "8-bit Chronicles"</h3>
-                        <p>Blog o grach retro z systemem CMS, komentarzami i galerią screenshotów.</p>
+                        <h3>Studio Jogi Kasi</h3>
+                        <p class="mb-20">Strona studia jogi z harmonogramem zajęć, systemem rezerwacji miejsc i sklepem z akcesoriami do jogi.</p>
+                        
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">WordPress</span>
-                            <span class="portfolio-tag">PHP</span>
-                            <span class="portfolio-tag">MySQL</span>
-                            <span class="portfolio-tag">Custom Theme</span>
+                            <span class="portfolio-tag">Joga</span>
+                            <span class="portfolio-tag">Harmonogram</span>
+                            <span class="portfolio-tag">Rezerwacje</span>
+                            <span class="portfolio-tag">Sklep</span>
                         </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2024</strong></p>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://joga-kasia.pl" target="_blank">joga-kasia.pl</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Projekt 6 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">⚡</div>
+                <!-- Strona Bartka - ORYGINAŁ -->
+                <div class="portfolio-item bartek">
+                    <div class="portfolio-image">🎸</div>
                     <div class="portfolio-content">
-                        <h3>Strona Eventowa - "TechConf 2024"</h3>
-                        <p>Landing page dla konferencji technologicznej z formularzem rejestracji i harmonogramem.</p>
+                        <h3>Bartek - Nauczyciel Gitary</h3>
+                        <p class="mb-20">Strona nauczyciela gry na gitarze z kalendarzem dostępności, systemem rezerwacji lekcji i materiałami dla uczniów.</p>
+                        
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML5</span>
-                            <span class="portfolio-tag">CSS3</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">GSAP</span>
+                            <span class="portfolio-tag">Edukacja</span>
+                            <span class="portfolio-tag">Kalendarz</span>
+                            <span class="portfolio-tag">Rezerwacje</span>
+                            <span class="portfolio-tag">Materiały</span>
                         </div>
-                        <p class="text-amber mt-20"><strong>Wykonano: 2024</strong></p>
+                        
+                        <div class="portfolio-link">
+                            <p><strong>Link:</strong> <a href="https://gitara-bartek.pl" target="_blank">gitara-bartek.pl</a></p>
+                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-50">
+                <p class="mb-30">To tylko wybrane projekty z mojego portfolio. Każda strona jest ręcznie kodowana i dostosowana do potrzeb klienta.</p>
+                <a href="#wycena" class="btn btn-amber">ZAMÓW SWOJĄ STRONĘ</a>
             </div>
         </div>
     </section>
@@ -1379,111 +1444,6 @@
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section id="partnerzy" style="background: rgba(10, 10, 10, 0.8);">
-        <div class="container">
-            <h2 class="section-title">PARTNERZY & WSPÓŁPRACA</h2>
-            
-            <div class="partners-grid">
-                <div class="partner-item">
-                    <div class="partner-icon">🎨</div>
-                    <h4>Adelbertus Shop</h4>
-                    <p>Specjalne podziękowania za profesjonalne grafiki i projekt logo strony.</p>
-                </div>
-                
-                <div class="partner-item">
-                    <div class="partner-icon">⚡</div>
-                    <h4>Vercel</h4>
-                    <p>Za niezawodny hosting i błyskawiczne deploymenty naszych stron.</p>
-                </div>
-                
-                <div class="partner-item">
-                    <div class="partner-icon">🔧</div>
-                    <h4>GitHub</h4>
-                    <p>Za doskonałe narzędzia do version control i współpracy nad kodem.</p>
-                </div>
-                
-                <div class="partner-item">
-                    <div class="partner-icon">🎯</div>
-                    <h4>Zespół OLD SCHOOL</h4>
-                    <p>Dziękuję wszystkim klientom za zaufanie i inspirację.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Regulations Section -->
-    <section id="regulamin">
-        <div class="container">
-            <h2 class="section-title">REGULAMIN & RODO</h2>
-            
-            <div class="retro-box">
-                <h3>§1 Postanowienia ogólne</h3>
-                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nierejestrowana pod nazwą OLD SCHOOL by WWWojtek.</p>
-                
-                <h3>§2 Świadczenie usług</h3>
-                <p>2.1. Usługi obejmują projektowanie i tworzenie stron internetowych, sklepów internetowych oraz landing pages.</p>
-                <p>2.2. Czas realizacji zlecenia uzależniony jest od jego złożoności i jest podany w cenniku.</p>
-                <p>2.3. Płatności realizowane są z góry w formie przelewu bankowego lub BLIK na numer: 573 939 925.</p>
-                
-                <h3>§3 Polityka prywatności RODO</h3>
-                <p>3.1. Administratorem danych jest OLD SCHOOL by WWWojtek.</p>
-                <p>3.2. Dane osobowe przetwarzane są wyłącznie w celu realizacji zleconych usług.</p>
-                <p>3.3. Dane przechowywane są przez okres niezbędny do realizacji usługi i rozliczeń podatkowych.</p>
-                <p>3.4. Klient ma prawo dostępu do swoich danych, ich poprawiania oraz żądania usunięcia.</p>
-                
-                <h3>§4 Prawa autorskie</h3>
-                <p>4.1. Wszystkie prawa autorskie do stworzonych stron internetowych przechodzą na klienta po dokonaniu pełnej zapłaty.</p>
-                <p>4.2. OLD SCHOOL by WWWojtek zastrzega sobie prawo do prezentacji wykonanych projektów w portfolio.</p>
-                
-                <h3>§5 Postanowienia końcowe</h3>
-                <p>5.1. Wszelkie spory rozstrzygane będą polubownie, a w razie konieczności przez właściwy sąd.</p>
-                <p>5.2. Regulamin wchodzi w życie z dniem 01.01.2024 roku.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="kontakt" style="background: rgba(0, 102, 255, 0.05);">
-        <div class="container">
-            <h2 class="section-title">KONTAKT</h2>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="mb-30">Dane kontaktowe</h3>
-                    <p class="mb-20">📧 <strong>frekig52@gmail.com</strong></p>
-                    <p class="mb-20">📱 <strong>604 296 360</strong></p>
-                    <p class="mb-30">💳 <strong>BLIK: 573 939 925</strong></p>
-                    
-                    <p class="mb-30">Godziny pracy: Pon-Pt 9:00-17:00</p>
-                    
-                    <p><em>Odpowiadam na wszystkie wiadomości w ciągu 24h!</em></p>
-                </div>
-                
-                <div class="contact-form">
-                    <h3 class="mb-30">Szybki kontakt</h3>
-                    <form action="mailto:frekig52@gmail.com" method="POST" enctype="text/plain">
-                        <div class="form-group">
-                            <input type="text" name="Imię" placeholder="Twoje imię" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" name="Email" placeholder="Twój email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea name="Wiadomość" rows="4" placeholder="Twoja wiadomość" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-retro" style="width: 100%;">
-                            WYŚLIJ WIADOMOŚĆ
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1612,16 +1572,40 @@
         function getBotResponse(message) {
             const msg = message.toLowerCase();
             
+            if (msg.includes('portfolio') || msg.includes('projekty') || msg.includes('realizacje')) {
+                return 'Mam 6 głównych projektów w portfolio:\n1. Adelbertus Shop - sklep e-commerce\n2. Strona Klaudii - portfolio artystyczne\n3. Strona Rafała - strona programisty\n4. Przewozy Maniek - firma transportowa\n5. Studio Jogi Kasi\n6. Bartek - nauczyciel gitary\n\nWszystkie linki działają!';
+            }
+            
+            if (msg.includes('adelbertus') || msg.includes('sklep')) {
+                return 'Adelbertus Shop to pełnoprawny sklep e-commerce z WooCommerce. Link: www.adelbertusshop.com';
+            }
+            
+            if (msg.includes('klaudia') || msg.includes('art')) {
+                return 'Strona Klaudii to portfolio artystyczne z galerią prac. Link: klaudia-art.pl';
+            }
+            
+            if (msg.includes('rafał') || msg.includes('rafal')) {
+                return 'Strona Rafała to strona programisty z blogiem. Link: rafal-dev.pl';
+            }
+            
+            if (msg.includes('maniek') || msg.includes('przewozy')) {
+                return 'Przewozy Maniek to strona firmy transportowej. Link: przewozymaniek.pl';
+            }
+            
+            if (msg.includes('kasia') || msg.includes('joga')) {
+                return 'Studio Jogi Kasi z harmonogramem zajęć. Link: joga-kasia.pl';
+            }
+            
+            if (msg.includes('bartek') || msg.includes('gitara')) {
+                return 'Bartek - nauczyciel gitary z systemem rezerwacji. Link: gitara-bartek.pl';
+            }
+            
             if (msg.includes('cześć') || msg.includes('witaj') || msg.includes('hej')) {
                 return 'Cześć! Jestem Old School Bot. Jak mogę Ci pomóc?';
             }
             
             if (msg.includes('cena') || msg.includes('koszt') || msg.includes('wycena')) {
                 return 'Ceny zaczynają się od 400 zł za stronę wizytówkę. Dokładna wycena zależy od specyfiki projektu. Wypełnij formularz wyceny!';
-            }
-            
-            if (msg.includes('portfolio') || msg.includes('projekty')) {
-                return 'Możesz zobaczyć moje portfolio przewijając stronę do sekcji "RETRO PORTFOLIO". Znajdziesz tam 6 ostatnich projektów!';
             }
             
             if (msg.includes('kontakt') || msg.includes('email') || msg.includes('telefon')) {
@@ -1636,19 +1620,7 @@
                 return 'Numer BLIK: 573 939 925. W tytule przelewu wpisz: "www" + nazwę projektu.';
             }
             
-            if (msg.includes('strona') || msg.includes('wizytówka')) {
-                return 'Strona wizytówka to 1-3 podstrony z formularzem kontaktowym. Cena 400-900 zł. Idealna dla małych firm!';
-            }
-            
-            if (msg.includes('landing') || msg.includes('lądowanie')) {
-                return 'Landing page to strona konwersyjna skupiona na jednym celu. Cena 600-1200 zł. Perfect dla kampanii!';
-            }
-            
-            if (msg.includes('sklep') || msg.includes('e-commerce')) {
-                return 'Sklep internetowy z pełną funkcjonalnością: płatności, zarządzanie produktami, panel. Cena 2000-4500 zł.';
-            }
-            
-            return 'Mogę Ci pomóc z informacjami o usługach, cenach, portfolio lub kontakcie. O co konkretnie chcesz zapytać?';
+            return 'Mogę Ci pomóc z informacjami o portfolio projektów, cenach, kontakcie lub konkretnych realizacjach. O co konkretnie chcesz zapytać?';
         }
 
         chatbotSend.addEventListener('click', function() {
@@ -1719,7 +1691,7 @@
             }
         });
 
-        // Add scroll animation
+        // Add scroll animation to portfolio items
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1734,8 +1706,8 @@
             });
         }, observerOptions);
 
-        // Observe all service cards and portfolio items
-        document.querySelectorAll('.service-card, .portfolio-item, .stat-item, .partner-item').forEach(item => {
+        // Observe all portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1758,71 +1730,19 @@
         // Start typing effect after loading
         setTimeout(typeWriter, 1500);
 
-        // Add retro sound effect for buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Simple beep sound simulation
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
+        // Add click animation to portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') return;
                 
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 800;
-                oscillator.type = 'square';
-                
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.1);
-            });
-        });
-
-        // Add retro cursor effect
-        const cursor = document.createElement('div');
-        cursor.style.position = 'fixed';
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursor.style.backgroundColor = 'var(--retro-green)';
-        cursor.style.borderRadius = '50%';
-        cursor.style.pointerEvents = 'none';
-        cursor.style.zIndex = '9999';
-        cursor.style.mixBlendMode = 'difference';
-        cursor.style.transition = 'transform 0.1s';
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', function(e) {
-            cursor.style.left = e.pageX - 10 + 'px';
-            cursor.style.top = e.pageY - 10 + 'px';
-        });
-
-        document.addEventListener('mousedown', function() {
-            cursor.style.transform = 'scale(0.5)';
-        });
-
-        document.addEventListener('mouseup', function() {
-            cursor.style.transform = 'scale(1)';
-        });
-
-        // Hide cursor on mobile
-        if ('ontouchstart' in window) {
-            cursor.style.display = 'none';
-        }
-
-        // Add retro terminal effect to code-like elements
-        const codeElements = document.querySelectorAll('code, pre, .terminal');
-        codeElements.forEach(el => {
-            el.addEventListener('click', function() {
-                this.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
+                this.style.transform = 'scale(0.98)';
                 setTimeout(() => {
-                    this.style.backgroundColor = '';
-                }, 300);
+                    this.style.transform = '';
+                }, 200);
             });
         });
 
-        // Add retro system date/time in footer
+        // Add system date/time in footer
         function updateDateTime() {
             const now = new Date();
             const dateTimeStr = now.toLocaleString('pl-PL', {
@@ -1853,119 +1773,26 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Add retro-style konami code easter egg
-        let konamiCode = [];
-        const konamiSequence = [
-            'ArrowUp', 'ArrowUp',
-            'ArrowDown', 'ArrowDown',
-            'ArrowLeft', 'ArrowRight',
-            'ArrowLeft', 'ArrowRight',
-            'b', 'a'
-        ];
-
-        document.addEventListener('keydown', function(e) {
-            konamiCode.push(e.key);
-            if (konamiCode.length > konamiSequence.length) {
-                konamiCode.shift();
-            }
+        // Add portfolio counter
+        function updatePortfolioCounter() {
+            const counter = document.createElement('div');
+            counter.style.position = 'fixed';
+            counter.style.bottom = '100px';
+            counter.style.right = '20px';
+            counter.style.background = 'var(--retro-black)';
+            counter.style.border = '2px solid var(--retro-green)';
+            counter.style.padding = '10px';
+            counter.style.fontSize = '0.9rem';
+            counter.style.zIndex = '999';
+            counter.textContent = 'Portfolio: 6 projektów';
+            counter.id = 'portfolioCounter';
             
-            if (konamiCode.join(',') === konamiSequence.join(',')) {
-                document.body.style.animation = 'rainbow 2s infinite';
-                setTimeout(() => {
-                    document.body.style.animation = '';
-                }, 5000);
-                
-                // Add rainbow animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes rainbow {
-                        0% { filter: hue-rotate(0deg); }
-                        100% { filter: hue-rotate(360deg); }
-                    }
-                `;
-                document.head.appendChild(style);
-                
-                konamiCode = [];
-            }
-        });
-
-        // Add retro screen saver effect
-        let idleTime = 0;
-        const idleInterval = setInterval(timerIncrement, 1000);
-
-        function timerIncrement() {
-            idleTime++;
-            if (idleTime > 300) { // 5 minutes
-                document.body.style.filter = 'brightness(0.5)';
+            if (!document.getElementById('portfolioCounter')) {
+                document.body.appendChild(counter);
             }
         }
 
-        document.addEventListener('mousemove', resetIdleTime);
-        document.addEventListener('keypress', resetIdleTime);
-
-        function resetIdleTime() {
-            idleTime = 0;
-            document.body.style.filter = '';
-        }
-
-        // Performance optimization: Lazy load images
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        });
-
-        // Add retro error messages for fun
-        const errorMessages = [
-            "SYNTAX ERROR IN LINE 42",
-            "MEMORY ALLOCATION FAILED",
-            "STACK OVERFLOW DETECTED",
-            "404: COFFEE NOT FOUND",
-            "RETRO MODE ACTIVATED",
-            "PIXELS: OPTIMIZED",
-            "BYTES: COMPRESSED",
-            "CODE: COMPILED"
-        ];
-
-        setInterval(() => {
-            if (Math.random() > 0.98) {
-                const errorDiv = document.createElement('div');
-                errorDiv.style.position = 'fixed';
-                errorDiv.style.top = Math.random() * window.innerHeight + 'px';
-                errorDiv.style.left = Math.random() * window.innerWidth + 'px';
-                errorDiv.style.color = 'var(--retro-red)';
-                errorDiv.style.fontFamily = "'VT323', monospace";
-                errorDiv.style.fontSize = '0.8rem';
-                errorDiv.style.opacity = '0';
-                errorDiv.style.transition = 'opacity 0.5s';
-                errorDiv.textContent = errorMessages[Math.floor(Math.random() * errorMessages.length)];
-                errorDiv.style.zIndex = '10000';
-                errorDiv.style.pointerEvents = 'none';
-                document.body.appendChild(errorDiv);
-                
-                setTimeout(() => {
-                    errorDiv.style.opacity = '1';
-                }, 10);
-                
-                setTimeout(() => {
-                    errorDiv.style.opacity = '0';
-                    setTimeout(() => {
-                        document.body.removeChild(errorDiv);
-                    }, 500);
-                }, 2000);
-            }
-        }, 3000);
+        setTimeout(updatePortfolioCounter, 2000);
     </script>
 </body>
 </html>
-
