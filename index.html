@@ -2,1439 +2,951 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="OldSchool by WWWojtek - Ręcznie kodowane strony internetowe w stylu retro. Strony wizytówki, landing pages, sklepy internetowe z unikalnym designem lat 80-90.">
-    <meta name="keywords" content="strony internetowe, retro design, oldschool, vintage, ręczne kodowanie, HTML, CSS, JavaScript, portfolio, Adelbertus Shop, Klaudia, Rafał, Przewozy Maniek">
+    <meta name="description" content="OldSchool by WWWojtek - ręcznie kodowane strony internetowe w retro stylu lat 80/90. Strony wizytówki, landing pages, sklepy e-commerce. Darmowa wycena w 24h.">
+    <meta name="keywords" content="strona internetowa, retro design, vintage, old school, kodowanie ręczne, HTML, CSS, JavaScript, strona wizytówka, landing page, sklep internetowy">
     <meta name="author" content="OldSchool by WWWojtek">
-    <title>OldSchool by WWWojtek - Ręcznie kodowane strony w stylu retro</title>
+    <title>OldSchool by WWWojtek - Ręcznie kodowane strony w retro stylu</title>
     
-    <!-- Retro Fonts -->
+    <!-- Retro Czcionki -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=VT323&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon Retro -->
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/cWkfhWg/Screenshot-2025-11-16-15-26-54.png">
+    
+    <!-- OldSchool CSS -->
+    <link rel="stylesheet" href="oldschool.css">
     
     <style>
-        /* ===== RESET & BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --retro-black: #0a0a0a;
-            --retro-green: #00ff41;
-            --retro-green-dark: #00cc33;
-            --retro-amber: #ff9900;
-            --retro-amber-dark: #cc7a00;
-            --retro-blue: #0066ff;
-            --retro-blue-dark: #0052cc;
-            --retro-gray: #333333;
-            --retro-gray-light: #666666;
-            --retro-beige: #f5f5dc;
-            --retro-beige-dark: #e6e6c9;
-            --retro-red: #ff3333;
-            --retro-red-dark: #cc0000;
-            --retro-purple: #9933ff;
-            --retro-teal: #00cccc;
-            --crt-brightness: 1.1;
-            --crt-contrast: 1.2;
-            --scanline-opacity: 0.03;
-        }
-
-        body {
-            font-family: 'IBM Plex Mono', monospace;
-            background-color: var(--retro-black);
-            color: var(--retro-green);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* ===== CRT EFFECTS ===== */
-        .crt::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 9999;
-            animation: flicker 0.15s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.97; }
-            50% { opacity: 1; }
-            100% { opacity: 0.99; }
-        }
-
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-
-        .glitch::before {
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-            color: var(--retro-red);
-            z-index: -1;
-        }
-
-        .glitch::after {
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
-            color: var(--retro-blue);
-            z-index: -2;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(42px, 9999px, 44px, 0); }
-            5% { clip: rect(12px, 9999px, 59px, 0); }
-            10% { clip: rect(48px, 9999px, 29px, 0); }
-            15% { clip: rect(42px, 9999px, 73px, 0); }
-            20% { clip: rect(63px, 9999px, 27px, 0); }
-            25% { clip: rect(34px, 9999px, 55px, 0); }
-            30% { clip: rect(86px, 9999px, 73px, 0); }
-            35% { clip: rect(20px, 9999px, 20px, 0); }
-            40% { clip: rect(26px, 9999px, 60px, 0); }
-            45% { clip: rect(25px, 9999px, 66px, 0); }
-            50% { clip: rect(57px, 9999px, 98px, 0); }
-            55% { clip: rect(5px, 9999px, 46px, 0); }
-            60% { clip: rect(82px, 9999px, 31px, 0); }
-            65% { clip: rect(54px, 9999px, 27px, 0); }
-            70% { clip: rect(28px, 9999px, 99px, 0); }
-            75% { clip: rect(45px, 9999px, 69px, 0); }
-            80% { clip: rect(23px, 9999px, 85px, 0); }
-            85% { clip: rect(54px, 9999px, 84px, 0); }
-            90% { clip: rect(45px, 9999px, 47px, 0); }
-            95% { clip: rect(37px, 9999px, 20px, 0); }
-            100% { clip: rect(4px, 9999px, 91px, 0); }
-        }
-
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(40px, 9999px, 86px, 0); }
-            95% { clip: rect(45px, 9999px, 72px, 0); }
-            100% { clip: rect(23px, 9999px, 49px, 0); }
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Press Start 2P', cursive;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--retro-amber);
+        /* Dodatkowe style inline dla kompatybilności */
+        .hidden { display: none; }
+        .visible { display: block; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Przyciski Retro */
+        .btn {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border: 2px solid var(--vintage-bronze);
+            background: var(--vintage-dark);
+            color: var(--vintage-gold);
+            cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--retro-green);
-            border-bottom: 2px solid var(--retro-green);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            color: var(--retro-blue);
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        a {
-            color: var(--retro-green);
-            text-decoration: none;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            border-bottom: 1px dotted var(--retro-green);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
-
-        a:hover {
-            color: var(--retro-amber);
-            border-bottom: 1px solid var(--retro-amber);
+        
+        .btn:hover {
+            background: var(--vintage-bronze);
+            color: var(--vintage-dark);
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0 var(--vintage-charcoal);
         }
-
-        /* ===== LAYOUT & CONTAINERS ===== */
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--vintage-gold), var(--vintage-bronze));
+            color: var(--vintage-dark);
+            font-weight: bold;
+        }
+        
+        .btn-vintage {
+            background: transparent;
+            border-color: var(--vintage-rust);
+            color: var(--vintage-rust);
+        }
+        
+        /* Grid Layout */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--retro-green);
-            margin: 20px auto;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* ===== RETRO BORDERS & BOXES ===== */
-        .retro-border {
-            border: 2px solid var(--retro-green);
-            background: rgba(0, 255, 65, 0.05);
-            position: relative;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .retro-border::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 1px solid var(--retro-amber);
-            z-index: -1;
-        }
-
-        .retro-box {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .retro-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, 
-                var(--retro-green), 
-                var(--retro-blue), 
-                var(--retro-amber));
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            border: 2px solid;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .btn-retro {
-            color: var(--retro-green);
-            border-color: var(--retro-green);
-        }
-
-        .btn-retro:hover {
-            color: var(--retro-black);
-            background: var(--retro-green);
-            box-shadow: 0 0 20px var(--retro-green);
-        }
-
-        .btn-amber {
-            color: var(--retro-amber);
-            border-color: var(--retro-amber);
-        }
-
-        .btn-amber:hover {
-            color: var(--retro-black);
-            background: var(--retro-amber);
-            box-shadow: 0 0 20px var(--retro-amber);
-        }
-
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 2px solid var(--retro-green);
-            z-index: 1000;
-            padding: 15px 0;
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.5rem;
-            color: var(--retro-green);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1rem;
-            padding: 5px 10px;
-            border: 1px solid transparent;
-        }
-
-        .nav-links a:hover {
-            border: 1px solid var(--retro-green);
-            background: rgba(0, 255, 65, 0.1);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--retro-green);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 153, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 40px;
-            background: rgba(10, 10, 10, 0.8);
-            border: 3px solid var(--retro-green);
-            position: relative;
-        }
-
-        .hero-content::before {
-            content: '>>> ';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            color: var(--retro-green);
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            animation: typing 3s steps(40) infinite;
-        }
-
-        @keyframes typing {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        .hero h1 {
-            margin-bottom: 20px;
-            font-size: 3rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--retro-amber);
-            margin-bottom: 30px;
-            font-family: 'VT323', monospace;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            border-color: var(--retro-green);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
-        }
-
-        .service-card::before {
-            content: '💾';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            opacity: 0.2;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .service-price {
-            color: var(--retro-amber);
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--retro-gray-light);
-        }
-
-        /* ===== PORTFOLIO SECTION ===== */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .portfolio-item {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-item:hover {
-            border-color: var(--retro-amber);
-            transform: translateY(-5px);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--retro-gray), var(--retro-black));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--retro-green);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 255, 65, 0.1) 50%, 
-                transparent 100%);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .portfolio-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 15px 0;
-        }
-
-        .portfolio-tag {
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--retro-green);
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            border: 1px solid var(--retro-green);
-        }
-
-        .portfolio-link {
-            margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px dashed var(--retro-gray-light);
-        }
-
-        /* ===== CONTACT & QUOTE FORM ===== */
+        
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
-
-        .contact-info {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-blue);
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
-        .blik-info {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-amber);
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .blik-number {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.5rem;
-            color: var(--retro-amber);
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(255, 153, 0, 0.1);
-            border: 1px dashed var(--retro-amber);
-        }
-
-        .contact-form {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-green);
-        }
-
+        
+        /* Formularz Retro */
         .form-group {
             margin-bottom: 20px;
         }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: var(--retro-green);
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            color: var(--vintage-charcoal);
         }
-
+        
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--retro-gray-light);
-            color: var(--retro-green);
+            border: 2px solid var(--vintage-bronze);
+            background: var(--vintage-cream);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-
+        
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--retro-green);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+            border-color: var(--vintage-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
         }
-
+        
         .service-option {
-            margin: 10px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            margin-bottom: 8px;
         }
-
-        .service-option input[type="checkbox"] {
+        
+        .service-option input {
             width: auto;
-            accent-color: var(--retro-green);
+            margin-right: 10px;
         }
-
-        /* ===== STATS SECTION ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+        
+        /* BLIK Info */
+        .blik-info {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 115, 85, 0.1));
+            padding: 20px;
             text-align: center;
-            margin-top: 50px;
+            margin-bottom: 30px;
         }
-
-        .stat-item {
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            transition: all 0.3s ease;
+        
+        .blik-number {
+            font-family: 'VT323', monospace;
+            font-size: 2rem;
+            color: var(--vintage-rust);
+            background: var(--vintage-dark);
+            padding: 10px 20px;
+            display: inline-block;
+            margin: 10px 0;
+            letter-spacing: 2px;
         }
-
-        .stat-item:hover {
-            border-color: var(--retro-blue);
+        
+        /* Prezentacja Grid */
+        .prezentacja-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .prezentacja-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .prezentacja-item {
+            background: white;
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .prezentacja-item:hover {
             transform: translateY(-5px);
         }
-
-        .stat-number {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.5rem;
-            color: var(--retro-amber);
-            margin-bottom: 10px;
-        }
-
-        /* ===== PROCESS SECTION ===== */
-        .process-steps {
-            max-width: 800px;
-            margin: 50px auto 0;
-        }
-
-        .process-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(10, 10, 10, 0.7);
-            border-left: 4px solid var(--retro-green);
-        }
-
-        .step-number {
-            background: var(--retro-green);
-            color: var(--retro-black);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        /* ===== PARTNERS SECTION ===== */
-        .partners-grid {
+        
+        /* Partner Grid */
+        .partner-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
-
+        
         .partner-item {
-            text-align: center;
-            padding: 30px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid var(--retro-gray-light);
-            transition: all 0.3s ease;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
         }
-
-        .partner-item:hover {
-            border-color: var(--retro-amber);
-        }
-
+        
         .partner-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
-
-        /* ===== FOOTER ===== */
+        
+        /* Statystyki */
+        .stat-item {
+            padding: 20px;
+        }
+        
+        /* Footer */
         footer {
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 2px solid var(--retro-green);
+            background: var(--vintage-charcoal);
+            color: var(--vintage-beige);
             padding: 40px 0;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 60px;
         }
-
+        
         .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
+            margin-top: 20px;
         }
-
-        /* ===== CHATBOT ===== */
-        .chatbot-container {
+        
+        .footer-links a {
+            color: var(--vintage-gold);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Chatbot Retro */
+        #chatbot-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
         }
-
-        .chatbot-button {
+        
+        #chatbot-button {
             width: 60px;
             height: 60px;
-            background: var(--retro-green);
-            color: var(--retro-black);
+            background: var(--vintage-rust);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-            animation: pulse-chat 2s infinite;
-            border: 2px solid var(--retro-black);
+            box-shadow: 4px 4px 0 var(--vintage-charcoal);
+            transition: all 0.3s ease;
         }
-
-        @keyframes pulse-chat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        
+        #chatbot-button:hover {
+            transform: scale(1.1);
         }
-
-        .chatbot-box {
+        
+        #chatbot-box {
+            display: none;
             position: absolute;
             bottom: 70px;
             right: 0;
             width: 350px;
-            background: rgba(10, 10, 10, 0.95);
-            border: 2px solid var(--retro-green);
-            display: none;
+            height: 500px;
+            background: var(--vintage-paper);
+            border: 3px solid var(--vintage-bronze);
+            box-shadow: 8px 8px 0 var(--vintage-charcoal);
             flex-direction: column;
-            max-height: 500px;
-            backdrop-filter: blur(10px);
         }
-
-        .chatbot-header {
-            background: var(--retro-green);
-            color: var(--retro-black);
+        
+        @media (max-width: 480px) {
+            #chatbot-box {
+                width: calc(100vw - 40px);
+                right: -20px;
+            }
+        }
+        
+        #chatbot-header {
+            background: var(--vintage-charcoal);
+            color: var(--vintage-gold);
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
         }
-
-        .chatbot-close {
+        
+        #chatbot-close {
             background: none;
             border: none;
-            color: var(--retro-black);
-            font-size: 1.2rem;
+            color: var(--vintage-gold);
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 0;
         }
-
-        .chatbot-messages {
+        
+        #chatbot-messages {
             flex: 1;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
-            max-height: 300px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
         }
-
+        
         .message {
             margin-bottom: 15px;
             padding: 10px;
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--retro-green);
-            font-size: 0.9rem;
+            background: rgba(139, 115, 85, 0.1);
+            border-left: 3px solid var(--vintage-bronze);
         }
-
+        
         .message-user {
-            background: rgba(0, 102, 255, 0.1);
-            border-color: var(--retro-blue);
-            margin-left: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--vintage-gold);
         }
-
-        .chatbot-input-area {
+        
+        #chatbot-input-area {
             display: flex;
             padding: 15px;
-            border-top: 1px solid var(--retro-gray-light);
+            border-top: 2px solid var(--vintage-bronze);
         }
-
-        .chatbot-input {
+        
+        #chatbot-input {
             flex: 1;
             padding: 10px;
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--retro-gray-light);
-            color: var(--retro-green);
+            border: 2px solid var(--vintage-bronze);
+            background: var(--vintage-cream);
             font-family: 'IBM Plex Mono', monospace;
         }
-
-        .chatbot-send {
-            background: var(--retro-green);
-            color: var(--retro-black);
+        
+        #chatbot-send {
+            background: var(--vintage-bronze);
+            color: white;
             border: none;
             padding: 0 20px;
             cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
         }
-
-        /* ===== MODAL ===== */
-        .modal {
+        
+        /* Modal Retro */
+        #demoModal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
-
-        .modal-content {
-            background: var(--retro-black);
-            border: 3px solid var(--retro-green);
-            padding: 30px;
+        
+        /* Nowy formularz kontaktowy */
+        .contact-form-simple {
             max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-form-simple input,
+        .contact-form-simple textarea {
             width: 100%;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid var(--vintage-bronze);
+            background: var(--vintage-cream);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
         }
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: var(--retro-green);
-            font-size: 1.5rem;
-            cursor: pointer;
+        
+        .contact-form-simple button {
+            width: 100%;
         }
-
-        /* ===== RESPONSIVE DESIGN ===== */
+        
+        /* Nagłówek */
+        header {
+            background: var(--vintage-charcoal);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--vintage-gold);
+        }
+        
+        .logo {
+            font-family: 'VT323', monospace;
+            font-size: 2rem;
+            color: var(--vintage-gold);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--vintage-rust);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--vintage-beige);
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--vintage-gold);
+        }
+        
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.2rem; }
-            
-            .hero h1 { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.2rem; }
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
             
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(10, 10, 10, 0.98);
-                flex-direction: column;
-                padding: 20px;
-                border-top: 2px solid var(--retro-green);
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--vintage-paper) 0%, var(--vintage-cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--vintage-bronze);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .chatbot-box {
-                width: 300px;
-                right: -10px;
-            }
-            
-            .portfolio-grid,
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
         }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .hero-content {
-                padding: 20px;
-                margin: 0 10px;
-            }
-            
-            .chatbot-box {
-                width: calc(100vw - 40px);
-                right: 10px;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
+        
+        /* Sekcje ogólne */
+        section {
+            padding: 80px 0;
         }
-
-        /* ===== UTILITY CLASSES ===== */
-        .text-center { text-align: center; }
-        .text-amber { color: var(--retro-amber); }
-        .text-green { color: var(--retro-green); }
-        .text-blue { color: var(--retro-blue); }
-        .mb-20 { margin-bottom: 20px; }
-        .mb-30 { margin-bottom: 30px; }
-        .mb-50 { margin-bottom: 50px; }
-        .mt-20 { margin-top: 20px; }
-        .mt-30 { margin-top: 30px; }
-        .mt-50 { margin-top: 50px; }
-        .hidden { display: none; }
-        .visible { display: block; }
-
-        /* ===== LOADING ANIMATION ===== */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--retro-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+        
+        /* Usługi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-
-        .loading-content {
+        
+        .service-item {
+            padding: 30px;
             text-align: center;
         }
-
-        .loading-text {
-            font-family: 'VT323', monospace;
-            font-size: 2rem;
-            color: var(--retro-green);
+        
+        .service-icon {
+            font-size: 3rem;
             margin-bottom: 20px;
         }
-
-        .loading-bar {
-            width: 300px;
-            height: 4px;
-            background: var(--retro-gray);
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .portfolio-item {
             position: relative;
             overflow: hidden;
         }
-
-        .loading-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
+        
+        .portfolio-item img {
             width: 100%;
-            background: var(--retro-green);
-            animation: loading 2s ease-in-out infinite;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
         }
-
-        /* ===== PRINT STYLES ===== */
-        @media print {
-            .chatbot-container,
-            .mobile-menu-btn,
-            .hero-buttons {
-                display: none !important;
-            }
-            
-            body {
-                color: #000;
-                background: #fff;
-            }
-            
-            .retro-border,
-            .retro-box {
-                border: 1px solid #000;
-                background: none;
-            }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.9);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
-
-        /* ===== PROJECT COLORS ===== */
-        .adelbertus { border-color: var(--retro-purple); }
-        .adelbertus .portfolio-image { background: linear-gradient(45deg, #4B0082, #8A2BE2); }
         
-        .klaudia { border-color: var(--retro-red); }
-        .klaudia .portfolio-image { background: linear-gradient(45deg, #8B0000, #FF4500); }
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
         
-        .rafal { border-color: var(--retro-teal); }
-        .rafal .portfolio-image { background: linear-gradient(45deg, #008080, #20B2AA); }
+        /* Cennik */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
         
-        .maniek { border-color: var(--retro-amber); }
-        .maniek .portfolio-image { background: linear-gradient(45deg, #FF8C00, #FFD700); }
+        .pricing-table {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
         
-        .kasia { border-color: var(--retro-blue); }
-        .kasia .portfolio-image { background: linear-gradient(45deg, #00008B, #4169E1); }
+        .price {
+            font-family: 'VT323', monospace;
+            font-size: 2.5rem;
+            color: var(--vintage-rust);
+            margin: 20px 0;
+        }
         
-        .bartek { border-color: var(--retro-green); }
-        .bartek .portfolio-image { background: linear-gradient(45deg, #006400, #32CD32); }
+        .price-period {
+            font-size: 0.9rem;
+            color: var(--vintage-bronze);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+        }
+        
+        /* Regulamin */
+        .regulamin-content {
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .regulamin-content h3 {
+            color: var(--vintage-rust);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .regulamin-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
     </style>
 </head>
-<body class="crt">
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loading-content">
-            <div class="loading-text">LOADING OLDSCHOOL.EXE...</div>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-icon">💾</span>
-                <span>OLDSCHOOL.WWW</span>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">START</a></li>
-                <li><a href="#uslugi">USŁUGI</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#wycena">WYCENA</a></li>
-                <li><a href="#proces">PROCES</a></li>
-                <li><a href="#kontakt">KONTAKT</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
+<body>
+    <!-- HEADER -->
+    <header>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="glitch" data-text="OLDSCHOOL BY WWWojtek">OLDSCHOOL BY WWWojtek</h1>
-                <p class="hero-subtitle">Ręcznie kodowane strony internetowe w stylu retro</p>
-                <p class="mb-30">Tworzę unikalne, szybkie i funkcjonalne strony internetowe z charakterem lat 80-90. Zero szablonów, tylko ręczne kodowanie z duszą.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-retro">ZOBACZ PORTFOLIO</a>
-                    <a href="#wycena" class="btn btn-amber">ZAMÓW WYCENĘ</a>
+            <nav>
+                <a href="#" class="logo">OLD<span>SCHOOL</span>.dev</a>
+                <div class="nav-links">
+                    <a href="#uslugi">Usługi</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#cennik">Cennik</a>
+                    <a href="#kontakt">Kontakt</a>
+                    <a href="#regulamin">Regulamin</a>
                 </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="glitch-text">OLD SCHOOL CODING</h1>
+            <p>Ręcznie kodowane strony internetowe w stylu retro lat 80/90. Bez szablonów, bez pośpiechu - tylko ręczna praca z duszą.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-gold">ZOBACZ PORTFOLIO</a>
+                <a href="#kontakt" class="btn btn-vintage">DARMOWA WYCENA</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="uslugi">
+    <!-- USŁUGI -->
+    <section id="uslugi" style="background: var(--vintage-paper);">
         <div class="container">
-            <h2 class="section-title">USŁUGI RETRO WEB-DEV</h2>
-            
+            <h2 class="section-title">USŁUGI OLD SCHOOL</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3>Strona Wizytówka</h3>
-                    <p>Profesjonalna wizytówka Twojej firmy w sieci. 1-3 podstrony, formularz kontaktowy, pełna responsywność.</p>
-                    <div class="service-price">400 - 900 zł</div>
+                <div class="service-item vintage-border">
+                    <div class="service-icon">🏢</div>
+                    <h3>Strony Wizytówki</h3>
+                    <p>Profesjonalne wizytówki firmowe z ręcznie pisanym kodem. Responsywne, szybkie, zoptymalizowane pod SEO.</p>
+                    <div class="price">400-900 zł</div>
                 </div>
-                
-                <div class="service-card">
+                <div class="service-item vintage-border">
                     <div class="service-icon">🚀</div>
-                    <h3>Landing Page</h3>
-                    <p>Strona konwersyjna skupiona na jednym celu. Idealna dla kampanii marketingowych i promocji produktów.</p>
-                    <div class="service-price">600 - 1200 zł</div>
+                    <h3>Landing Pages</h3>
+                    <p>Strony konwersyjne skupione na jednym celu. Optymalizacja pod lead generation i sprzedaż.</p>
+                    <div class="price">600-1200 zł</div>
                 </div>
-                
-                <div class="service-card">
+                <div class="service-item vintage-border">
                     <div class="service-icon">🛒</div>
-                    <h3>Sklep Internetowy</h3>
-                    <p>Pełnoprawny sklep e-commerce z systemem płatności, zarządzaniem produktami i zamówieniami.</p>
-                    <div class="service-price">2000 - 4500 zł</div>
+                    <h3>Sklepy Internetowe</h3>
+                    <p>Pełnoprawne e-commerce z systemem płatności, zarządzaniem produktami i panelem admina.</p>
+                    <div class="price">2000-4500 zł</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section - ORYGINALNE PROJEKTY -->
-    <section id="portfolio" style="background: rgba(10, 10, 10, 0.7);">
+    <!-- PORTFOLIO -->
+    <section id="portfolio" style="background: var(--vintage-cream);">
         <div class="container">
-            <h2 class="section-title">RETRO PORTFOLIO - MOJE REALIZACJE</h2>
-            
+            <h2 class="section-title">RETRO PORTFOLIO</h2>
             <div class="portfolio-grid">
-                <!-- Adelbertus Shop - ORYGINAŁ -->
-                <div class="portfolio-item adelbertus">
-                    <div class="portfolio-image">🛒</div>
-                    <div class="portfolio-content">
-                        <h3>Adelbertus Shop</h3>
-                        <p class="mb-20">Pełnoprawny sklep internetowy dla marki odzieżowej z systemem zamówień, płatności online i panelem administracyjnym.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Sklep E-commerce</span>
-                            <span class="portfolio-tag">WooCommerce</span>
-                            <span class="portfolio-tag">Responsive</span>
-                            <span class="portfolio-tag">Płatności Online</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://www.adelbertusshop.com" target="_blank">www.adelbertusshop.com</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
-                        </div>
+                <div class="portfolio-item vintage-border">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Strona wizytówka dla Klaudii - projekt retro" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Strona Klaudii</h3>
+                        <p>Wizytówka w stylu retro z animacjami CRT</p>
                     </div>
                 </div>
-                
-                <!-- Strona Klaudii - ORYGINAŁ -->
-                <div class="portfolio-item klaudia">
-                    <div class="portfolio-image">👩‍🎨</div>
-                    <div class="portfolio-content">
-                        <h3>Portfolio Klaudii</h3>
-                        <p class="mb-20">Elegancka strona portfolio dla artystki wizualnej z galerią prac, systemem kategorii i formularzem kontaktowym.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Portfolio Artystyczne</span>
-                            <span class="portfolio-tag">Galeria</span>
-                            <span class="portfolio-tag">Lightbox</span>
-                            <span class="portfolio-tag">CSS Grid</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://klaudia-art.pl" target="_blank">klaudia-art.pl</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2023</strong></p>
-                        </div>
+                <div class="portfolio-item vintage-border">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Landing page dla startupu - design lat 90" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Startup Landing</h3>
+                        <p>Strona konwersyjna z efektami glitch</p>
                     </div>
                 </div>
-                
-                <!-- Strona Rafała - ORYGINAŁ -->
-                <div class="portfolio-item rafal">
-                    <div class="portfolio-image">👨‍💻</div>
-                    <div class="portfolio-content">
-                        <h3>Strona Firmowa Rafała</h3>
-                        <p class="mb-20">Profesjonalna strona wizytówka dla programisty z portfolio projektów, blogiem technicznym i systemem komentarzy.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Strona Firmowa</span>
-                            <span class="portfolio-tag">Blog</span>
-                            <span class="portfolio-tag">PHP</span>
-                            <span class="portfolio-tag">MySQL</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://rafal-dev.pl" target="_blank">rafal-dev.pl</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
-                        </div>
+                <div class="portfolio-item vintage-border">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sklep internetowy vintage - e-commerce retro" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Sklep Retro</h3>
+                        <p>E-commerce z vintage designem</p>
                     </div>
                 </div>
-                
-                <!-- Przewozy Maniek - ORYGINAŁ -->
-                <div class="portfolio-item maniek">
-                    <div class="portfolio-image">🚐</div>
-                    <div class="portfolio-content">
-                        <h3>Przewozy Maniek</h3>
-                        <p class="mb-20">Strona firmy transportowej z systemem rezerwacji online, kalkulatorem tras i integracją z mapami Google.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Transport</span>
-                            <span class="portfolio-tag">Rezerwacje Online</span>
-                            <span class="portfolio-tag">Google Maps API</span>
-                            <span class="portfolio-tag">Formularz</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://przewozymaniek.pl" target="_blank">przewozymaniek.pl</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Strona Kasi - ORYGINAŁ -->
-                <div class="portfolio-item kasia">
-                    <div class="portfolio-image">🧘‍♀️</div>
-                    <div class="portfolio-content">
-                        <h3>Studio Jogi Kasi</h3>
-                        <p class="mb-20">Strona studia jogi z harmonogramem zajęć, systemem rezerwacji miejsc i sklepem z akcesoriami do jogi.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Joga</span>
-                            <span class="portfolio-tag">Harmonogram</span>
-                            <span class="portfolio-tag">Rezerwacje</span>
-                            <span class="portfolio-tag">Sklep</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://joga-kasia.pl" target="_blank">joga-kasia.pl</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Strona Bartka - ORYGINAŁ -->
-                <div class="portfolio-item bartek">
-                    <div class="portfolio-image">🎸</div>
-                    <div class="portfolio-content">
-                        <h3>Bartek - Nauczyciel Gitary</h3>
-                        <p class="mb-20">Strona nauczyciela gry na gitarze z kalendarzem dostępności, systemem rezerwacji lekcji i materiałami dla uczniów.</p>
-                        
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Edukacja</span>
-                            <span class="portfolio-tag">Kalendarz</span>
-                            <span class="portfolio-tag">Rezerwacje</span>
-                            <span class="portfolio-tag">Materiały</span>
-                        </div>
-                        
-                        <div class="portfolio-link">
-                            <p><strong>Link:</strong> <a href="https://gitara-bartek.pl" target="_blank">gitara-bartek.pl</a></p>
-                            <p class="text-amber mt-10"><strong>Wykonano: 2024</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-50">
-                <p class="mb-30">To tylko wybrane projekty z mojego portfolio. Każda strona jest ręcznie kodowana i dostosowana do potrzeb klienta.</p>
-                <a href="#wycena" class="btn btn-amber">ZAMÓW SWOJĄ STRONĘ</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Quote Section -->
-    <section id="wycena">
+    <!-- CENNIK -->
+    <section id="cennik" style="background: var(--vintage-paper);">
+        <div class="container">
+            <h2 class="section-title">CENNIK RETRO</h2>
+            <div class="pricing-grid">
+                <div class="pricing-table vintage-border">
+                    <h3>BASIC</h3>
+                    <div class="price">400 zł</div>
+                    <div class="price-period">jednorazowo</div>
+                    <ul class="pricing-features">
+                        <li>1 podstrona</li>
+                        <li>Responsywność</li>
+                        <li>Formularz kontaktowy</li>
+                        <li>Optymalizacja SEO</li>
+                        <li>Wdrożenie na serwer</li>
+                    </ul>
+                    <a href="#kontakt" class="btn btn-vintage">ZAMÓW</a>
+                </div>
+                <div class="pricing-table vintage-border">
+                    <h3>PRO</h3>
+                    <div class="price">800 zł</div>
+                    <div class="price-period">jednorazowo</div>
+                    <ul class="pricing-features">
+                        <li>3-5 podstron</li>
+                        <li>Zaawansowane animacje</li>
+                        <li>Integracja z social media</li>
+                        <li>Google Analytics</li>
+                        <li>Szkolenie z obsługi</li>
+                    </ul>
+                    <a href="#kontakt" class="btn btn-gold">ZAMÓW</a>
+                </div>
+                <div class="pricing-table vintage-border">
+                    <h3>PREMIUM</h3>
+                    <div class="price">1500+ zł</div>
+                    <div class="price-period">indywidualna wycena</div>
+                    <ul class="pricing-features">
+                        <li>Nielimitowana liczba podstron</li>
+                        <li>Sklep internetowy</li>
+                        <li>System płatności online</li>
+                        <li>Panel administracyjny</li>
+                        <li>Wsparcie techniczne 24/7</li>
+                    </ul>
+                    <a href="#kontakt" class="btn btn-vintage">ZAPYTAJ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT & WYCENA -->
+    <section id="kontakt">
         <div class="container">
             <h2 class="section-title">WYCENA PROJEKTU</h2>
-            
-            <!-- BLIK Info -->
-            <div class="blik-info">
-                <h3 class="text-center mb-20">💳 Płatność BLIK</h3>
+
+            <!-- DODANE: INFORMACJA O BLIK -->
+            <div class="blik-info vintage-border">
+                <h3>💳 Płatność BLIK</h3>
                 <div class="blik-number">573 939 925</div>
-                <p class="text-center mt-20">
+                <p>
                     <strong>W tytule przelewu wpisz: "www" + nazwę projektu</strong><br>
                     <em>Przykład: "www strona firmowa"</em>
                 </p>
             </div>
-            
+
             <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="mb-30">OldSchool by WWWojtek</h3>
-                    <p class="mb-30">Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
+                <div class="contact-info vintage-border">
+                    <h3 class="font-serif">OldSchool by WWWojtek</h3>
+                    <p>Masz pomysł? Wyślij zapytanie o wycenę — przygotuję ofertę w 24h!</p>
                     
-                    <div class="mb-30">
+                    <div>
                         <p>📧 <strong>frekig52@gmail.com</strong></p>
                         <p>📱 <strong>604 296 360</strong></p>
                     </div>
                     
-                    <p class="mb-30"><em>Bezpłatna wycena każdego projektu</em></p>
+                    <p>
+                        <em>Bezpłatna wycena każdego projektu</em>
+                    </p>
                     
-                    <button onclick="sendEmail()" class="btn btn-retro" style="width: 100%;">
+                    <button onclick="sendQuickEmail()" class="btn btn-gold">
                         WYŚLIJ EMAIL
                     </button>
                 </div>
                 
-                <div class="contact-form">
-                    <h3 class="mb-30">Formularz Wyceny</h3>
-                    <form id="quoteForm" action="mailto:frekig52@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm()">
-                        <div class="form-group">
-                            <label for="name">Imię i Nazwisko:</label>
-                            <input type="text" id="name" name="Imię" placeholder="Twoje imię" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="Email" placeholder="Twój email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Telefon:</label>
-                            <input type="tel" id="phone" name="Telefon" placeholder="Twój numer telefonu">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Jakiej strony potrzebujesz?</label>
-                            <div class="service-option">
-                                <input type="checkbox" id="service1" name="Usługa" value="Strona Wizytówka">
-                                <label for="service1">Strona Wizytówka (400-900 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service2" name="Usługa" value="Landing Page">
-                                <label for="service2">Landing Page (600-1200 zł)</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service3" name="Usługa" value="Sklep Internetowy">
-                                <label for="service3">Sklep Internetowy (2000-4500 zł)</label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description">Opis projektu:</label>
-                            <textarea id="description" name="Wiadomość" rows="4" placeholder="Opisz czego potrzebujesz, cel strony, grupa docelowa..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-amber" style="width: 100%;">
-                            WYŚLIJ ZAPYTANIE O WYCENĘ
-                        </button>
+                <div class="contact-form vintage-border">
+                    <h3 class="font-serif">Formularz Kontaktowy</h3>
+                    <!-- POPRAWIONY FORMULARZ -->
+                    <form action="mailto:frekig52@gmail.com" method="POST" enctype="text/plain" class="contact-form-simple">
+                        <input type="text" name="Imię" placeholder="Twoje imię" required>
+                        <input type="email" name="Email" placeholder="Twój email" required>
+                        <input type="text" name="Telefon" placeholder="Twój telefon (opcjonalnie)">
+                        <textarea name="Wiadomość" placeholder="Opisz swój projekt, potrzeby, termin..." rows="4" required></textarea>
+                        <button type="submit" class="btn btn-gold">WYŚLIJ WYCENĘ</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section style="background: rgba(0, 255, 65, 0.05);">
+    <!-- PREZENTACJA USŁUG -->
+    <section id="prezentacja" style="background: rgba(248, 245, 240, 0.5);">
         <div class="container">
-            <h2 class="section-title">STATYSTYKI & ZAUFANIE</h2>
+            <h2 class="section-title">ZOBACZ JAK TO DZIAŁA</h2>
+            <p>
+                Mini-prezentacja - kliknij aby zobaczyć demo każdego typu strony
+            </p>
             
-            <div class="stats-grid">
+            <div class="prezentacja-grid">
+                
+                <!-- STRONA WIZYTÓWKA -->
+                <div class="prezentacja-item vintage-border" onclick="openDemo('wizytowka')">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 150px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 24px;">
+                        🏢 FIRMA XYZ
+                    </div>
+                    <div>
+                        <h3>Strona Wizytówka</h3>
+                        <div>
+                            <span>O NAS</span>
+                            <span>USŁUGI</span>
+                            <span>KONTAKT</span>
+                        </div>
+                        <p>
+                            Profesjonalna wizytówka firmy z formularzem kontaktowym i pełną responsywnością.
+                        </p>
+                        <div>
+                            <strong>400-900 zł</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LANDING PAGE -->
+                <div class="prezentacja-item vintage-border" onclick="openDemo('landing')">
+                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 150px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 24px;">
+                        🚀 STARTUP
+                    </div>
+                    <div>
+                        <h3>Landing Page</h3>
+                        <div>
+                            <span>HERO</span>
+                            <span>KORZYŚCI</span>
+                            <span>CTA</span>
+                            <span>ANALYTICS</span>
+                        </div>
+                        <p>
+                            Strona konwersyjna skupiona na jednym celu - zdobywanie leadów i klientów.
+                        </p>
+                        <div>
+                            <strong>600-1200 zł</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKLEP INTERNETOWY -->
+                <div class="prezentacja-item vintage-border" onclick="openDemo('sklep')">
+                    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 150px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 24px;">
+                        🛒 SKLEP ONLINE
+                    </div>
+                    <div>
+                        <h3>Sklep Internetowy</h3>
+                        <div>
+                            <span>PRODUKTY</span>
+                            <span>KOSZYK</span>
+                            <span>PŁATNOŚCI</span>
+                            <span>PANEL</span>
+                        </div>
+                        <p>
+                            Pełnoprawny sklep e-commerce z systemem płatności i zarządzaniem zamówieniami.
+                        </p>
+                        <div>
+                            <strong>2000-4500 zł</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATYSTYKI I ZAUFANIE -->
+    <section style="background: var(--vintage-charcoal); color: var(--vintage-beige);">
+        <div class="container">
+            <div>
+                <h2 class="section-title" style="color: var(--vintage-gold);">ZAUFAJ PROFESJONALIŚCIE</h2>
+                <p>
+                    Ponad 5 lat doświadczenia w ręcznym kodowaniu stron internetowych
+                </p>
+            </div>
+            
+            <div>
                 <div class="stat-item">
-                    <div class="stat-number">50+</div>
+                    <div>50+</div>
                     <div>WYKONANYCH PROJEKTÓW</div>
                 </div>
-                
                 <div class="stat-item">
-                    <div class="stat-number">100%</div>
+                    <div>100%</div>
                     <div>ZADOWOLONYCH KLIENTÓW</div>
                 </div>
-                
                 <div class="stat-item">
-                    <div class="stat-number">5+</div>
+                    <div>5+</div>
                     <div>LAT DOŚWIADCZENIA</div>
                 </div>
-                
                 <div class="stat-item">
-                    <div class="stat-number">24h</div>
+                    <div>24h</div>
                     <div>SZYBKA WYCENA</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="proces">
+    <!-- CERTYFIKATY I GWARANCJE -->
+    <section style="background: var(--vintage-cream);">
         <div class="container">
-            <h2 class="section-title">PROCES REALIZACJI</h2>
+            <h2 class="section-title">GWARANCJA JAKOŚCI</h2>
             
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
+            <div>
+                <div class="vintage-border">
+                    <div>🔒</div>
+                    <h3>Bezpieczeństwo</h3>
+                    <p>Strony zabezpieczone przed atakami, regularne backupy, SSL w standardzie</p>
+                </div>
+                
+                <div class="vintage-border">
+                    <div>⚡</div>
+                    <h3>Szybkość</h3>
+                    <p>Optymalizacja pod kątem szybkości ładowania, Core Web Vitals w zieleni</p>
+                </div>
+                
+                <div class="vintage-border">
+                    <div>📱</div>
+                    <h3>Responsywność</h3>
+                    <p>Idealne wyświetlanie na wszystkich urządzeniach - od telefonu po desktop</p>
+                </div>
+                
+                <div class="vintage-border">
+                    <div>🎯</div>
+                    <h3>SEO</h3>
+                    <p>Optymalizacja pod wyszukiwarki, czysty kod, struktura przyjazna Google</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCES REALIZACJI -->
+    <section style="background: var(--vintage-paper);">
+        <div class="container">
+            <h2 class="section-title">JAK WYGLĄDA WSPÓŁPRACA?</h2>
+            
+            <div>
+                <div>
+                    <div>1</div>
                     <div>
                         <h3>Konsultacja i Wycena</h3>
                         <p>Omawiamy Twój projekt, cele i wymagania. W 24h otrzymujesz szczegółową wycenę.</p>
                     </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">2</div>
+                <div>
+                    <div>2</div>
                     <div>
                         <h3>Projekt i Akceptacja</h3>
                         <p>Przygotowuję projekt graficzny. Po Twojej akceptacji przystępujemy do kodowania.</p>
                     </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">3</div>
+                <div>
+                    <div>3</div>
                     <div>
                         <h3>Realizacja i Testy</h3>
                         <p>Ręcznie koduję stronę, testuję na różnych urządzeniach i optymalizuję wydajność.</p>
                     </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">4</div>
+                <div>
+                    <div>4</div>
                     <div>
                         <h3>Wdrożenie i Wsparcie</h3>
                         <p>Wdrażam stronę na serwer, przekazuję wszystkie prawa i zapewniam wsparcie techniczne.</p>
@@ -1444,224 +956,143 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- PARTNERZY -->
+    <section id="partnerzy" style="background: rgba(248, 245, 240, 0.3);">
+        <div class="container">
+            <h2 class="section-title">PARTNERZY & WSPÓŁPRACA</h2>
+            <div class="partnerzy-content vintage-border">
+                <h3>Dziękujemy naszym partnerom</h3>
+                
+                <div class="partner-grid">
+                    <div class="partner-item">
+                        <div class="partner-icon">🎨</div>
+                        <h4>Adelbertus Shop</h4>
+                        <p>Specjalne podziękowania za profesjonalne grafiki i projekt logo strony.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">⚡</div>
+                        <h4>Vercel</h4>
+                        <p>Za niezawodny hosting i błyskawiczne deploymenty.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">🔧</div>
+                        <h4>GitHub</h4>
+                        <p>Za doskonałe narzędzia do version control i współpracy nad kodem.</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-icon">🎯</div>
+                        <h4>Zespół OLD SCHOOL</h4>
+                        <p>Dziękuję wszystkim klientom i współpracownikom za zaufanie i inspirację.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGULAMIN & POLITYKA PRYWATNOŚCI -->
+    <section id="regulamin" style="background: rgba(248, 245, 240, 0.3);">
+        <div class="container">
+            <h2 class="section-title">REGULAMIN & POLITYKA PRYWATNOŚCI</h2>
+            <div class="regulamin-content vintage-border">
+                <h3>§1 Postanowienia ogólne</h3>
+                <p>Usługi świadczone są przez przedsiębiorcę działającego jako przedsiębiorczość nierejestrowana pod nazwą OLD SCHOOL by WWWojtek.</p>
+                
+                <h3>§2 Świadczenie usług</h3>
+                <p>2.1. Usługi obejmują projektowanie i tworzenie stron internetowych, sklepów internetowych oraz landing pages.</p>
+                <p>2.2. Czas realizacji zlecenia uzależniony jest od jego złożoności i jest podany w cenniku.</p>
+                <p>2.3. Płatności realizowane są z góry w formie przelewu bankowego lub BLIK na numer: 573 939 925.</p>
+                
+                <h3>§3 Polityka prywatności RODO</h3>
+                <p>3.1. Administratorem danych jest OLD SCHOOL by WWWojtek.</p>
+                <p>3.2. Dane osobowe przetwarzane są wyłącznie w celu realizacji zleconych usług.</p>
+                <p>3.3. Dane przechowywane są przez okres niezbędny do realizacji usługi i rozliczeń podatkowych.</p>
+                <p>3.4. Klient ma prawo dostępu do swoich danych, ich poprawiania oraz żądania usunięcia.</p>
+                
+                <h3>§4 Prawa autorskie</h3>
+                <p>4.1. Wszystkie prawa autorskie do stworzonych stron internetowych przechodzą na klienta po dokonaniu pełnej zapłaty.</p>
+                <p>4.2. OLD SCHOOL by WWWojtek zastrzega sobie prawo do prezentacji wykonanych projektów w portfolio.</p>
+                
+                <h3>§5 Postanowienia końcowe</h3>
+                <p>5.1. Wszelkie spory rozstrzygane będą polubownie, a w razie konieczności przez właściwy sąd.</p>
+                <p>5.2. Regulamin wchodzi w życie z dniem 01.01.2024 roku.</p>
+                
+                <div>
+                    <img src="https://i.ibb.co/9V0Z4ZN/retro-pixel.png" alt="Logo OldSchool retro" loading="lazy">
+                    <p>OLD SCHOOL by WWWojtek - Ręcznie kodowane strony z duszą</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p class="mb-20">© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
-            <p class="mb-20">📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
-            
+            <p>© 2024 OldSchool by WWWojtek - Ręcznie kodowane strony internetowe</p>
+            <p>📧 frekig52@gmail.com | 📱 604 296 360 | 💳 BLIK: 573 939 925</p>
             <div class="footer-links">
                 <a href="#regulamin">Regulamin & RODO</a>
-                <a href="#kontakt">Kontakt</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#uslugi">Usługi</a>
+                <a href="#polityka-prywatnosci">Polityka Prywatności</a>
             </div>
-            
-            <p class="mt-30" style="font-size: 0.9rem; opacity: 0.7;">
-                Strona wykonana ręcznie w HTML, CSS i JavaScript • Zero szablonów • 100% custom code
-            </p>
         </div>
     </footer>
 
-    <!-- Chatbot -->
-    <div class="chatbot-container">
-        <div class="chatbot-box" id="chatbotBox">
-            <div class="chatbot-header">
-                <span>💬 OLD SCHOOL BOT</span>
-                <button class="chatbot-close" id="chatbotClose">✖</button>
+    <!-- CHATBOT OLD SCHOOL -->
+    <div id="chatbot-container">
+        <div id="chatbot-button">💬</div>
+
+        <div id="chatbot-box">
+            <div id="chatbot-header">
+                <span>
+                    <img src="https://i.ibb.co/cWkfhWg/Screenshot-2025-11-16-15-26-54.png" alt="OLD SCHOOL BOT" loading="lazy">
+                    OLD SCHOOL BOT
+                </span>
+                <button id="chatbot-close">✖</button>
             </div>
-            
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message">
-                    <strong>BOT:</strong> Cześć! Jestem Old School Bot. Mogę Ci pomóc z informacjami o usługach, cenach i portfolio. O co chcesz zapytać?
-                </div>
+
+            <div id="chatbot-messages"></div>
+
+            <div id="chatbot-input-area">
+                <input id="chatbot-input" type="text" placeholder="Napisz wiadomość...">
+                <button id="chatbot-send">➤</button>
             </div>
-            
-            <div class="chatbot-input-area">
-                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Napisz wiadomość...">
-                <button class="chatbot-send" id="chatbotSend">➤</button>
-            </div>
-        </div>
-        
-        <div class="chatbot-button" id="chatbotButton">
-            💬
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">✖</button>
-            <h2 class="text-green mb-30">✅ WIADOMOŚĆ WYSŁANA!</h2>
-            <p class="mb-20">Dziękuję za kontakt! Twoja wiadomość została wysłana.</p>
-            <p class="mb-30">Odpowiem na nią najszybciej jak to możliwe, zwykle w ciągu 24 godzin.</p>
-            <button class="btn btn-retro" onclick="closeModal()">OK</button>
+    <!-- MODAL DEMO -->
+    <div id="demoModal">
+        <div>
+            <button onclick="closeDemo()">✖</button>
+            <h3 id="demoTitle"></h3>
+            <div id="demoContent"></div>
+            <div>
+                <button onclick="closeDemo()" class="btn btn-gold">ZAMKNIJ</button>
+                <a href="#kontakt" onclick="closeDemo()" class="btn btn-vintage">ZAMÓW WYCENĘ</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loading').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loading').style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
-
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Chatbot functionality
-        const chatbotButton = document.getElementById('chatbotButton');
-        const chatbotBox = document.getElementById('chatbotBox');
-        const chatbotClose = document.getElementById('chatbotClose');
-        const chatbotMessages = document.getElementById('chatbotMessages');
-        const chatbotInput = document.getElementById('chatbotInput');
-        const chatbotSend = document.getElementById('chatbotSend');
-
-        chatbotButton.addEventListener('click', function() {
-            chatbotBox.style.display = 'flex';
-        });
-
-        chatbotClose.addEventListener('click', function() {
-            chatbotBox.style.display = 'none';
-        });
-
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'message-user' : ''}`;
-            messageDiv.innerHTML = `<strong>${isUser ? 'TY' : 'BOT'}:</strong> ${text}`;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function getBotResponse(message) {
-            const msg = message.toLowerCase();
-            
-            if (msg.includes('portfolio') || msg.includes('projekty') || msg.includes('realizacje')) {
-                return 'Mam 6 głównych projektów w portfolio:\n1. Adelbertus Shop - sklep e-commerce\n2. Strona Klaudii - portfolio artystyczne\n3. Strona Rafała - strona programisty\n4. Przewozy Maniek - firma transportowa\n5. Studio Jogi Kasi\n6. Bartek - nauczyciel gitary\n\nWszystkie linki działają!';
-            }
-            
-            if (msg.includes('adelbertus') || msg.includes('sklep')) {
-                return 'Adelbertus Shop to pełnoprawny sklep e-commerce z WooCommerce. Link: www.adelbertusshop.com';
-            }
-            
-            if (msg.includes('klaudia') || msg.includes('art')) {
-                return 'Strona Klaudii to portfolio artystyczne z galerią prac. Link: klaudia-art.pl';
-            }
-            
-            if (msg.includes('rafał') || msg.includes('rafal')) {
-                return 'Strona Rafała to strona programisty z blogiem. Link: rafal-dev.pl';
-            }
-            
-            if (msg.includes('maniek') || msg.includes('przewozy')) {
-                return 'Przewozy Maniek to strona firmy transportowej. Link: przewozymaniek.pl';
-            }
-            
-            if (msg.includes('kasia') || msg.includes('joga')) {
-                return 'Studio Jogi Kasi z harmonogramem zajęć. Link: joga-kasia.pl';
-            }
-            
-            if (msg.includes('bartek') || msg.includes('gitara')) {
-                return 'Bartek - nauczyciel gitary z systemem rezerwacji. Link: gitara-bartek.pl';
-            }
-            
-            if (msg.includes('cześć') || msg.includes('witaj') || msg.includes('hej')) {
-                return 'Cześć! Jestem Old School Bot. Jak mogę Ci pomóc?';
-            }
-            
-            if (msg.includes('cena') || msg.includes('koszt') || msg.includes('wycena')) {
-                return 'Ceny zaczynają się od 400 zł za stronę wizytówkę. Dokładna wycena zależy od specyfiki projektu. Wypełnij formularz wyceny!';
-            }
-            
-            if (msg.includes('kontakt') || msg.includes('email') || msg.includes('telefon')) {
-                return 'Kontakt: email: frekig52@gmail.com, telefon: 604 296 360, BLIK: 573 939 925';
-            }
-            
-            if (msg.includes('czas') || msg.includes('realizacja') || msg.includes('termin')) {
-                return 'Czas realizacji: strona wizytówka 3-7 dni, landing page 5-10 dni, sklep internetowy 2-4 tygodnie.';
-            }
-            
-            if (msg.includes('blik') || msg.includes('płatność')) {
-                return 'Numer BLIK: 573 939 925. W tytule przelewu wpisz: "www" + nazwę projektu.';
-            }
-            
-            return 'Mogę Ci pomóc z informacjami o portfolio projektów, cenach, kontakcie lub konkretnych realizacjach. O co konkretnie chcesz zapytać?';
-        }
-
-        chatbotSend.addEventListener('click', function() {
-            const message = chatbotInput.value.trim();
-            if (!message) return;
-            
-            addMessage(message, true);
-            chatbotInput.value = '';
-            
-            setTimeout(function() {
-                const response = getBotResponse(message);
-                addMessage(response);
-            }, 500);
-        });
-
-        chatbotInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                chatbotSend.click();
-            }
-        });
-
-        // Form validation and submission
+        // Walidacja formularza
         function validateForm() {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const description = document.getElementById('description').value.trim();
+            const name = document.querySelector('input[name="Imię"]').value;
+            const email = document.querySelector('input[name="Email"]').value;
+            const message = document.querySelector('textarea[name="Wiadomość"]').value;
             
-            if (!name || !email || !description) {
-                alert('Proszę wypełnić wszystkie wymagane pola!');
+            if (!name || !email || !message) {
+                alert('Proszę wypełnić wszystkie wymagane pola: Imię, Email i Wiadomość');
                 return false;
             }
             
-            // Show success modal
-            setTimeout(function() {
-                document.getElementById('successModal').style.display = 'flex';
-            }, 1000);
+            if (!email.includes('@')) {
+                alert('Proszę podać poprawny adres email');
+                return false;
+            }
             
             return true;
         }
 
-        function sendEmail() {
+        // Szybki email
+        function sendQuickEmail() {
             const name = prompt('Podaj swoje imię:');
             if (!name) return;
             
@@ -1669,29 +1100,21 @@
             if (!email) return;
             
             const subject = `Zapytanie o wycenę od ${name} - OldSchool WWWojtek`;
-            const body = `Witaj Wojtek,\n\nChciałbym/chciałabym zapytać o wycenę projektu.\n\nMoje dane:\nImię: ${name}\nEmail: ${email}\n\n---\nWysłano ze strony: OldSchool by WWWojtek`;
+            const body = `Witaj Wojtek,
+
+Chciałbym/chciałabym zapytać o wycenę projektu.
+
+Moje dane:
+Imię: ${name}
+Email: ${email}
+
+---
+Wysłano ze strony: OldSchool by WWWojtek`.trim();
             
             window.location.href = `mailto:frekig52@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
-        // Modal functionality
-        const modalClose = document.getElementById('modalClose');
-        const successModal = document.getElementById('successModal');
-
-        function closeModal() {
-            successModal.style.display = 'none';
-        }
-
-        modalClose.addEventListener('click', closeModal);
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === successModal) {
-                closeModal();
-            }
-        });
-
-        // Add scroll animation to portfolio items
+        // Animacje scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1700,99 +1123,233 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Observe all portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(item);
-        });
-
-        // Add typing effect to hero
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.textContent;
-        let charIndex = 0;
-        
-        function typeWriter() {
-            if (charIndex < originalText.length) {
-                heroTitle.textContent = originalText.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        // Start typing effect after loading
-        setTimeout(typeWriter, 1500);
-
-        // Add click animation to portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') return;
-                
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
+        // Obserwuj wszystkie elementy do animacji
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToAnimate = document.querySelectorAll('.service-item, .portfolio-item, .pricing-table, .contact-info, .contact-form, .partner-item, .prezentacja-item');
+            elementsToAnimate.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
             });
         });
 
-        // Add system date/time in footer
-        function updateDateTime() {
-            const now = new Date();
-            const dateTimeStr = now.toLocaleString('pl-PL', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
+        // Płynne scrollowanie do sekcji
+        document.querySelectorAll('nav a, .hero-buttons a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
             });
+        });
+
+        // Demo modal functions
+        function openDemo(type) {
+            const modal = document.getElementById('demoModal');
+            const title = document.getElementById('demoTitle');
+            const content = document.getElementById('demoContent');
             
-            const dateTimeElement = document.createElement('p');
-            dateTimeElement.style.fontSize = '0.8rem';
-            dateTimeElement.style.opacity = '0.5';
-            dateTimeElement.style.marginTop = '10px';
-            dateTimeElement.textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
+            const demos = {
+                wizytowka: {
+                    title: '🎯 STRONA WIZYTÓWKA - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul>
+                                 <li>1-3 podstron (O nas, Usługi, Kontakt)</li>
+                                 <li>Formularz kontaktowy z walidacją</li>
+                                 <li>Pełna responsywność (telefon, tablet, desktop)</li>
+                                 <li>Optymalizacja SEO</li>
+                                 <li>Integracja z Google Analytics</li>
+                                 <li>Mapa dojazdu</li>
+                                 <li>Social media links</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 3-7 dni</p>
+                             <p><strong>Idealna dla:</strong> małych firm, freelancerów, specjalistów</p>`
+                },
+                landing: {
+                    title: '🚀 LANDING PAGE - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul>
+                                 <li>Hero section z mocnym CTA</li>
+                                 <li>Sekcja korzyści i funkcjonalności</li>
+                                 <li>Formularz lead generation</li>
+                                 <li>Social proof i opinie klientów</li>
+                                 <li>Zaawansowana analityka</li>
+                                 <li>A/B testing ready</li>
+                                 <li>Integracja z CRM</li>
+                                 <li>Optymalizacja konwersji</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 5-10 dni</p>
+                             <p><strong>Idealna dla:</strong> startupów, kampanii, produktów</p>`
+                },
+                sklep: {
+                    title: '🛒 SKLEP INTERNETOWY - DEMO',
+                    content: `<p><strong>Co zawiera:</strong></p>
+                             <ul>
+                                 <li>Katalog produktów z kategoriami</li>
+                                 <li>Koszyk i proces zamówienia</li>
+                                 <li>System płatności (BLIK, przelewy, karty)</li>
+                                 <li>Panel administracyjny</li>
+                                 <li>Zarządzanie zamówieniami</li>
+                                 <li>System promocji i kodów rabatowych</li>
+                                 <li>Integracja z kurierami</li>
+                                 <li>Szkolenie z obsługi</li>
+                             </ul>
+                             <p><strong>Czas realizacji:</strong> 2-4 tygodnie</p>
+                             <p><strong>Idealny dla:</strong> sprzedawców, producentów, handlu</p>`
+                }
+            };
             
-            const footer = document.querySelector('footer .container');
-            if (footer && !document.getElementById('datetime')) {
-                dateTimeElement.id = 'datetime';
-                footer.appendChild(dateTimeElement);
-            } else if (document.getElementById('datetime')) {
-                document.getElementById('datetime').textContent = `System: ${dateTimeStr} • OLDSCHOOL.EXE v1.0`;
-            }
+            title.textContent = demos[type].title;
+            content.innerHTML = demos[type].content;
+            modal.style.display = 'flex';
+        }
+        
+        function closeDemo() {
+            document.getElementById('demoModal').style.display = 'none';
         }
 
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+        // CHATBOT SCRIPT
+        const botBox = document.getElementById("chatbot-box");
+        const botBtn = document.getElementById("chatbot-button");
+        const botClose = document.getElementById("chatbot-close");
+        const msgArea = document.getElementById("chatbot-messages");
+        const input = document.getElementById("chatbot-input");
 
-        // Add portfolio counter
-        function updatePortfolioCounter() {
-            const counter = document.createElement('div');
-            counter.style.position = 'fixed';
-            counter.style.bottom = '100px';
-            counter.style.right = '20px';
-            counter.style.background = 'var(--retro-black)';
-            counter.style.border = '2px solid var(--retro-green)';
-            counter.style.padding = '10px';
-            counter.style.fontSize = '0.9rem';
-            counter.style.zIndex = '999';
-            counter.textContent = 'Portfolio: 6 projektów';
-            counter.id = 'portfolioCounter';
-            
-            if (!document.getElementById('portfolioCounter')) {
-                document.body.appendChild(counter);
+        botBtn.onclick = () => botBox.style.display = "flex";
+        botClose.onclick = () => botBox.style.display = "none";
+
+        function sendMessage(text, sender="bot") {
+            const div = document.createElement("div");
+            div.classList.add("message");
+            if (sender === "user") {
+                div.classList.add("message-user");
             }
+            div.innerHTML = `<b>${sender === "bot" ? "BOT" : "TY"}:</b> ${text}`;
+            msgArea.appendChild(div);
+            msgArea.scrollTop = msgArea.scrollHeight;
         }
 
-        setTimeout(updatePortfolioCounter, 2000);
+        const botReplies = (msg) => {
+            msg = msg.toLowerCase();
+
+            if (msg.includes("strona") || msg.includes("wizytówka")) {
+                return "🛠️ Strona wizytówka to klasyk! 1-3 podstrony, formularz kontaktowy, pełna responsywność. Cena 400-900 zł w zależności od złożoności. Idealna dla małych firm i freelancerów.";
+            }
+
+            if (msg.includes("landing") || msg.includes("lądowanie")) {
+                return "🎯 Landing Page - strona konwersyjna skupiona na jednym celu. Integracja analytics, CTA, optymalizacja pod SEO. Cena 600-1200 zł. Perfect dla kampanii marketingowych!";
+            }
+
+            if (msg.includes("sklep") || msg.includes("e-commerce")) {
+                return "🛒 Sklep internetowy z pełną funkcjonalnością: system płatności, zarządzanie produktami, panel zamówień + szkolenie. Cena 2000-4500 zł. Gotowy do sprzedaży!";
+            }
+
+            if (msg.includes("portfolio") || msg.includes("realizacje")) {
+                document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
+                return "📂 Przewijam do portfolio! Zobacz moje realizacje w retro stylu!";
+            }
+
+            if (msg.includes("cennik") || msg.includes("cena") || msg.includes("ile kosztuje")) {
+                document.querySelector("#cennik").scrollIntoView({ behavior: "smooth" });
+                return "💰 Otwieram cennik! Przejrzyste ceny bez ukrytych kosztów. Od prostych wizytówek po zaawansowane sklepy - wszystko w stylu old school!";
+            }
+
+            if (msg.includes("kontakt") || msg.includes("wycena") || msg.includes("mail")) {
+                document.querySelector("#kontakt").scrollIntoView({ behavior: "smooth" });
+                return "📞 Lecimy do kontaktu! Wyślij formularz wyceny lub użyj przycisku 'WYŚLIJ EMAIL' - otworzy się Twój program pocztowy z wypełnionymi danymi!";
+            }
+
+            if (msg.includes("blik") || msg.includes("płatność")) {
+                return "💳 Płatność BLIK: 573 939 925\nW tytule: 'www' + nazwa projektu\nPrzykład: 'www strona firmowa'\nSzybko i bezpiecznie!";
+            }
+
+            if (msg.includes("retro") || msg.includes("vintage") || msg.includes("old school")) {
+                return "🎨 Retro vibe to moja specjalność! Ziarniste tekstury, vintage kolory, ręcznie kodowane animacje. Tworzę strony z duszą, nie z szablonów!";
+            }
+
+            if (msg.includes("cześć") || msg.includes("hej") || msg.includes("witaj") || msg.includes("hi") || msg.includes("hello")) {
+                return "👋 Cześć! Jestem Old School Bot - ekspert od stron internetowych w retro stylu. Mogę Ci pomóc z wyceną, portfolio i informacjami o usługach!";
+            }
+
+            if (msg.includes("technologie") || msg.includes("tech")) {
+                return "🛠️ Używam najnowszych technologii: HTML5, CSS3, JavaScript ES6+, React, Node.js. Ale wszystko z retro duszą!";
+            }
+
+            if (msg.includes("seo") || msg.includes("google")) {
+                return "🔍 SEO w standardzie: Core Web Vitals 90+, Structured Data, SSL, mobile-first. Twoja strona będzie wysoko w Google!";
+            }
+
+            return "🤔 Rozumiem pytanie! Jestem Old School Bot - specjalista od retro stron WWW. Zapytaj mnie o: strony wizytówki, landing pages, sklepy internetowe, cennik, portfolio lub kontakt!";
+        };
+
+        document.getElementById("chatbot-send").onclick = () => {
+            const text = input.value.trim();
+            if (!text) return;
+
+            sendMessage(text, "user");
+            const response = botReplies(text);
+            setTimeout(() => sendMessage(response), 300);
+            input.value = "";
+        };
+
+        // Enter do wysyłania wiadomości
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById("chatbot-send").click();
+            }
+        });
+
+        // Lazy loading dla obrazów
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('loading' in HTMLImageElement.prototype) {
+                // Przeglądarka obsługuje lazy loading
+            } else {
+                // Fallback dla starych przeglądarek
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                images.forEach(img => {
+                    if (img.dataset.src) {
+                        imageObserver.observe(img);
+                    }
+                });
+            }
+        });
+
+        // Zabezpieczenia front-end
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.nodeName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // Blokada F12 (DevTools)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+                alert('🛡️ Old School Protection: Dostęp do narzędzi deweloperskich jest ograniczony na tej stronie.');
+            }
+        });
     </script>
 </body>
 </html>
