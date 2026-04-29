@@ -701,70 +701,112 @@
             color: var(--terminal-green);
         }
 
-        /* ===== PORTFOLIO ===== */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-md);
-        }
+       /* ===== PORTFOLIO CARDS ===== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-        .portfolio-item {
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
+.portfolio-card {
+    background: var(--card-bg);
+    border: 1px solid var(--terminal-green);
+    box-shadow: 0 0 15px var(--border-glow);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
 
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
+.portfolio-card:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    transform: translateY(-4px);
+}
 
-        .portfolio-preview {
-            height: 200px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+    padding-bottom: 0.75rem;
+}
 
-        .pixel-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
+.card-type {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--terminal-cyan);
+    letter-spacing: 0.05em;
+}
 
-        .project-name {
-            font-family: var(--font-pixel);
-            font-size: 1.5rem;
-            color: white;
-            text-shadow: 2px 2px 0 #000;
-            z-index: 1;
-        }
+.card-status {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--terminal-green);
+}
 
-        .portfolio-info {
-            padding: var(--space-md);
-        }
+.card-screen {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 0, 0.15);
+    padding: 1rem;
+    flex: 1;
+}
 
-        .project-tags {
-            display: flex;
-            gap: var(--space-xs);
-            margin-top: var(--space-sm);
-            flex-wrap: wrap;
-        }
+.screen-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
 
-        .tag {
-            padding: 0.2rem 0.5rem;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid var(--terminal-cyan);
-            font-size: 0.8rem;
-            color: var(--terminal-cyan);
-        }
+.screen-line {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(0, 255, 0, 0.7);
+    line-height: 1.4;
+}
+
+.screen-line::before {
+    content: '> ';
+    color: var(--terminal-cyan);
+}
+
+.screen-line.success {
+    color: var(--terminal-green);
+    font-weight: 600;
+}
+
+.card-footer {
+    padding-top: 0.5rem;
+}
+
+.btn-live {
+    display: block;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--terminal-green);
+    border: 1px solid var(--terminal-green);
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+}
+
+.btn-live:hover {
+    background: var(--terminal-green);
+    color: #000;
+    box-shadow: 0 0 20px var(--border-glow);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.blink {
+    animation: blink 1.5s infinite;
+}
 
         /* ===== PRICING TABLE ===== */
         .pricing-table {
@@ -1510,82 +1552,101 @@ OLD_SCHOOL by WWWojtek
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="terminal-section scanlines">
-        <div class="container">
-            <h2 class="section-title glitch" data-text="PORTFOLIO">
-                <span class="title-decor">[</span>
-                PORTFOLIO
-                <span class="title-decor">]</span>
-            </h2>
-            
-            <div class="portfolio-grid">
-                <a href="https://klaudia-3hjx.vercel.app" target="_blank" class="portfolio-item vintage-border" rel="noopener">
-                    <div class="portfolio-preview">
-                        <div class="pixel-grid"></div>
-                        <div class="project-name">KLAUDIA</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Strona Klaudii</h3>
-                        <p>Personalna strona wizytówkowa w stylu retro-modern</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">Responsive</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="https://rafa-five-phi.vercel.app" target="_blank" class="portfolio-item vintage-border" rel="noopener">
-                    <div class="portfolio-preview">
-                        <div class="pixel-grid"></div>
-                        <div class="project-name">RAFAŁ</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Strona Rafała</h3>
-                        <p>Landing page dla freelancera - konwersyjny design</p>
-                        <div class="project-tags">
-                            <span class="tag">Landing</span>
-                            <span class="tag">SEO</span>
-                            <span class="tag">Animation</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="https://maniek-przewozy-przew-z.vercel.app" target="_blank" class="portfolio-item vintage-border" rel="noopener">
-                    <div class="portfolio-preview">
-                        <div class="pixel-grid"></div>
-                        <div class="project-name">MANIEK</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Przewozy Maniek</h3>
-                        <p>Strona firmowa transportu z mapą i formularzem</p>
-                        <div class="project-tags">
-                            <span class="tag">Business</span>
-                            <span class="tag">Map</span>
-                            <span class="tag">Contact Form</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="https://www.adelbertusshop.com" target="_blank" class="portfolio-item vintage-border" rel="noopener">
-                    <div class="portfolio-preview">
-                        <div class="pixel-grid"></div>
-                        <div class="project-name">ADELBERTUS</div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Adelbertus Shop</h3>
-                        <p>Pełny sklep e-commerce z systemem płatności</p>
-                        <div class="project-tags">
-                            <span class="tag">E-commerce</span>
-                            <span class="tag">Payment</span>
-                            <span class="tag">Dashboard</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+    <!-- ===== PORTFOLIO ===== -->
+<section id="portfolio" class="section scanlines">
+    <div class="glitch-overlay"></div>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">// REALIZACJE</div>
+            <h2 class="section-title glitch" data-text="PORTFOLIO.EXE">PORTFOLIO.EXE</h2>
+            <p class="section-subtitle">[ PROJEKTY KTÓRE JUŻ DZIAŁAJĄ W SIECI ]</p>
         </div>
-    </section>
+
+        <div class="portfolio-grid">
+
+            <!-- ADELBERTUS SHOP -->
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <span class="card-type">[SKLEP_INTERNETOWY]</span>
+                    <span class="card-status blink">● LIVE</span>
+                </div>
+                <div class="card-screen">
+                    <div class="screen-content">
+                        <div class="screen-line">PROJEKT: AdelbertusShop</div>
+                        <div class="screen-line">BRANŻA: Moda / Odzież</div>
+                        <div class="screen-line">ZAKRES: Koszulki, bluzy, czapki</div>
+                        <div class="screen-line">DESIGN: Własne projekty + na zamówienie</div>
+                        <div class="screen-line success">STATUS: ONLINE ✓</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.adelbertusshop.com" target="_blank" class="btn-live">[ ZOBACZ LIVE → ]</a>
+                </div>
+            </div>
+
+            <!-- RAFAŁ -->
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <span class="card-type">[STRONA_WIZYTÓWKA]</span>
+                    <span class="card-status blink">● LIVE</span>
+                </div>
+                <div class="card-screen">
+                    <div class="screen-content">
+                        <div class="screen-line">PROJEKT: Rafał</div>
+                        <div class="screen-line">BRANŻA: Budownictwo / Remonty</div>
+                        <div class="screen-line">ZAKRES: Strona firmowa</div>
+                        <div class="screen-line">DESIGN: Solidność i doświadczenie</div>
+                        <div class="screen-line success">STATUS: ONLINE ✓</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://rafa-five-phi.vercel.app" target="_blank" class="btn-live">[ ZOBACZ LIVE → ]</a>
+                </div>
+            </div>
+
+            <!-- KLAUDIA -->
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <span class="card-type">[STRONA_WIZYTÓWKA]</span>
+                    <span class="card-status blink">● LIVE</span>
+                </div>
+                <div class="card-screen">
+                    <div class="screen-content">
+                        <div class="screen-line">PROJEKT: Klaudia</div>
+                        <div class="screen-line">BRANŻA: Beauty / Salon</div>
+                        <div class="screen-line">ZAKRES: Strona salonu</div>
+                        <div class="screen-line">DESIGN: Rzęsy 3D i więcej wymiarów</div>
+                        <div class="screen-line success">STATUS: ONLINE ✓</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://klaudia-3hjx.vercel.app" target="_blank" class="btn-live">[ ZOBACZ LIVE → ]</a>
+                </div>
+            </div>
+
+            <!-- MANIEK PRZEWOZY -->
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <span class="card-type">[STRONA_WIZYTÓWKA]</span>
+                    <span class="card-status blink">● LIVE</span>
+                </div>
+                <div class="card-screen">
+                    <div class="screen-content">
+                        <div class="screen-line">PROJEKT: Maniek Przewozy</div>
+                        <div class="screen-line">BRANŻA: Transport / Logistyka</div>
+                        <div class="screen-line">ZAKRES: Strona firmowa</div>
+                        <div class="screen-line">DESIGN: Przewozy krajowe i europejskie</div>
+                        <div class="screen-line success">STATUS: ONLINE ✓</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://maniek-przewozy-przew-z.vercel.app" target="_blank" class="btn-live">[ ZOBACZ LIVE → ]</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- CENNIK -->
     <section id="cennik" class="terminal-section alt-bg scanlines">
